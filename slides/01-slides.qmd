@@ -1,0 +1,318 @@
+---
+title: "Getting Started"
+subtitle: "HES 505 Fall 2023: Session 1"
+author: "Matt Williamson"
+format: 
+  revealjs:
+    theme: mytheme.scss
+    slide-number: true
+    show-slide-number: print
+    self-contained: true  
+---
+
+# Welcome to Space!! {background="#9F281A" background-image="img/slide_1/Helix_Nebula.jpeg"}
+
+::: footer 
+:::{style="font-size: 0.8em; margin-bottom: -1.5em; color:#fff"}
+image courtesy of NASA/JPL-Caltech/Univ. of Ariz., Public domain, via Wikimedia Commons
+:::
+:::
+
+## Today's Plan {background="#9F281A" background-image="img/slide_1/Helix_Nebula.jpeg"}
+
+:::{style="font-size: 1.2em; text-align: middle; margin-top: 2em"}
+- Introductions
+
+- Why (not) R?
+
+- Course logistics and resources
+
+- Testing out RStudio, git, and GitHub Classroom
+:::
+
+# Introductions {background="#9F281A"}
+
+## About Me
+
+::: columns
+::: {.column width="40%"}
+::: incremental
+-   What I do
+
+-   My path to this point
+
+-   Why I teach this course
+:::
+:::
+::: {.column width="60%"}
+![](img/slide_1/Buffalo_Mosaic.png)
+:::
+:::
+
+## What about you? { background-image="img/slide_1/camasprairie.jpeg" background-opacity="0.7"}
+:::{style="font-size: 1.2em; text-align: center; margin-top: 2em; color: #7C4A89"}
+:::{style="color: #9F281A"}
+- Your preferred pronouns
+
+- Where are you from?
+
+- What do you like most about Boise? 
+
+- What do you miss most about "home"?
+
+- What is your research?
+:::
+:::
+
+# Why (not) R? {background="#9F281A"}
+
+## Why R?
+
+::: columns
+::: {.column width="30%"}
+::: incremental
+
+-   Open Source
+
+-   Huge useR community
+
+-   Integrated analysis pipelines
+
+-   Reproducible workflows
+:::
+:::
+
+::: {.column width="70%"}
+
+::: panel-tabset
+### Code
+
+```{r}
+#| echo: true
+library(maps)
+library(socviz)
+library(tidyverse)
+party_colors <- c("#2E74C0", "#CB454A") 
+us_states <- map_data("state")
+election$region <- tolower(election$state)
+us_states_elec <- left_join(us_states, election)
+p0 <- ggplot(data = us_states_elec,
+             mapping = aes(x = long, y = lat,
+                           group = group, 
+                           fill = party))
+p1 <- p0 + geom_polygon(color = "gray90", 
+                        size = 0.1) +
+    coord_map(projection = "albers", 
+              lat0 = 39, lat1 = 45) 
+p2 <- p1 + scale_fill_manual(values = party_colors) +
+    labs(title = "Election Results 2016", 
+         fill = NULL)
+```
+
+### Plot
+
+```{r}
+#| echo: false
+p2
+```
+:::
+:::
+:::
+
+## Why not R? 
+
+```{r}
+#| code-overflow: wrap
+#| echo: true
+
+## ---
+## Error: could not find function "performance"
+## ---
+##  [1] "Error in if (str_count(string = f[[j]], 
+##  pattern = \"\\\\S+\") == 1) 
+##  { : \n  argument is of length zero"   
+## ---
+## Error in eval(expr, envir, enclos) : object 'x' not found
+## ---
+## Error in file(file, "rt") : cannot open the connection
+## ---
+
+```
+
+::: columns
+::: {.column width="50%"}
+-   Coding can be hard...
+
+-   Memory challenges
+:::
+::: {.column width="50%"}
+-   Speed
+
+-   Decision fatigue
+:::
+:::
+
+## Getting Help
+::: columns
+::: {.column width="50%"}
+- Google it!! 
+  - Use the exact error message
+  - Include the package name
+  - include "R" in the search
+:::
+::: {.column width="50%"}
+- Stack Overflow
+  - Reproducible examples 
+- Package "issue" pages
+- r_spatial slack channel
+- [Common errors](https://github.com/noamross/zero-dependency-problems/blob/master/misc/stack-overflow-common-r-errors.md)
+:::
+:::
+::: {style="font-size: 1.2em; text-align: center; color: #9F281A"} 
+**Ask Me**
+:::
+
+# Class Details {background="#9F281A"}
+
+## Logistics { background-image="img/slide_1/bison.jpeg"}
+
+:::{style="font-size: 1.2em; text-align: center; margin-top: 2em; color:#fff"}
+- Meet on Mondays and Wednesdays
+
+- ~55 min lecture, 20 min practice
+
+- 4 major sections
+
+- Readings 
+:::
+
+## Course Webpage { background-image="img/slide_1/hellroaring.jpeg"}
+
+[https://isdrfall23.classes.spaseslab.com/](https://isdrfall23.classes.spaseslab.com/)
+
+:::{style="font-size: 1.2em; margin-top: 1.5em; color: #fff"}
+- Syllabus
+
+- Schedule
+
+- Lectures
+
+- Assignments
+
+- Resources
+:::
+
+## Assignments
+::: {style="font-size: 1.2em; text-align: center"} 
+**Check out the syllabus for more on grading!**
+:::
+:::{style="font-size: 0.8em"}
+::: incremental
+::: columns
+::: {.column width="50%"}
+- **Self-reflections** (2x)
+  - Your goals for the course
+  - Evaluation criteria
+
+
+- **Coding exercises** (10x)
+  - Problem solving
+  - Reproducible workflows
+  - Muscle memory
+:::
+::: {.column width="50%"}
+- **Code Revisions** (3x)
+  - Digging deeper
+  - Common issues
+  - More extensive feedback
+  
+- **Final project** (1st draft, final draft)
+  - Practice a full analysis workflow
+  - Integrate analysis & visuals to tell a story
+::: 
+:::
+:::
+:::
+
+# Getting started {background="#9F281A"}
+
+## Orientation to RStudio and our RStudio server
+![](img/slide_1/rstudio.png)
+
+# Git and Github classroom {background="#9F281A"}
+
+
+
+## Introduce yourself to Git
+
+1. Lots of ways, but one easy way is:
+```{r}
+#| echo: true
+#| eval: false
+library(usethis) #you may need to install this using install.packages('usethis')
+use_git_config(user.name = "Jane Doe", user.email = "jane@example.org") #your info here
+```
+
+2. Generate a PAT token if you don't have one **(make sure you save it somewhere)**
+```{r}
+#| echo: true
+#| eval: false
+usethis::create_github_token()
+```
+
+
+
+## Introduce yourself to Git (cont'd)
+
+3. Store your credentials for use (times out after 1 hr)
+```{r}
+#| echo: true
+#| eval: false
+gitcreds::gitcreds_set()
+```
+
+4. Verify
+```{r}
+#| echo: true
+#| eval: false
+gitcreds::gitcreds_get()
+```
+
+## Joining the assignment and cloning the repo
+
+1. Click this [link](https://classroom.github.com/a/8TteH9XA)
+
+2. Bring the project into RStudio
+
+  * Go to File>New Project and choose the “Version Control” option
+  * Select “Git” (Not Subversion)
+  * Paste the link from the “Clone Repository” button into the “Repository URL” space
+
+## The git workflow
+
+* Make sure to **pull** everytime you start working on a project
+
+* Make some changes to code
+
+* Save those changes
+
+* Commit your changes
+
+* Push your work to the remote!
+
+# Wrapup {background="#9F281A"}
+
+## Checking in
+
+1. What are some advantages and disadvantages of using `R` for spatial analysis
+
+2. What can I clarify about the course?
+
+3. How do you feel about git and github classroom? How can I make that easier for you?
+
+# End { background-image="img/slide_1/Kepler-world.jpeg" background-opacity="0.7"}
+::: footer 
+:::{style="0.8em; margin-bottom: -1.5em; color:#9F281A"}
+Johannes Kepler, 1627, Public domain, via Wikimedia Commons
+:::
+:::
