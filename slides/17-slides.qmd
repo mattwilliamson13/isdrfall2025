@@ -2,12 +2,14 @@
 title: "Interpolation and Autocorrelation"
 subtitle: "HES 505 Fall 2022: Session 17"
 author: "Matt Williamson"
+execute: 
+  eval: false
 format: 
   revealjs:
     theme: mytheme.scss
     slide-number: true
     show-slide-number: print
-    self-contained: true  
+    self-contained: true
 ---
 
 ```{r}
@@ -20,7 +22,6 @@ library(maps)
 library(tmap)
 library(spData)
 library(terra)
-library(maptools)
 library(spatstat)
 library(tmap)
 library(gstat)
@@ -314,9 +315,10 @@ plot(M1)
 ::: {style="font-size: 0.7em"}
 ```{r}
 #| echo: true
-data(meuse)
+
+data("meuse.all")
 r <- rast(system.file("ex/meuse.tif", package="terra"))
-sfmeuse <- st_as_sf(meuse, coords = c("x", "y"), crs=crs(r))
+sfmeuse <- st_as_sf(meuse.all, coords = c("x", "y"), crs=crs(r))
 nodes <- st_make_grid(sfmeuse,
                       cellsize = 25,
                       what = "centers")
@@ -326,6 +328,7 @@ nearest <- apply(dist, 1, function(x) which(x == min(x)))
 zinc_nn <- sfmeuse$zinc[nearest]
 preds <- st_as_sf(nodes)
 preds$zn <- zinc_nn
+preds <- rast(as.data.frame(preds))
 preds <- as(preds, "Spatial")
 gridded(preds) <- TRUE
 preds.rast <- rast(preds)
