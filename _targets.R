@@ -3,7 +3,7 @@ library(tarchetypes)
 suppressPackageStartupMessages(library(tidyverse))
 
 class_number <- "HES 505"
-base_url <- "https://isdrfall23.classes.spaseslab.com/"
+base_url <- "https://isdrfall25.classes.spaseslab.com/"
 page_suffix <- ".html"
 
 options(tidyverse.quiet = TRUE,
