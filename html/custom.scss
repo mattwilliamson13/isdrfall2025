@@ -13,7 +13,18 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 
-// Lilac-breasted roller colors
+// Morgenstern palette
+$lilac:   #98768e;
+$lightpurple:   #b08ba5 ;
+$blush:     #c7a2b6;
+$pink:    #dfbbc8;
+$butter:  #ffc680;
+$orange:  #ffb178;
+$redorange:   #db8872;
+$brown:   #a56457;
+
+
+
 $darkblue:  #1C2D8C !default;
 $blue:    #2A40BF !default;
 $lightblue:  #A1D8EA !default;
@@ -24,16 +35,16 @@ $yellow:  #FB9E07 !default;
 $green:   #02b875 !default;
 
 
-$primary:       $darkblue !default;
-$secondary:     $lightblue !default;
-$success:       $green !default;
+$primary:       $black !default;
+$secondary:     $gray-300 !default;
+$success:       $orange !default;
 $info:          $lilac !default;
-$warning:       $yellow !default;
+$warning:       $butter !default;
 $danger:        $lilac !default;
 $light:         $black !default;
 $dark:          $gray-800 !default;
 $body-color:    $darkblue !default;
-$code-color:    #9F281A;
+$code-color:    #98768e;
 $code-block-bg: $lightblue;
 $code-block-border-color: #000000;
 $font-family-sans-serif:      Fira Sans Condensed, sans-serif !default;
@@ -52,13 +63,13 @@ $h6-font-size: $font-size-base * 0.8;
 $toc-font-size: 1.1rem;
 $sidebar-font-size: 1.1rem;
 $sidebar-font-size-section: 0.9rem;
-$sidebar-bg: $lilac;
+$sidebar-bg: $redorange;
 
-$link-color: $lilac;
-$link-hover-color: $blue;
+$link-color: $lightpurple;
+$link-hover-color: $orange;
 
 $monokai-bg: #2e3440;
-$code-block-bg: $lightblue;
+$code-block-bg: $blush;
 
 /*-- scss:rules --*/
 h2 {
@@ -158,7 +169,7 @@ ol {
 .schedule-page h3 {
   text-align: left;
   margin-top: 3rem;
-  border-bottom: 3px solid #9F281A;
+  border-bottom: 3px solid #dfbbc8;
   // padding-bottom: 0.5rem;
 }
 
@@ -315,7 +326,7 @@ pre.text {
 }
 
 .slide-deck {
-  border: 3px solid #9F281A;
+  border: 3px solid #ffc680;
   width: 100%;
   height: 475px;
 }
