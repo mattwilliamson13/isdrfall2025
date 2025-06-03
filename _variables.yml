@@ -14,14 +14,14 @@ instructor:
 
 course:
   number: "HES 505"
-  semester: "Fall 2023"
+  semester: "Fall 2025"
   days: "Mondays and Wednesdays"
   time: "1:30–2:45 PM"
-  location: "SMASH 116"
-  dates: "August 21–December 13, 2023"
-  github: "https://www.github.com/mattwilliamson/isdrfall23"
-  url: "https://isdrfall23.classes.spaseslab.com"
-  copyright_year: "2023"
+  location: "ILC 404"
+  dates: "August 25–December 12, 2023"
+  github: "https://www.github.com/mattwilliamson/isdrfall25"
+  url: "https://isdrfall25.classes.spaseslab.com"
+  copyright_year: "2025"
   slack: "https://app.slack.com/client/TFDA2L1RQ/CV4DEJ8M7"
 
 university:
