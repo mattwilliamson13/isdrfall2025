@@ -230,7 +230,7 @@ website:
 format:
   html:
     theme:
-      - litera
+      - lumen
       - html/custom.scss
     toc: true
     highlight-style: github
