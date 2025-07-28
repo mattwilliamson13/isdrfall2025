@@ -5,6 +5,7 @@ author: "Matt Williamson"
 format: 
   revealjs:
     theme: mytheme.scss
+    highlight-style: pygments
     slide-number: true
     show-slide-number: print
     self-contained: true  
@@ -27,15 +28,19 @@ format:
 ::: columns
 ::: {.column width="60%"}
 ::: {style="font-size: 0.8em"} 
+
 - Cartesian coordinate system
 
 - _origin (O)_ = the point at which both measurement systems intersect
 
 - Adaptable to multiple dimensions (e.g. *z* for altitude)
+
 :::
 :::
 ::: {.column width="40%"}
+
 ![Cartesian Coordinate System](img/slide_3/CartesianCoordinateSystem.png)
+
 :::
 :::
 
@@ -58,8 +63,11 @@ format:
 
 
 ## Global Reference Systems
+
 ::: {style="font-size: 1.2em; text-align: center"}
+
 __The *datum* describes which ellipsoid to use and the precise relations between locations on earth's surface and Cartesian coordinates__
+
 :::
 
 - Geodetic datums (e.g., `WGS84`): distance from earth's center of gravity
@@ -67,12 +75,15 @@ __The *datum* describes which ellipsoid to use and the precise relations between
 - Local data (e.g., `NAD83`): better models for local variation in earth's surface
 
 ## Describing location: extent
+
 ::: incremental
+
 - How much of the world does the data cover?
 
 - For rasters, these are the corners of the lattice
 
 - For vectors, we call this the bounding box
+
 :::
 
 ## Describing location: resolution
@@ -80,11 +91,13 @@ __The *datum* describes which ellipsoid to use and the precise relations between
 ::: columns
 ::: {.column width="40%"}
 ::: incremental
+
 -   **Resolution:** the accuracy that the location and shape of a map's features can be depicted
 
 -   **Minimum Mapping Unit:** The minimum size and dimensions that can be reliably represented at a given _map scale_. 
 
 -   Map scale vs. scale of analysis
+
 :::
 :::
 ::: {.column width="60%"}
@@ -103,10 +116,15 @@ par(mfrow=c(1,1))
 ```
 
 :::
+
 :::
+
 # {background="#9F281A"}
+
 :::{style="font-size: 1.4em; text-align: middle; margin-top: 2em"}
+
 The earth is not flat...
+
 :::
 
 ## Projections
@@ -114,6 +132,7 @@ The earth is not flat...
 ::: columns
 ::: {.column width="60%"}
 ::: {style="font-size: 0.8em"} 
+
 - But maps, screens, and publications are...
 
 - **Projections** describe *how* the data should be translated to a flat surface
@@ -121,15 +140,20 @@ The earth is not flat...
 - Rely on 'developable surfaces'
 
 - Described by the Coordinate Reference System (CRS)
+
 :::
 :::
 ::: {.column width="40%"}
+
 ![Developable Surfaces](img/slide_3/projections.png)
+
 :::
 ::: 
  
 ::: {style="font-size: 1.1em; text-align: center"}
+
 [__Projection necessarily induces some form of distortion (tearing, compression, or shearing)__]{style="color:#771C6D"}
+
 :::
 
 
@@ -144,6 +168,7 @@ The earth is not flat...
 -   Includes: Datum, ellipsoid, units, and other information (e.g., False Easting, Central Meridian) to further map the projection to the GCS
 
 -   Not all projections have/require all of the parameters
+
 :::
 
 ```{r}
@@ -165,10 +190,13 @@ plot(b.a$geometry, main = "Lambert Conformal")
 plot(b.b$geometry, main = "Albers Equal Area")
 par(mfrow=c(1,1), cex.main=1.2)
 ```
+
 ## Choosing Projections
 ::: columns
 ::: {.column width="40%"}
+
 ![](img/slide_3/distortion.png)
+
 :::
 ::: {.column width="60%"}
 
@@ -182,24 +210,33 @@ par(mfrow=c(1,1), cex.main=1.2)
 :::
 
 # {background="#9F281A"}
+
 :::{style="font-size: 1.4em; text-align: middle; margin-top: 2em"}
+
 Geometries, support, and spatial messiness
+
 :::
 
 ## Geometries
 
 ::: columns
 ::: {.column width="40%"}
+
 -   Vectors store aggregate the locations of a feature into a geometry
 -   Most vector operations require simple, valid geometries
+
 :::
 ::: {.column width="60%"}
+
 ![Image Source: Colin Williams (NEON)](img/slide_3/points-lines-polygons-vector-data-types.png)
+
 :::
 :::
 
 ## Valid Geometries
+
 ::: {style="font-size: 0.8em"} 
+
 -   A `linestring` is _simple_ if it does not intersect
 -   Valid polygons
   -   Are closed (i.e., the last vertex equals the first)
@@ -211,6 +248,7 @@ Geometries, support, and spatial messiness
 :::
 
 ##
+
 ```{r}
 #| echo: false
 #| fig-width: 10
@@ -241,6 +279,7 @@ par(mfrow = c(1,1))
 
 
 ## Support
+
 * __Support__ is the area to which an attribute applies.
 
 ::: incremental
@@ -269,6 +308,7 @@ par(mfrow = c(1,1))
 
 ::: columns
 ::: {.column width="60%"}
+
 ### Data Types
 
 - Vector Data
@@ -279,9 +319,12 @@ par(mfrow = c(1,1))
 - Raster Data
   - Spatially continuous field
   - Based on pixels (not points)
+
 :::
 ::: {.column width="30%"}
+
 ![](img/slide_4/sf_hexagon.png)
+
 
 ![](img/slide_4/terra_hexagon.png){height=72%, width=72%}
 
@@ -291,6 +334,7 @@ par(mfrow = c(1,1))
 ## Reading in Spatial Data: spreadsheets
 
 ::: {style="font-size: 0.8em"} 
+
 - Most basic form of spatial data
 
 - Need `x` (longitude) and `y` (latitude) as columns
@@ -298,6 +342,7 @@ par(mfrow = c(1,1))
 - Need to know your CRS
 
 - `read_***` necessary to bring in the data
+
 :::
 
 ```{r}
@@ -317,11 +362,13 @@ file.as.sf <- st_as_sf(file.to.read,
 ```
 
 ## Reading in Spatial Data: shapefiles
+
 - **ALL FILES NEED TO BE IN THE SAME FOLDER**
 
 ::: columns
 ::: {.column width="40%"}
 ::: {style="font-size: 0.8em"} 
+
 - `.shp` is the shapefile itself
 - `.prj` contains the CRS information
 - `.dbf` contains the attributes
@@ -349,6 +396,7 @@ file.as.sf <- st_as_sf(file.to.read,
 
 ::: columns
 ::: {.column width="70%"}
+
 ```{r}
 #| eval: false
 #| echo: true
@@ -357,6 +405,7 @@ shapefile.inR <- read_sf(dsn = "path/to/file.shp",
                          layer=NULL, geometry_column=...)
 
 ```
+
 :::
 ::: {.column width=30%}
 
@@ -376,6 +425,7 @@ shapefile.inR <- read_sf(dsn = "path/to/file.shp",
 
 ::: columns
 ::: {.column width="70%"}
+
 ```{r}
 #| eval: false
 #| echo: true
@@ -384,6 +434,7 @@ raster.inR <- rast(x = "path/to/file.shp",
                          lyrs=NULL)
 
 ```
+
 :::
 ::: {.column width=30%}
 

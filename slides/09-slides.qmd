@@ -5,6 +5,7 @@ author: "Matt Williamson"
 format: 
   revealjs:
     theme: mytheme.scss
+    highlight-style: pygments
     slide-number: true
     show-slide-number: print
     self-contained: true  
@@ -27,6 +28,7 @@ By the end of today, you should be able to:
 ::: columns
 :::{.column width="50%"}
 ::: {style="font-size: 0.7em"}
+
 *   __Vector data__ describe the "exact" locations of features on a landscape (including a Cartesian landscape)
 
 * __Raster data__ represent spatially continuous phenomena (`NA` is possible)
@@ -35,9 +37,11 @@ By the end of today, you should be able to:
   * Operations mimic those for `matrix` objects in `R` 
 
 * Geometry is implicit; the spatial extent and number of rows and columns define the cell size
+
 :::
 :::
 ::: {.column width="50%"}
+
 ```{r}
 #| fig-height: 6
 #| fig-width: 6
@@ -46,6 +50,7 @@ filename <- system.file("ex/elev.tif", package="terra")
 r <- rast(filename)
 plot(r, col=gray(0:1000/1000), main = "Elevation (m)")
 ```
+
 :::
 :::
 
@@ -63,6 +68,7 @@ plot(r, col=gray(0:1000/1000), main = "Elevation (m)")
 
 ::: columns
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 mtx <- matrix(1:16, nrow=4)
@@ -70,17 +76,23 @@ mtx
 rstr <- terra::rast(mtx)
 rstr
 ```
+
 :::
 ::: {.column width="50%"}
+
 ```{r}
 #| fig-width: 6
 #| fig-height: 6
 plot(rstr)
 ```
+
 :::
 :::
+
 ::: {style="font-size: 0.5em"}
+
 Note: you must have `raster` or `terra` loaded for `plot()` to work on `Rast*` objects; otherwise you get `Error in as.double(y) : cannot coerce type 'S4' to vector of type 'double'`
+
 :::
 
 ## Rasters by Construction: Origin
@@ -89,6 +101,7 @@ Note: you must have `raster` or `terra` loaded for `plot()` to work on `Rast*` o
 
 ::: columns
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 r <- rast(xmin=-4, xmax = 9.5, ncols=10)
@@ -97,8 +110,10 @@ origin(r)
 r2 <- r
 origin(r2) <- c(2,2) 
 ```
+
 :::
 ::: {.column width="50%"}
+
 ```{r}
 #| fig-width: 6
 #| fig-height: 6
@@ -107,17 +122,21 @@ plot(r, xlim = c(-1, 6), ylim=c(0,7), main = "Original")
 plot(r2, xlim = c(-1, 6), ylim=c(0,7), main = "New Origin")
 par(mfrow=c(1,1))
 ```
+
 :::
 :::
 
 ## Rasters by Construction: Resolution
+
 ::: {style="font-size: 0.7em"}
 * Geometry is implicit; the spatial extent and number of rows and columns define the cell size
 * __Resolution__ (`res`) defines the length and width of an individual pixel
+
 :::
 
 ::: columns
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 r <- rast(xmin=-4, xmax = 9.5, 
@@ -127,8 +146,10 @@ r2 <- rast(xmin=-4, xmax = 5,
            ncols=10)
 res(r2)
 ```
+
 :::
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 r <- rast(xmin=-4, xmax = 9.5, 
@@ -138,6 +159,7 @@ r2 <- rast(xmin=-4, xmax = 9.5,
            res=c(5,5))
 ncol(r2)
 ```
+
 :::
 :::
 
@@ -156,12 +178,14 @@ ncol(r2)
 * Many similar operations for `SpatVector` class (note use of `.`)
 
 ::: {style="font-size: 0.7em"}
+
 |predicate            |asks...                                                  |
 |---------------------|--------------------------------------------------------------|
 |`is.lonlat`             |Does the object have a longitude/latitude CRS?|
 |`inMemory`              |is the object stored in memory?|
 |`is.factor`              |Are there categorical layers?|
 |`hasValues`              |Do the cells have values?|
+
 :::
 
 ## Unary predicates in `terra`
@@ -169,6 +193,7 @@ ncol(r2)
 ::: columns
 :::{.column width="50%"}
 ::: {style="font-size: 0.7em"}
+
 * `global`: tests if the raster covers all longitudes (from -180 to 180 degrees) such that the extreme columns are in fact adjacent
 
 ```{r}
@@ -177,10 +202,12 @@ r <- rast()
 is.lonlat(r)
 is.lonlat(r, global=TRUE)
 ```
+
 :::
 :::
 ::: {.column width="50%"}
 ::: {style="font-size: 0.7em"}
+
 * `perhaps`: If TRUE and the crs is unknown, the method returns TRUE if the coordinates are plausible for longitude/latitude
 
 ```{r}
@@ -196,6 +223,7 @@ is.lonlat(r, perhaps=TRUE, warn=FALSE)
 crs(r) <- "+proj=lcc +lat_1=48 +lat_2=33 +lon_0=-100 +ellps=WGS84"
 is.lonlat(r)
 ```
+
 :::
 :::
 :::
@@ -215,6 +243,7 @@ is.lonlat(r)
 * One result for each layer in a stack
 
 ::: {style="font-size: 0.5em"}
+
 |measure              |returns                                                       |
 |---------------------|--------------------------------------------------------------|
 |`cellSize`          |area of individual cells|

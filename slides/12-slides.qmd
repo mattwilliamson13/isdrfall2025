@@ -5,6 +5,7 @@ author: "Matt Williamson"
 format: 
   revealjs:
     theme: mytheme.scss
+    highlight-style: pygments
     slide-number: true
     show-slide-number: print
     self-contained: true  
@@ -13,7 +14,9 @@ format:
 # Today's Plan {background="#43464B" background-image="img/slide_10/NEDUS.gif" background-opacity="0.7"}
 
 ::: footer
+
 Image Source: USGS
+
 :::
 
 ## Objectives
@@ -61,7 +64,7 @@ Image Source: USGS
 
 ## Pseudocode
 
-```{r}
+```{txt}
 #| echo: true
 #| eval: false
 
@@ -120,6 +123,7 @@ identical(st_crs(hospital.sf.proj), st_crs(cdc.sf))
 
 ::: columns
 ::: {.column width="40%"}
+
 ```{r}
 #| echo: true
 #| label: filterdata
@@ -130,8 +134,10 @@ cdc.idaho <- cdc.sf %>%
 
 
 ```
+
 :::
 :::{.column width="60%"}
+
 ```{r}
 #| echo: true
 #| message: false
@@ -140,6 +146,7 @@ plot(st_geometry(cdc.idaho))
 
 
 ```
+
 :::
 :::
 
@@ -159,6 +166,7 @@ hospital.dist <- st_distance(cdc.idaho, nearest.hosp.sf, by_element = TRUE)
 str(hospital.dist)
 ```
 ## Adding Functions
+
 5. Find top 10 counties based on distance
 
 ```{r}
@@ -178,6 +186,7 @@ head(cdc.furthest$disthosp)
 
 
 ## Adding Functions
+
 6. Map chronic heart disease risk
 
 ```{r}
@@ -197,6 +206,7 @@ tm_shape(tigris::counties("ID", progress_bar=FALSE)) +
 
 
 ```
+
 # Example questions
 
 >How may $km^2$ of ID are served by more than 1 hospital?
@@ -275,9 +285,10 @@ plot(st_geometry(hospital.buf))
 
 ## Adding Functions
 
-3. Find intersection of service areas
 ::: columns
 ::: {.column width="40%"}
+
+3. Find intersection of service areas
 
 ```{r}
 #| echo: true
@@ -291,10 +302,25 @@ all(st_is_valid(hospital.int))
 
 
 ```
+
 ::: 
-::: {.column width="40%"}
+::: {.column width="60%"}
+
+```{r}
+#| echo: false
+#| message: false
+#| eval: false
+
+plot(st_geometry(hospital.int))
+
+
+```
+
+:::
+:::
 
 ## Adding Functions
+
 4. Calculate area of overlap
 
 ## Plotting the Results

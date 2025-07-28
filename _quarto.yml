@@ -27,14 +27,8 @@ website:
   title: "Intro to Spatial Data in R"
   site-url: "https://isdrfall25.classes.spaseslab.com"
   description: "Use R to load, visualize, and analyze spatial data"
-
+  
   favicon: "/files/iSDR_logo.png"
-
-  twitter-card:
-    image: "/files/social-image-f22.png"
-    card-style: summary_large_image
-    creator: "@MwilliamsonMatt"
-    # site: "@MwilliamsonMatt"
 
   open-graph:
     image: "/files/social-image-f22.png"
@@ -181,10 +175,6 @@ website:
         - section: "Overview"
           contents:
             - example/index.qmd
-        - section: "Getting started"
-          contents:
-            - text: "Setup"
-              file: example/getting-setup.qmd
         - section: "Spatial operations in R"
           contents:
             - text: "Vector data"
@@ -214,7 +204,7 @@ website:
             - resource/install.qmd
             - resource/r.qmd
             - resource/rmarkdown.qmd
-            - resource/git.qmd
+            - resource/getting-setup.qmd
             
 
   page-footer:
@@ -233,5 +223,5 @@ format:
       - lumen
       - html/custom.scss
     toc: true
-    highlight-style: github
+    highlight-style: mokokai
     

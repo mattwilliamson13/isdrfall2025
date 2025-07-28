@@ -1,11 +1,9 @@
 author: Matt Williamson
-
 instructor:
   name: Dr. Matt Williamson
   name_no_title: Matt Williamson
   email: mattwilliamson@boisestate.edu
   url: "https://www.spaseslab.com"
-  twitter: MwilliamsonMatt
   github: mattwilliamson13
   office: "4125 Environmental Research Building"
   contact_policy: >-
@@ -18,7 +16,7 @@ course:
   days: "Mondays and Wednesdays"
   time: "1:30–2:45 PM"
   location: "ILC 404"
-  dates: "August 25–December 12, 2023"
+  dates: "August 25–December 12, 2025"
   github: "https://www.github.com/mattwilliamson/isdrfall25"
   url: "https://isdrfall25.classes.spaseslab.com"
   copyright_year: "2025"

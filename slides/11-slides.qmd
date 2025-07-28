@@ -5,6 +5,7 @@ author: "Matt Williamson"
 format: 
   revealjs:
     theme: mytheme.scss
+    highlight-style: pygments
     slide-number: true
     show-slide-number: print
     self-contained: true  
@@ -13,7 +14,9 @@ format:
 # Today's Plan {background="#43464B" background-image="img/slide_10/NEDUS.gif" background-opacity="0.7"}
 
 ::: footer
+
 Image Source: USGS
+
 :::
 
 ## Objectives
@@ -37,11 +40,15 @@ By the end of today, you should be able to:
 - Unary, binary, and n-ary distinguish how many geometries each function accepts and returns
 
 ## Transformations
+
 ::: {style="font-size: 0.7em"}
+
 - __Transformations__: create new geometries based on input geometries
+
 :::
 ::: columns
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: false
 #| message: false
@@ -56,8 +63,10 @@ plot(seine, main="Original Data")
 plot(seine_simp, main="Simplified")
 
 ```
+
 :::
 ::: {.column width="50%"}
+
 ```{r}
 #| message: false
 nc <- st_read(system.file("shape/nc.shp", package="sf"), quiet = TRUE)
@@ -66,6 +75,7 @@ plot(st_geometry(nc))
 plot(st_geometry(st_centroid(nc)), add=TRUE, col='red')
 par(mfrow=c(1,1))
 ```
+
 :::
 :::
   
@@ -86,6 +96,7 @@ par(mfrow=c(1,1))
 |`node`|with added nodes to linear geometries at intersections without a node; only works on individual linear geometries|
 |`point_on_surface`|with a (arbitrary) point on a surface|
 |`polygonize`|of type polygon, created from lines that form a closed ring|
+
 :::
 
 # Common Unary Transformations {background="#9F281A"}
@@ -97,6 +108,7 @@ par(mfrow=c(1,1))
 ::: columns
 ::: {.column width=60%}
 ::: {style="font-size: 0.8em"}
+
 - `st_make_valid` has two methods: 
   -   original converts rings into noded lines and extracts polygons
   -   structured makes rings valid first then merges/subtracts from existing polgyons
@@ -105,6 +117,7 @@ par(mfrow=c(1,1))
 :::
 :::
 ::: {.column width=40%}
+
 ```{r}
 #| echo: fenced
 x = st_sfc(st_polygon(list(rbind(c(0,0),c(0.5,0),c(0.5,0.5),c(0.5,0),c(1,0),c(1,1),c(0,1),c(0,0)))))
@@ -116,6 +129,7 @@ st_is_valid(x)
 
 plot(x)
 ```
+
 :::
 :::
 
@@ -123,19 +137,23 @@ plot(x)
 
 ::: columns
 ::: {.column width="40%"}
+
 ```{r}
 #| fig-width: 7
 y <- x %>% st_make_valid()
 plot(y)
 ```
+
 :::
 ::: {.column width="60%}
+
 ```{r}
 #| echo: fenced
 
 y <- x %>% st_make_valid()
 st_is_valid(y)
 ```
+
 :::
 :::
 
@@ -144,15 +162,17 @@ st_is_valid(y)
 
 ::: columns
 :::{.column width=60%}
+
 -`st_buffer` enforces valid geometries as an output
 
 - Setting a 0 distance buffer leaves most geometries unchanged
 
 - Not all transformations do this
+
 :::
 :::{.column width="40%"}
+
 ```{r}
-#| echo: fenced
 
 z <- x %>% st_buffer(., dist=0)
 
@@ -163,6 +183,7 @@ st_is_valid(z)
 #| fig-width: 7
 plot(z)
 ```
+
 :::
 :::
 
@@ -204,14 +225,17 @@ par(mfrow=c(1,1), cex.main=1.2)
 ::: columns
 ::: {.column width="30%"}
 ::: {style="font-size: 0.8em"}
+
 - For "sampling" other datasets
 
 - To simplify distance calculations
 
 - To construct networks
+
 :::
 :::
 :::{.column width="70%"}
+
 ```{r}
 #| echo: true
 
@@ -220,12 +244,15 @@ id.centroid <- st_centroid(id.counties)
 id.pointonsurf <- st_point_on_surface(id.counties)
 
 ```
+
 ```{r}
 plot(id.centroid$geometry, col="red")
 plot(id.pointonsurf$geometry, col="blue", add=TRUE)
 ```
+
 :::
 :::
+
 ## Creating "sampling areas" 
 
 - Uncertainty in your point locations
@@ -252,6 +279,7 @@ st_crs(hospitals.id) <- 4326
 
 
 ## Creating sampling areas
+
 ```{r}
 #| echo: true
 
@@ -274,6 +302,7 @@ par(mfrow=c(1,1), cex.main=1.2)
 ## Other Unary Transformations 
 
 ::: {style="font-size: 0.4em"}
+
 |transformer               |returns a geometry ...                                                              |
 |--------------------------|----------------------------------------------------------------------------------|
 |`segmentize`|a (linear) geometry with nodes at a given density or minimal distance|
@@ -287,11 +316,13 @@ par(mfrow=c(1,1), cex.main=1.2)
 |`cast`|that is converted to another type|
 |`+`|that is shifted over a given vector|
 |`*`|that is multiplied by a scalar or matrix|
+
 :::
 
 # Binary Transformers {background="#9F281A"}
 
 ## Binary Transformers
+
 ::: {style="font-size: 0.4em"}
 
 |function           |returns                                                    |infix operator|
@@ -301,10 +332,13 @@ par(mfrow=c(1,1), cex.main=1.2)
 |`difference`       |the geometries of the first after removing the overlap with the second geometry|`/`|
 |`sym_difference`   |the combinations of the geometries after removing where they intersect; the negation (opposite) of `intersection`|`%/%`|
 | `crop`            | crop an sf object to a specific rectangle |
+
 :::
 
 ## Binary Transformers
+
 ![](img/slide_9/venn-clip-1.png)
+
 
 ## Common Uses of Binary Transformers
 

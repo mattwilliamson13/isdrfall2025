@@ -5,6 +5,7 @@ author: "Matt Williamson"
 format: 
   revealjs:
     theme: mytheme.scss
+    highlight-style: pygments
     slide-number: true
     show-slide-number: print
     self-contained: true  
@@ -13,7 +14,9 @@ format:
 # Today's Plan {background="#43464B" background-image="img/slide_10/NEDUS.gif" background-opacity="0.7"}
 
 ::: footer
+
 Image Source: USGS
+
 :::
 
 ## Objectives
@@ -32,6 +35,7 @@ Image Source: USGS
 
 ::: columns
 ::: {.column width="40%"}
+
 * Often the fastest way to view data
 
 * Use `?plot` to see which packages export a method for the `plot` function
@@ -40,9 +44,12 @@ Image Source: USGS
 
 :::
 ::: {.column width="60%"}
+
 ![](img/slide_10/plotfuns.png)
+
 :::
 :::
+
 
 ## `plot` for `sf` objects
 
@@ -74,20 +81,24 @@ rast.data <- c(wildfire.haz, land.use)
 
 ::: columns
 :::{.column width="50%"}
+
 ```{r}
 #| echo: true
 
 plot(st_geometry(cejst))
 
 ```
+
 :::
 :::{.column width="50%}
+
 ```{r}
 #| echo: true
 
 plot(cejst["EALR_PFS"])
 
 ```
+
 :::
 :::
 
@@ -137,6 +148,7 @@ plot(st_geometry(st_transform(cejst, crs=crs(rast.data))), add=TRUE)
 
 
 #
+
 ![](img/slide_10/gg_pyramid.png)
 
 
@@ -146,15 +158,19 @@ plot(st_geometry(st_transform(cejst, crs=crs(rast.data))), add=TRUE)
 ::: columns
 ::: {.column width="40%"}
 ::: {style="font-size: 0.7em"}
+
 - Define the systematic conversion of data into elements of the visualization
 
 - Are either categorical or continuous (exclusively)
 
 - Examples include `x`, `y`, `fill`, `color`, and `alpha`
+
 :::
 :::
 ::: {.column width="60%"}
+
 ![From Wilke 2019](img/slide_10/tbl.png)
+
 :::
 :::
 
@@ -218,30 +234,9 @@ pt <- tm_shape(cejst) +
 ```
 
 ## Adding layers
+
 ```{r}
 pt
 ```
 
 ## Integrating Rasters 
-
-```{r}
-#| echo: true
-cejst.proj <- st_transform(cejst, crs=crs(rast.data)) %>% filter(!st_is_empty(.))
-states.proj <- st_transform(st, crs=crs(rast.data))
-pal8 <- c("#33A02C", "#B2DF8A", "#FDBF6F", "#1F78B4", "#999999", "#E31A1C", "#E6E6E6", "#A6CEE3")
-pt <- tm_shape(rast.data["category"]) +
-  tm_raster(palette = pal8) +
-  tm_shape(cejst.proj) + 
-  tm_polygons(col = "EALR_PFS", n=10,palette=viridis(10),
-              border.col = "white") + 
-  tm_shape(states.proj) +
-  tm_borders("red") +
-  tm_legend(outside = TRUE)
-
-```
-
-## Integrating Rasters 
-
-```{r}
-pt
-```

@@ -1,12 +1,13 @@
 ---
 title: "Interpolation and Autocorrelation"
-subtitle: "HES 505 Fall 2022: Session 17"
+subtitle: "HES 505 Fall 2025: Session 17"
 author: "Matt Williamson"
 execute: 
   eval: false
 format: 
   revealjs:
     theme: mytheme.scss
+    highlight-style: pygments
     slide-number: true
     show-slide-number: print
     self-contained: true
@@ -50,9 +51,12 @@ By the end of today you should be able to:
 * The challenge of geographic data
 
 * Implications for analysis 
+
 :::
 ::: {.column width="40%"}
+
 ![Inequality in the United States: Quintiles of Gini Index by County: 2006–2010. The greater the Gini index, the more unequal a county’s income distribution is.](img/slide_17/gini-map-census.png)
+
 :::
 :::
 
@@ -69,6 +73,7 @@ By the end of today you should be able to:
 
 ::: columns
 ::: {.column width="70%"}
+
 * Deterministic processes: always produces the same outcome
 
 $$
@@ -87,11 +92,13 @@ values(z) <- 2 * crds(x)[,1] + 3*crds(x)[,2]
 
 :::
 ::: {.column width="30%"}
+
 ```{r}
 #| fig-width: 5
 #| fig-height: 5
 plot(z)
 ```
+
 :::
 :::
 
@@ -100,6 +107,7 @@ plot(z)
 ::: columns
 ::: {.column width="40%"}
 ::: {style="font-size: 0.7em"}
+
 * Stochastic processes: variation makes each realization difficult to predict
 
 $$
@@ -108,9 +116,11 @@ $$
 
 * The _process_ is random, not the result (!!)
 * Measurement error makes deterministic processes appear stochastic
+
 :::
 :::
 ::: {.column width="60%"}
+
 ```{r}
 #| echo: true
 x <- rast(nrows = 10, ncols=10, xmin = 0, xmax=10, ymin = 0, ymax=10)
@@ -125,6 +135,7 @@ return(a)
 b <- replicate(n=6, fun(z=x), simplify=FALSE)
 d <- do.call(c, b)
 ```
+
 :::
 :::
 
@@ -148,10 +159,13 @@ plot(d)
 * __First Order__ effects: any event has an equal probability of occurring in a location
 
 * __Second Order__ effects: the location of one event is independent of the other events
+
 :::
 :::
 ::: {.column width="40%"}
+
 ![From Manuel Gimond](img/slide_17/IRP_CSR.png)
+
 :::
 :::
 
@@ -159,6 +173,7 @@ plot(d)
 
 ::: columns
 ::: {.column width="40%"}
+
 ```{r}
 #| fig-width: 7
 #| fig-height: 7
@@ -175,9 +190,11 @@ plot(starbucks, pch=20, cols="grey70", main=NULL)  # Plot points
 plot(Q, add=TRUE)
 par(mfrow=c(1,1), mar=c(5.1,4.1,4.1,2.1))
 ```
+
 :::
 ::: {.column width="60%"}
 ::: {style="font-size: 0.7em"}
+
 * We can use quadrat counts to estimate the expected number of events in a given area
 
 * The probability of each possible count is given by:
@@ -193,6 +210,7 @@ $$
 P(k,n,x) = {n \choose k}\bigg(\frac{1}{x}\bigg)^k\bigg(\frac{x-1}{x}\bigg)^{n-k}
 \end{equation}
 $$
+
 :::   
 :::
 :::
@@ -205,6 +223,7 @@ $$
 > `r tufte::quote_footer('Waldo Tobler')`
 
 ---
+
 ## Spatial autocorrelation
 
 ![From Manuel Gimond](img/slide_17/Random_maps.png)
@@ -213,6 +232,7 @@ $$
 
 ::: columns
 ::: {.column width="50%"}
+
 * Moran's I
 
 ![](img/slide_17/MI.png)
@@ -251,17 +271,21 @@ lw <- nb2listw(nb, style="W", zero.policy=TRUE)
 moran.test(s$HR80,lw, alternative="greater")
 
 ```
+
 :::
 :::
 ::: {.column width="40%"}
+
 ![](img/slide_17/florida.png)
 
 :::
 :::
 
 ## Moran's I: An example
+
 ::: columns
 ::: {.column width="60%"}
+
 ```{r}
 #| echo: true
  
@@ -313,6 +337,7 @@ plot(M1)
 ::: columns
 ::: {.column width="60%"}
 ::: {style="font-size: 0.7em"}
+
 ```{r}
 #| echo: true
 
@@ -338,11 +363,13 @@ preds.rast <- mask(preds.rast, r.resamp)
 :::
 :::
 ::: {.column width="40%"}
+
 ```{r}
 #| fig-width: 5
 #| fig-height: 5
 plot(preds.rast)
 ```
+
 :::
 :::
 
@@ -404,7 +431,9 @@ par(mfrow=c(1,1))
 ```
 
 ## Kriging
+
 ::: {style="font-size: 0.8em"}
+
 * Previous methods predict $z$ as a (weighted) function of distance
 
 * Treat the observations as perfect (no error)
@@ -420,6 +449,7 @@ $$
 then any observed value of $z$ is some function of the process ($\mu(\mathbf{x})$) and some error ($\epsilon(\mathbf{x})$)
 
 * Kriging exploits autocorrelation in $\epsilon(\mathbf{x})$ to identify the trend and interpolate accordingly
+
 :::
 
 ## Autocorrelation

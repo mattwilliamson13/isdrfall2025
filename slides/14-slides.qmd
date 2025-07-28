@@ -1,10 +1,11 @@
 ---
 title: "Raster Data: II"
-subtitle: "HES 505 Fall 2023: Session 14"
+subtitle: "HES 505 Fall 2025: Session 14"
 author: "Matt Williamson"
 format: 
   revealjs:
     theme: mytheme.scss
+    highlight-style: pygments
     slide-number: true
     show-slide-number: print
     self-contained: true  
@@ -60,6 +61,7 @@ srtm21  <-  focal(x = srtm, w = 21)
 ```
 
 ## `focal` for Continuous Rasters
+
 ```{r}
 rasts <- c(srtm, srtm3, srtm9, srtm21)
 names(rasts) <- c("base", "3 by 3", "9 by 9", "21 by 21")
@@ -118,6 +120,7 @@ plot(srtm.lowelev)
 ## Reclassifying rasters in `R`
 
 * Using `[]` and conditionals
+
 ```{r}
 #| echo: true
 
@@ -129,6 +132,7 @@ srtm.na[200:300, 200:300] <- NA
 srtm.na[is.na(srtm.na)] <- 8000
 plot(srtm.na)
 ```
+
 ## Reclassifying Categorical Rasters
 
 * Need a classification matrix
@@ -151,6 +155,7 @@ levels(temp_reclass) <- tempcats
 ```
 
 ## Reclassifying Categorical Rasters
+
 ```{r}
 par(mfrow=c(1,2))
 plot(mintemp, main="original")

@@ -40,6 +40,7 @@ By the end of today you should be able to:
 
 ::: columns
 ::: {.column width="40%"}
+
 * Previous methods predict $z$ as a (weighted) function of distance
 
 * Treat the observations as perfect (no error)
@@ -68,6 +69,7 @@ tm_shape(id.cty) +
 tm_shape(aq.sum) +
   tm_dots(col = "meanpm25", size=2) 
 ```
+
 :::
 :::
 
@@ -83,6 +85,7 @@ tm_shape(aq.sum) +
 
 ::: columns
 ::: {.column width="60%"}
+
 ```{r echo=FALSE}
 #set up interpolation grid
 # Create an empty grid where n is the total number of cells
@@ -110,6 +113,7 @@ tm_shape(r.m) + tm_raster( title="Predicted air quality") +tm_shape(aq.sum) + tm
   tm_legend(legend.outside=TRUE)
  
 ```
+
 :::
 :::{.column width="40%"}
 
@@ -190,6 +194,7 @@ tm_shape(r.m) + tm_raster( title="Predicted air quality") +tm_shape(aq.sum) + tm
   tm_legend(legend.outside=TRUE)
  
 ```
+
 :::
 :::
 
@@ -218,8 +223,10 @@ r.m <- mask(r, st_as_sf(id.cty))
 ```
 
 ## 2nd Order Trend Surfaces
+
 ::: columns
 ::: {.column width="40%"}
+
 * Produces a parabolic surface
 
 * $Z = a + bX + cY + dX^2 + eY^2 + fXY$
@@ -274,7 +281,9 @@ tm_shape(r.m) + tm_raster(n=10, palette="RdBu", title="Predicted air quality") +
 
 
 ## Kriging
+
 ::: {style="font-size: 0.8em"}
+
 * Previous methods predict $z$ as a (weighted) function of distance
 
 * Treat the observations as perfect (no error)
@@ -290,6 +299,7 @@ $$
 then any observed value of $z$ is some function of the process ($\mu(\mathbf{x})$) and some error ($\epsilon(\mathbf{x})$)
 
 * Kriging exploits autocorrelation in $\epsilon(\mathbf{x})$ to identify the trend and interpolate accordingly
+
 :::
 
 ## Autocorrelation

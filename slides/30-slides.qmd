@@ -3,7 +3,7 @@ title: "Data Visualization and Maps II"
 subtitle: "HES 505 Fall 2023: Session 30"
 author: "Matt Williamson"
 execute: 
-  eval: true
+  eval: false
 format: 
   revealjs:
     theme: mytheme.scss
@@ -246,7 +246,6 @@ ggplot(data = bikes)
 #| label: ggplot-aesthetics-outside
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "2|1,2"
 ggplot(data = bikes) +
   aes(x = temp_feel, y = count)
 ```
@@ -322,7 +321,6 @@ ggplot(bikes, aes(x = temp_feel, y = count))
 #| label: geom-point
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "1,2,3,4|5"
 ggplot(
     bikes,
     aes(x = temp_feel, y = count)
@@ -336,7 +334,6 @@ ggplot(
 #| label: geom-point-properties
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "5,6,7,8,9,10,11|6,7,8,9,10"
 ggplot(
     bikes,
     aes(x = temp_feel, y = count)
@@ -357,7 +354,6 @@ ggplot(
 #| label: geom-point-properties-set
 #| echo: true
 #| fig-height: 3.5
-#| code-line-numbers: "6"
 ggplot(
     bikes,
     aes(x = temp_feel, y = count)
@@ -373,7 +369,6 @@ ggplot(
 #| label: geom-point-properties-map
 #| echo: true
 #| fig-height: 3.5
-#| code-line-numbers: "6"
 ggplot(
     bikes,
     aes(x = temp_feel, y = count)
@@ -392,7 +387,6 @@ ggplot(
 #| label: geom-point-aes-expression
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "6"
 ggplot(
     bikes,
     aes(x = temp_feel, y = count)
@@ -409,7 +403,6 @@ ggplot(
 #| label: geom-point-aes-expression-exercise
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "3|6"
 ggplot(
     bikes,
     aes(x = temp, y = temp_feel)
@@ -427,7 +420,6 @@ ggplot(
 #| label: geom-point-aes-size-exercise
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "7"
 ggplot(
     bikes,
     aes(x = temp, y = temp_feel)
@@ -445,7 +437,6 @@ ggplot(
 #| label: geom-point-aes-expression-exercise-shape
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "8"
 ggplot(
     bikes,
     aes(x = temp, y = temp_feel)
@@ -464,7 +455,6 @@ ggplot(
 #| label: geom-smooth
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "9,10,11"
 ggplot(
     bikes,
     aes(x = temp_feel, y = count,
@@ -488,7 +478,6 @@ ggplot(
 #| label: stat-geom
 #| echo: true
 #| fig-height: 5.1
-#| code-line-numbers: "2"
 ggplot(bikes, aes(x = temp_feel, y = count)) +
   stat_smooth(geom = "smooth")
 ```
@@ -499,7 +488,6 @@ ggplot(bikes, aes(x = temp_feel, y = count)) +
 #| label: geom-stat
 #| echo: true
 #| fig-height: 5.1
-#| code-line-numbers: "2"
 ggplot(bikes, aes(x = temp_feel, y = count)) +
   geom_smooth(stat = "smooth")
 ```
@@ -513,7 +501,6 @@ ggplot(bikes, aes(x = temp_feel, y = count)) +
 #| label: stat-geom-2
 #| echo: true
 #| fig-height: 5.1
-#| code-line-numbers: "2"
 ggplot(bikes, aes(x = season)) +
   stat_count(geom = "bar")
 ```
@@ -522,7 +509,6 @@ ggplot(bikes, aes(x = season)) +
 #| label: geom-stat-2
 #| echo: true
 #| fig-height: 5.1
-#| code-line-numbers: "2"
 ggplot(bikes, aes(x = season)) +
   geom_bar(stat = "count")
 ```
@@ -536,7 +522,6 @@ ggplot(bikes, aes(x = season)) +
 #| label: stat-geom-3
 #| echo: true
 #| fig-height: 5.1
-#| code-line-numbers: "2"
 ggplot(bikes, aes(x = date, y = temp_feel)) +
   stat_identity(geom = "point")
 ```
@@ -545,7 +530,6 @@ ggplot(bikes, aes(x = date, y = temp_feel)) +
 #| label: geom-stat-3
 #| echo: true
 #| fig-height: 5.1
-#| code-line-numbers: "2"
 ggplot(bikes, aes(x = date, y = temp_feel)) +
   geom_point(stat = "identity")
 ```
@@ -650,7 +634,6 @@ ggplot(data, aes(x = 1, y = 1)) +
 #| label: facet-wrap
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "1,2,3,4|2,4|3"
 g <-
   ggplot(
     bikes,
@@ -673,7 +656,6 @@ g +
 #| label: facet-wrap-circumflex
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "3"
 g +
   facet_wrap(
     ~ day_night
@@ -773,7 +755,6 @@ The `scale_*()` components control the properties of all the<br><b class='simple
 #| label: scales-default-invisible
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "3,4"
 ggplot(
     bikes,
     aes(x = date, y = count,
@@ -788,7 +769,6 @@ ggplot(
 #| label: scales-default
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "3,4,7,8,9|7,8,9"
 ggplot(
     bikes,
     aes(x = date, y = count,
@@ -806,7 +786,6 @@ ggplot(
 #| label: scales-overwrite-1
 #| echo: true
 #| output-location: column
-#| code-line-numbers: "7"
 ggplot(
     bikes,
     aes(x = date, y = count,

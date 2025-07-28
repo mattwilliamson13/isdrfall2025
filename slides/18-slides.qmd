@@ -1,10 +1,11 @@
 ---
 title: "Point Pattern Analysis"
-subtitle: "HES 505 Fall 2023: Session 18"
+subtitle: "HES 505 Fall 2025: Session 18"
 author: "Matt Williamson"
 format: 
   revealjs:
     theme: mytheme.scss
+    highlight-style: pygments
     slide-number: true
     show-slide-number: print
     self-contained: true  

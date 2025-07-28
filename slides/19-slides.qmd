@@ -1,12 +1,13 @@
 ---
 title: "Interpolation"
-subtitle: "HES 505 Fall 2023: Session 19"
+subtitle: "HES 505 Fall 2025: Session 19"
 author: "Matt Williamson"
 execute: 
   eval: true
 format: 
   revealjs:
     theme: mytheme.scss
+    highlight-style: pygments
     slide-number: true
     show-slide-number: print
     self-contained: true  
@@ -87,6 +88,7 @@ plot(z)
 ::: columns
 ::: {.column width="40%"}
 ::: {style="font-size: 0.7em"}
+
 * Stochastic processes: variation makes each realization difficult to predict
 
 $$
@@ -95,9 +97,11 @@ $$
 
 * The _process_ is random, not the result (!!)
 * Measurement error makes deterministic processes appear stochastic
+
 :::
 :::
 ::: {.column width="60%"}
+
 ```{r}
 #| echo: true
 x <- rast(nrows = 10, ncols=10, xmin = 0, xmax=10, ymin = 0, ymax=10)
@@ -112,6 +116,7 @@ return(a)
 b <- replicate(n=6, fun(z=x), simplify=FALSE)
 d <- do.call(c, b)
 ```
+
 :::
 :::
 
@@ -135,9 +140,11 @@ plot(d)
 * __First Order__ effects: any event has an equal probability of occurring in a location
 
 * __Second Order__ effects: the location of one event is independent of the other events
+
 :::
 :::
 ::: {.column width="40%"}
+
 ![From Manuel Gimond](img/slide_17/IRP_CSR.png)
 :::
 :::
@@ -146,6 +153,7 @@ plot(d)
 
 ::: columns
 ::: {.column width="40%"}
+
 ```{r}
 #| fig-width: 7
 #| fig-height: 7
@@ -167,6 +175,7 @@ par(mfrow=c(1,1), mar=c(5.1,4.1,4.1,2.1))
 ::: {.column width="60%"}
 
 ::: {style="font-size: 0.7em"}
+
 * We can use quadrat counts to estimate the expected number of events in a given area
 
 * The probability of each possible count is given by:
@@ -261,6 +270,7 @@ plot(kf)
 
 
 ## Ripley's $K$ Function
+
 * accounting for variation in $d$
 
 ```{r}
@@ -304,6 +314,7 @@ plot(gf.env)
 > `r tufte::quote_footer('Waldo Tobler')`
 
 ---
+
 ## Spatial autocorrelation
 
 ![From Manuel Gimond](img/slide_17/Random_maps.png)
@@ -312,6 +323,7 @@ plot(gf.env)
 
 ::: columns
 ::: {.column width="50%"}
+
 * Moran's I
 
 ![](img/slide_17/MI.png)
@@ -350,17 +362,21 @@ lw <- nb2listw(nb, style="W", zero.policy=TRUE)
 moran.test(s$HR80,lw, alternative="greater")
 
 ```
+
 :::
 :::
 ::: {.column width="40%"}
+
 ![](img/slide_17/florida.png)
 
 :::
 :::
 
 ## Moran's I: An example
+
 ::: columns
 ::: {.column width="60%"}
+
 ```{r}
 #| echo: true
  
@@ -381,6 +397,7 @@ M1
 # Plot the results
 plot(M1)
 ```
+
 :::
 :::
 
@@ -412,6 +429,7 @@ plot(M1)
 ::: columns
 ::: {.column width="60%"}
 ::: {style="font-size: 0.7em"}
+
 ```{r}
 #| echo: true
 
@@ -439,15 +457,18 @@ sp::gridded(preds) <- TRUE
 preds.rast <- rast(preds)
 
 ```
+
 :::
 :::
 ::: {.column width="40%"}
+
 ```{r}
 #| fig-width: 5
 #| fig-height: 5
 plot(preds.rast, col=heat.colors(8, rev=TRUE))
 plot(st_geometry(aq.sum), add=TRUE)
 ```
+
 :::
 :::
 

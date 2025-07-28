@@ -1,12 +1,13 @@
 ---
 title: "Combining Tabular and Spatial Data"
-subtitle: "HES 505 Fall 2023: Session 15"
+subtitle: "HES 505 Fall 2025: Session 15"
 author: "Matt Williamson"
 execute: 
   eval: true
 format: 
   revealjs:
     theme: mytheme.scss
+    highlight-style: pygments
     slide-number: true
     show-slide-number: print
     self-contained: true  
@@ -44,6 +45,7 @@ By the end of today, you should be able to:
 # What is spatial analysis? {background="#9F281A"}
 
 ## What is spatial analysis?
+
 > "The process of examining the locations, attributes, and relationships of features in spatial data through overlay and other analytical techniques in order to address a question or gain useful knowledge. Spatial analysis extracts or creates new information from spatial data".
 `r tufte::quote_footer('--- ESRI Dictionary')`
 
@@ -57,9 +59,12 @@ By the end of today, you should be able to:
 - Any- or everything we do with GIS
 
 - The use of computational and statistical algorithms to understand the relations between things that co-occur in space.
+
 :::
 ::: {.column width="40%"}
+
 ![John Snow's cholera outbreak map](img/slide_14/Snow-cholera-map.png)
+
 :::
 :::
 
@@ -67,7 +72,9 @@ By the end of today, you should be able to:
 
 ::: columns
 ::: {.column width="60%"}
+
 ![courtesy of [NatureServe](https://www.natureserve.org/products/species-distribution-modeling)](img/slide_14/stand-land_modeling_process_0.png){width=700, height=500}
+
 :::
 ::: {.column width="40%"}
 
@@ -78,6 +85,7 @@ By the end of today, you should be able to:
 - Characterize 'suitability'
 
 - Determine (statistical) relations
+
 :::
 :::
 
@@ -92,7 +100,9 @@ By the end of today, you should be able to:
 - __Ecological Fallacy:__ Applying conclusions from aggregated information to individuals
 
 ::: {style="font-size: 0.7em"}
+
 > Spatial analysis is an inherently complex endeavor and one that is advancing rapidly. So-called "best practices" for addressing many of these issues are still being developed and debated. This doesn't mean you shouldn't do spatial analysis, but you should keep these things in mind as you design, implement, and interpret your analyses
+
 :::
 
 # Workflows for spatial analysis {background="#9F281A"}
@@ -101,6 +111,7 @@ By the end of today, you should be able to:
 
 ::: columns
 ::: {.column width="60%"}
+
 - Acquisition (not really a focus, but see [Resources](content/resource/))
 
 - Geoprocessing 
@@ -108,9 +119,12 @@ By the end of today, you should be able to:
 - Analysis 
 
 - Visualization 
+
 :::
 ::: {.column width="40%"}
+
 ![courtesy of [University of Illinois](https://guides.library.illinois.edu/c.php?g=348425&p=5443868)](img/slide_14/acquire_analyze_present.png)
+
 :::
 :::
 
@@ -132,10 +146,13 @@ __Manipulation of data for subsequent use__
 
 ::: columns
 ::: {.column width="40%"}
+
 ![courtesy of [Giscommons](https://giscommons.org/data-tables-and-data-preprocessing/)](img/slide_14/4.1.png)
+
 :::
 ::: {.column width="60%"}
 ::: {style="font-size: 0.7em"}
+
 - Attributes: Information that further describes a spatial feature
 
 - Attributes &rightarrow; predictors for analysis 
@@ -147,17 +164,22 @@ __Manipulation of data for subsequent use__
 
 - Sometimes we want to join based on location rather than thematic connections
   - __Must have the same CRS__
+
 :::
 :::
 :::
+
 ## Databases and attributes
 
 ::: columns
 ::: {.column width="40%"}
+
 ![courtesy of [Giscommons](https://giscommons.org/data-tables-and-data-preprocessing/)](img/slide_14/4.1.png)
+
 :::
 ::: {.column width="60%"}
 ::: {style="font-size: 0.7em"}
+
 - Previous focus has been largely on _location_
 
 - Geographic data often also includes non-spatial data
@@ -166,6 +188,7 @@ __Manipulation of data for subsequent use__
 
 - Typically stored in tables where each row represents a spatial feature
   - Wide vs. long format
+
 :::
 :::
 :::
@@ -191,14 +214,17 @@ __Manipulation of data for subsequent use__
 
 ::: columns
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 colnames(world)
 head(world)[,1:3] %>% 
   st_drop_geometry()
 ```
+
 :::
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 world %>%
@@ -206,6 +232,7 @@ world %>%
   st_drop_geometry() %>% 
   head(.) 
 ```
+
 :::
 :::
 
@@ -215,14 +242,17 @@ world %>%
 
 ::: columns
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 head(world)[1:3, 1:3] %>% 
   st_drop_geometry()
 
 ```
+
 :::
 ::: {.column width="50%"}
+
 ```{r wrldfiltr}
 #| echo: true
 world %>%
@@ -231,6 +261,7 @@ world %>%
   st_drop_geometry() %>% 
   head(.)
 ```
+
 :::
 :::
 
@@ -238,6 +269,7 @@ world %>%
 
 
 ## Topological Subsetting
+
 ::: {style="font-size: 0.7em"}
 - Topological relations describe the spatial relationships between objects
 
@@ -246,17 +278,21 @@ world %>%
 - Need _valid_ geometries
 
 - Easiest way is to use `[` notation, but also most restrictive
+
 :::
 
 ::: columns
 ::: {.column width="60%"}
+
 ```{r}
 #| echo: true
 canterbury = nz  %>% filter(Name == "Canterbury")
 canterbury_height = nz_height[canterbury, ]
 ```
+
 :::
 ::: {.column width="40%"}
+
 ```{r}
 #| fig-height: 4
 #| fig-width: 5
@@ -264,6 +300,7 @@ plot(st_geometry(canterbury))
 plot(st_geometry(nz_height), col="red", add=TRUE)
 plot(st_geometry(canterbury_height), col="blue", add=TRUE)
 ```
+
 :::
 :::
 
@@ -283,7 +320,9 @@ plot(st_geometry(canterbury_height), col="blue", add=TRUE)
 :::
 :::
 ::: {.column width="50%"}
+
 __Using `sparse=TRUE`__
+
 ```{r}
 #| echo: true
 
@@ -294,6 +333,7 @@ st_intersects(nz_height, co,
 lengths(st_intersects(nz_height, 
                       co, sparse = TRUE))[1:3] > 0
 ```
+
 :::
 :::
 
@@ -303,6 +343,7 @@ lengths(st_intersects(nz_height,
 - We can then find out if one or more elements satisfies the criteria
 
 __Using `sparse=FALSE`__
+
 ```{r top2}
 #| echo: true
 st_intersects(nz_height, co, sparse = FALSE)[1:3,] 
@@ -314,19 +355,23 @@ apply(st_intersects(nz_height, co, sparse = FALSE), 1,any)[1:3]
 
 ::: columns
 ::: {.column width="60%"}
+
 ```{r subset}
 #| echo: true
 canterbury_height3 = nz_height %>%
   filter(st_intersects(x = ., y = canterbury, sparse = FALSE))
 ```
+
 :::
 ::: {.column width="40%"}
+
 ```{r}
 #| fig-width: 5
 #| fig-height: 4
 plot(st_geometry(nz))
 plot(st_geometry(canterbury_height3), add=TRUE)
 ```
+
 :::
 :::
 
@@ -407,6 +452,7 @@ plot(worldpop["pop"])
 ::: columns
 ::: {.column width="60%"}
 ::: {style="font-size: 0.7em"}
+
 - `sf` bases area (and length) calculations on the map units of the CRS
 
 - the `units` library allows conversion into a variety of units
@@ -414,6 +460,7 @@ plot(worldpop["pop"])
 :::
 :::
 ::: {.column width="40%"}
+
 ```{r}
 #| echo: true
 nz.sf <- nz %>% 
@@ -427,6 +474,7 @@ head(nz.sf$area, 3)
 nz.sf$areakm <- units::set_units(st_area(nz), km^2)
 head(nz.sf$areakm, 3)
 ```
+
 :::
 :::
 
@@ -434,6 +482,7 @@ head(nz.sf$areakm, 3)
 
 ::: columns
 ::: {.column width="40%"}
+
 ```{r}
 #| fig-width: 4
 #| fig-height: 4
@@ -450,6 +499,7 @@ random_nz <- random_long_lat_sf[nz.sf,]
 plot(st_geometry(random_nz), cex=0.1, col="red")
 plot(st_geometry(nz.sf), add=TRUE)
 ```
+
 :::
 ::: {.column width="60%"}
 ::: {style="font-size: 0.7em"}
@@ -469,6 +519,7 @@ plot(st_geometry(nz.sf), add=TRUE)
 
 ::: columns
 ::: {.column width="40%"}
+
 ```{r}
 #| fig-width: 4
 #| fig-height: 4
@@ -485,8 +536,10 @@ random_nz <- random_long_lat_sf[nz.sf,]
 plot(st_geometry(random_nz), cex=0.1, col="red")
 plot(st_geometry(nz.sf), add=TRUE)
 ```
+
 :::
 ::: {.column width="60%"}
+
 ```{r}
 #| echo: true
 nz.df <- nz %>% 
@@ -495,6 +548,7 @@ mutate(counts = lengths(st_intersects(., random_nz)),
        density = counts/area)
 head(st_drop_geometry(nz.df[,7:10]))
 ```
+
 :::
 :::
 
@@ -508,15 +562,19 @@ head(st_drop_geometry(nz.df[,7:10]))
 #| fig-height: 4
 plot(nz.df["counts"], main="Counts")
 ```
+
 :::
 ::: {.column width="50%"}
+
 ```{r}
 #| fig-width: 4
 #| fig-height: 4
 plot(nz.df["density"], main="Density")
 ```
+
 :::
 :::
+
 ## Estimating Distance
 
 - As a covariate
@@ -530,12 +588,16 @@ plot(nz.df["density"], main="Density")
 
 ::: columns
 ::: {.column width="40%"}
+
 - `st_distance` returns distances between all features in `x` and all features in `y`
 
 - One-to-One relationship requires choosing a single point for `y`
+
 :::
 ::: {.column width="40%"}
+
 ![](img/slide_14/types-of-relationship-in-Database.png) 
+
 :::
 :::
 
@@ -545,6 +607,7 @@ plot(nz.df["density"], main="Density")
 
 ::: columns
 ::: {.column width="70%"}
+
 ```{r}
 #| echo: true
 canterbury = nz %>% filter(Name == "Canterbury")
@@ -552,8 +615,10 @@ canterbury_height = nz_height[canterbury, ]
 co = filter(nz, grepl("Canter|Otag", Name))
 st_distance(nz_height[1:3, ], co)
 ```
+
 :::
 ::: {.column width="30%"}
+
 ```{r}
 #| fig-width: 4.5
 #| fig-height: 4.5
@@ -561,6 +626,7 @@ plot(st_geometry(co)[2], col="red")
 plot(st_geometry(nz_height)[1], col="blue", add=TRUE)
 plot(st_geometry(nz_height)[2:3], add = TRUE, col="black")
 ```
+
 :::
 :::
 
@@ -570,6 +636,7 @@ plot(st_geometry(nz_height)[2:3], add = TRUE, col="black")
 
 ::: columns
 ::: {.column width="60%"}
+
 ```{r}
 #| echo: true
 #| message: false
@@ -584,8 +651,10 @@ nearest <-  st_nearest_feature(ua)
 #estimate distance
 (dist = st_distance(ua, ua[nearest,], by_element=TRUE))
 ```
+
 :::
 ::: {.column width="40%"}
+
 ```{r}
 #| message: false
 #| warning: false
@@ -598,6 +667,7 @@ id <- states(cb = FALSE, progress_bar = FALSE) %>%
 plot(st_geometry(id))
 plot(st_geometry(ua), add=TRUE)
 ```
+
 :::
 :::
 
@@ -609,14 +679,18 @@ plot(st_geometry(ua), add=TRUE)
 
 ::: columns
 ::: {.column width="40%"}
+
 - Requires a "key" field 
 
 - Multiple outcomes possible
 
 - Think about your final data form
+
 :::
 ::: {.column width="60%"}
+
 ![](img/slide_14/types-of-relationship-in-Database.png) 
+
 :::
 :::
 
@@ -639,17 +713,21 @@ source(here::here("R", "left_join.R"))
 
 ::: columns
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 head(coffee_data)
 ```
+
 :::
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 world_coffee = left_join(world, coffee_data)
 nrow(world_coffee)
 ```
+
 :::
 :::
 
@@ -678,21 +756,26 @@ source(here::here("R", "inner_join.R"))
 
 ::: columns
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 world_coffee_inner = inner_join(world, coffee_data)
 nrow(world_coffee_inner)
 ```
+
 ::: 
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 setdiff(coffee_data$name_long, world$name_long)
 ```
+
 :::
 :::
 
 ## Inner Join
+
 ```{r}
 plot(world_coffee_inner["coffee_production_2017"])
 ```
@@ -711,6 +794,7 @@ plot(world_coffee_inner["coffee_production_2017"])
 
 ::: columns
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 set.seed(2018)
@@ -727,8 +811,10 @@ random_points = random_df |>
 
 random_joined = st_join(random_points, world["name_long"])
 ```
+
 :::
 ::: {.column width="50%"}
+
 ```{r}
 random_joined$name_long = as.character(random_joined$name_long)
 
@@ -739,6 +825,7 @@ jm1 <- jm0 +
   tm_layout(scale = 1, legend.bg.color = "white", legend.bg.alpha = 0.3, legend.position = c("right", "bottom"))
 jm1
 ```
+
 :::
 :::
 
@@ -756,6 +843,7 @@ jm1
 
 ::: columns
 ::: {.column width="70%"}
+
 ```{r}
 #| echo: true
 any(st_touches(cycle_hire, cycle_hire_osm, sparse = FALSE))
@@ -763,27 +851,33 @@ z = st_join(cycle_hire, cycle_hire_osm, st_is_within_distance, dist = 20)
 nrow(cycle_hire)
 nrow(z)
 ```
+
 :::
 ::: {.column width="30%"}
+
 ```{r}
 plot(st_geometry(cycle_hire), col = "blue")
 plot(st_geometry(cycle_hire_osm), add = TRUE, pch = 3, col = "red")
 ```
+
 :::
 :::
 
 # Extending Joins {background="#0033A0"}
 
 ## Extending Joins 
+
 ::: {style="font-size: 0.6em"}
 - Sometimes we are interested in analyzing locations that contain the overlap between two vectors
   - How much of home range _a_ occurs on soil type _b_
   - How much of each Census tract is contained with a service provision area?
 - `st_intersection`, `st_union`, and `st_difference` return new geometries that we can use as records in our spatial database
+
 :::
 
 ::: columns
 ::: {.column width="50%"}
+
 ```{r}
 #| message: false
 #| warning: false
@@ -822,8 +916,10 @@ ggplot() +
   geom_sf(data = tr_buff, color="red")
 
 ```
+
 :::  
 ::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 intersect_pct <- st_intersection(nc, tr_buff) %>% 
@@ -840,6 +936,7 @@ nc <- merge(nc, intersect_pct, by = "NAME", all.x = TRUE)
 nc <- nc %>% 
    mutate(coverage = as.numeric(intersect_area/county_area))
 ```
+
 :::
 :::
 

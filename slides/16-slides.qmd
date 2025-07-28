@@ -1,10 +1,12 @@
 ---
 title: "Integrating Rasters and Vector Data"
-subtitle: "HES 505 Fall 2023: Session 16"
+subtitle: "HES 505 Fall 2025: Session 16"
 author: "Matt Williamson"
+eval: false
 format: 
   revealjs:
     theme: mytheme.scss
+    highlight-style: pygments
     slide-number: true
     show-slide-number: print
     self-contained: true  
@@ -47,7 +49,7 @@ library(tmap)
 
 ## Building some Pseudocode
 
-```{r}
+```{txt}
 #| eval: false
 #| echo: true
 
@@ -111,8 +113,6 @@ wildfire.haz <- rast("opt/data/2023/assignment01/wildfire_hazard_agg.tif")
 
 ## CEJST data
 cejst <- read_sf("opt/data/2023/assignment01/cejst_pnw.shp")
-
-
 ```
 
 ## Check Validity

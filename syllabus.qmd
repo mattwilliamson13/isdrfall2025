@@ -171,11 +171,15 @@ Attendance is an important part of this course. You are allowed to miss 2 classe
 
 I would **highly recommend** staying caught up as much as possible, but if you need to turn something (other than the exercises and final project) in late, that's fine—there's **no penalty**.
 
-## Student Wellbeing
+## Academic Integrity
 
-If you are struggling for any reason (COVID, relationship, family, or life’s stresses) and believe these may impact your performance in the course, I encourage you to contact the Dean of Students at (208) 426-1527 or email[deanofstundents@boisestate.edu](mailto:deanofstudents@boisestate.edu) for support.  If you notice a significant change in your mood, sleep, feelings of hopelessness or a lack of self worth, consider connecting immediately with Counseling Services (1529 Belmont Street, Norco Building) at (208) 426-1459 or email [healthservices@boisestate.edu](mailto:healthservices@boisestate.edu).  
+Academic integrity is the principle that asks students to engage with their academic work to the fullest and to behave honestly, transparently, and ethically in every assignment and every interaction with a peer, professor, or research participant. When a strong culture of academic integrity is fostered by students and faculty in an academic program, students learn more, build positive relationships and collaborations, and can feel more confident in the value of their degrees.
 
-### Learning during a pandemic
+In order to cultivate fairness and credibility, everyone must participate in upholding academic integrity. Students in this class are responsible for asking for help or clarification when it’s needed, speaking up when they see unethical behavior taking place, and understanding and adhering to the Student Code of Conduct, including the section on academic misconduct. Boise State and I take academic misconduct very seriously. It’s important to know that when a student engages in academic misconduct, I will report the incident to the Office of the Dean of Students. I also have the right to assign sanctions, which could include requirements to revise or redo work, complete educational assignments to learn about academic integrity, and grade penalties ranging from lower credit on an assignment to failing this class^[So seriously, just don't cheat or plagiarize!]. Students should learn more by reviewing the [Student Code of Conduct](https://www.boisestate.edu/policy/student-affairs/code-of-conduct/).
+
+## This course was designed with you in mind
+
+I developed this course to provide a welcoming environment and effective, equitable learning experience for all students. If you encounter barriers in this course, please bring them to my attention so that I may work to address them.
 
 If you tell me you're having trouble, I will not judge you or think less of you. I hope you'll extend me the same grace.
 
@@ -183,9 +187,7 @@ You *never* owe me personal information about your health (mental or physical). 
 
 If you need extra help, or if you need more time with something, or if you feel like you're behind or not understanding everything, **do not suffer in silence!** Talk to me! I will work with you. **I promise.**
 
-
-## This course was designed with you in mind
-I developed this course to provide a welcoming environment and effective, equitable learning experience for all students. If you encounter barriers in this course, please bring them to my attention so that I may work to address them.
+If you are struggling for any reason (COVID, relationship, family, or life’s stresses) and believe these may impact your performance in the course, I encourage you to contact the Dean of Students at (208) 426-1527 or email [deanofstundents@boisestate.edu](mailto:deanofstudents@boisestate.edu) for support.  If you notice a significant change in your mood, sleep, feelings of hopelessness or a lack of self worth, consider connecting immediately with Counseling Services (1529 Belmont Street, Norco Building) at (208) 426-1459 or email [healthservices@boisestate.edu](mailto:healthservices@boisestate.edu).  
 
 ### This class’s community is inclusive.
 Students in this class represent a rich variety of backgrounds and perspectives. The Human-Environment Systems group is committed to providing an atmosphere for learning that respects diversity and creates inclusive environments in our courses. While working together to build this community, we ask all members to:
@@ -225,9 +227,15 @@ If you have a documented disability, you may be eligible for accommodations in a
 ### For students responsible for children
 I recognize the unique challenges that can arise for students who are also parents or guardians of children.  Any student needing to temporarily bring children or another dependent to class is welcome to do so to stay engaged with the class.
 
-## Academic Integrity
-Academic integrity is the principle that asks students to engage with their academic work to the fullest and to behave honestly, transparently, and ethically in every assignment and every interaction with a peer, professor, or research participant. When a strong culture of academic integrity is fostered by students and faculty in an academic program, students learn more, build positive relationships and collaborations, and can feel more confident in the value of their degrees.
 
-In order to cultivate fairness and credibility, everyone must participate in upholding academic integrity. Students in this class are responsible for asking for help or clarification when it’s needed, speaking up when they see unethical behavior taking place, and understanding and adhering to the Student Code of Conduct, including the section on academic misconduct. Boise State and I take academic misconduct very seriously. It’s important to know that when a student engages in academic misconduct, I will report the incident to the Office of the Dean of Students. I also have the right to assign sanctions, which could include requirements to revise or redo work, complete educational assignments to learn about academic integrity, and grade penalties ranging from lower credit on an assignment to failing this class^[So seriously, just don't cheat or plagiarize!]. Students should learn more by reviewing the [Student Code of Conduct](https://www.boisestate.edu/policy/student-affairs/code-of-conduct/).
+## Note on Course Content and Idaho Law
+Under Idaho law (Section § 67-5909D), some university courses with content related to diversity, equity, inclusion, or critical theory may be subject to certain restrictions. However, the law affirms and does not limit free discussion in the classroom. Like all Boise State courses, this course supports open inquiry, intellectual honesty, and respectful engagement with a range of perspectives, all of which are consistent with student rights and responsibilities described in the Student Code of Conduct (Policy 2020). 
 
+This course may include content that touches on concepts related to diversity, equity, inclusion (DEI), or critical theory—such as systemic inequality, cultural identity, or gender and race in society. If these topics are included, it is because they are relevant to the learning outcomes for this course and are explored to support critical thinking, deeper understanding, and respectful engagement with different perspectives. As part of the course, you may be asked to apply or explain ideas that come from a particular perspective.  However, you are not required to adopt such perspectives as your own.
+
+Our classroom is a space for open dialogue and thoughtful discussion, including complex or challenging topics. Everyone is expected to engage with curiosity, listen respectfully, and contribute in ways that support a productive and welcoming learning environment. Boise State and the Idaho State Board of Education affirm the importance of free expression and academic inquiry. As outlined in SBOE Policy III.B:
+“Membership in the academic community imposes on administrators, faculty members, other institutional employees, and students an obligation to respect the dignity of others, to acknowledge the right of others to express differing opinions, and to foster and defend intellectual honesty, freedom of inquiry and instruction, and free expression on and off the campus of an institution.”
+Disruptive behavior that interferes with the learning environment will not be tolerated and may result in removal from this course, in line with university policy (See Policy 3240 Maintaining Effective Learning Environments).
+
+In this course, I will foster critical discussion and analysis, and a respectful consideration of a wide range of ideas, in accordance with the Faculty Code of Rights, Responsibilities, and Conduct (Policy 4000). You are encouraged to think critically, question ideas, and form your own conclusions. As always, you have the freedom to choose courses that align with your academic goals—if you have concerns about course content, please talk with your instructor or advisor. Refer to the academic calendar for important deadlines related to course withdrawal.
 ---

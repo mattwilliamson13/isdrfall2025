@@ -46,8 +46,10 @@ By the end of today you should be able to:
 - Interest is in the relationship between proximity and the feature
 
 - Difference from kriging and semivariance
+
 :::
 :::{.column width="40%"}
+
 ![From Manuel Gimond](img/slide_17/Random_maps.png)
 :::
 :::
@@ -56,13 +58,16 @@ By the end of today you should be able to:
 
 ::: columns
 ::: {.column width="30%"}
+
 * Moran's I
 
 ![](img/slide_17/MI.png)
+
 :::
 ::: {.column width="70%"}
 
 ![](img/slide_17/mI2.png)
+
 :::
 :::
 
@@ -77,6 +82,7 @@ By the end of today you should be able to:
 - We can use `spdep` for that!!
 
 ![](img/slide_21/spatial_contiguity.png){width=110%}
+
 :::
 :::
 
@@ -101,6 +107,7 @@ tm_shape(cdc) +
   tm_borders(alpha = 0.4) +
   tm_legend(legend.outside=TRUE)
 ```
+
 :::
 :::
 
@@ -145,11 +152,14 @@ lw.qn$weights[1:5]
 asthma.lag <- lag.listw(lw.qn, cdc$casthma_cr)
 
 ```
+
 :::
 ::: {.column width="40%"}
+
 ```{r}
 head(cbind(cdc$countyname, cdc$casthma_cr, asthma.lag))
 ```
+
 :::
 :::
 
