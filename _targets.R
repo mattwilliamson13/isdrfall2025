@@ -62,12 +62,12 @@ list(
              pattern = map(xaringan_html_files),
              format = "file"),
 ## Class schedule calendar ----  
-tar_target(schedule_file, here_rel("data", "schedule.csv"), format = "file"),
-tar_target(schedule_page_data, build_schedule_for_page(schedule_file)),
+tar_target(schedule_file2, here_rel("data", "schedule2.csv"), format = "file"),
+tar_target(schedule_page_data, build_schedule_for_page(schedule_file2)),
 tar_target(
   schedule_ical_data,
   build_ical(
-    schedule_file, base_url,
+    schedule_file2, base_url,
     page_suffix, class_number
   )
 ),

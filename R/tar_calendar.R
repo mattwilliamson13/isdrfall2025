@@ -26,7 +26,7 @@ build_schedule_for_page <- function(schedule_file) {
                              glue(""))) %>%
     mutate(var_flag_start = ifelse(!is.na(flag) & flag == TRUE, '<span class="content-flag"><i class="fas fa-star"></i>&ensp;', "")) %>% 
     mutate(var_flag_end = ifelse(!is.na(flag) & flag == TRUE, "</span>", "")) %>% 
-    mutate(var_title = ifelse(!is.na(content),
+    mutate(var_title = ifelse(!is.na(content) | !is.na(note),
                               glue('<span class="content-title">{var_flag_start}{title}{var_flag_end}</span>'),
                               glue('{var_flag_start}{title}{var_flag_end}'))) %>%
     mutate(var_deadline = ifelse(!is.na(deadline),

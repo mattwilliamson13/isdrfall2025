@@ -9,7 +9,7 @@ format:
     theme: mytheme.scss
     slide-number: true
     show-slide-number: print
-    self-contained: true  
+    embed-resources: true  
 ---
 
 # Course Evaluations

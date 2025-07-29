@@ -9,7 +9,7 @@ format:
     highlight-style: pygments
     slide-number: true
     show-slide-number: print
-    self-contained: true   
+    embed-resources: true   
 ---
 
 # Today's Plan {background-image="img/slide_7/mining_idaho.jpeg" background-opacity="0.7"}

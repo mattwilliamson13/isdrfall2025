@@ -73,59 +73,59 @@ website:
           contents:
             - text: "1: Introduction to the Course"
               file: content/01-content.qmd
-            - text: "2: Why Geographic Analysis"
+            - text: "2: Tools of the Trade"
               file: content/02-content.qmd
-            - text: "3: Introduction to Spatial Data"
-              file: content/03-content.qmd
-            - text: "4: Intro to Spatial Data with R"
+            - text: "4: Meeting Your Data"
               file: content/04-content.qmd
-            - text: "6: Literate Programming, Quarto, Workflows"
+            - text: "5: Data Manipulation with the Tidyverse"
+              file: content/05-content.qmd
+            - text: "6: Pipes, Functions, and Iteration"
               file: content/06-content.qmd
-            - text: "7: Areal Data - Coordinates and Geometries"
+            - text: "7: Data Models, Coordinates, and Geometries"
               file: content/07-content.qmd
-            - text: "8: Areal Data - Vector Data"
+            - text: "8: Projections, Extent, and Resolution"
               file: content/08-content.qmd
-            - text: "9: Areal Data - Raster Data"
+            - text: "9: Attribute Data Operations"
               file: content/09-content.qmd
-            - text: "10: Intro to Mapping Geographic Data"
+            - text: "10: Spatial Data Operations"
               file: content/10-content.qmd
-            - text: "11: Operations with Vector Data I"
+            - text: "11: Geometry Data Operations and Troubleshooting"
               file: content/11-content.qmd
-            - text: "12: Operations with Vector Data II"
+            - text: "12: Building Spatial Databases"
               file: content/12-content.qmd
-            - text: "13: Operations with Raster Data I"
+            - text: "13: Point Patterns I"
               file: content/13-content.qmd
-            - text: "14: Operations with Raster Data II"
+            - text: "14: Point Patterns II"
               file: content/14-content.qmd
-            - text: "15: Combining Tabular and Spatial Data"
+            - text: "15: Surface Metrics I"
               file: content/15-content.qmd
-            - text: "16: Combining Vectors and Continuous Rasters"
+            - text: "16: Surface Metrics II"
               file: content/16-content.qmd
-            - text: "17: Combining Vectors and Categorical Rasters"
+            - text: "17: Multivariate Description I"
               file: content/17-content.qmd
-            - text: "18: Point Patterns"
+            - text: "18: Multivariate Description II"
               file: content/18-content.qmd
             - text: "19: Interpolation"
               file: content/19-content.qmd
-            - text: "20: Proximity and Areal Data"
+            - text: "20: Kriging"
               file: content/20-content.qmd
-            - text: "21: Spatial Autocorrelation"
+            - text: "21: Machine Learning Models I"
               file: content/21-content.qmd
-            - text: "22: Statistical Modelling I"
+            - text: "22: Machine Learning Models II"
               file: content/22-content.qmd
-            - text: "23: Statistical Modelling II"
+            - text: "23: Statistical Models I"
               file: content/23-content.qmd
-            - text: "24: Statistical Modelling III"
+            - text: "24: Statistical Models II"
               file: content/24-content.qmd
-            - text: "25: Movement and Networks I"
+            - text: "25: Spatial Autocorrelation I"
               file: content/25-content.qmd
-            - text: "26: Movement and Networks II"
+            - text: "26: Spatial Autocorrelation II"
               file: content/26-content.qmd
-            - text: "29: Data Visualization and Maps I"
+            - text: "29: Spatial Predictions"
               file: content/29-content.qmd
-            - text: "30: Data Visualization and Maps II"
+            - text: "30: Model Evaluation I"
               file: content/30-content.qmd
-            - text: "31: Introduction to Interactive Maps"
+            - text: "31: Model Evaluation II"
               file: content/31-content.qmd  
             - text: "32: Conclusion"
               file: content/32-content.qmd  

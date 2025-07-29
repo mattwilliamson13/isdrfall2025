@@ -1,6 +1,6 @@
 ---
 title: "Literate Programming, Quarto, and Workflows"
-date: "2023-09-6"
+date: "2025-09-6"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}

@@ -12,7 +12,7 @@ These resources are also really really helpful:
 
 ### General R Resources
 - [**An Introduction to R**](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf): _The_ definitive introductory text by Venables, Smith, and the R Core Team.
-- [**Swirl**](https://swirlstats.com/): A set of free, self-contained tutorials that run from within your RStudio terminal.
+- [**Swirl**](https://swirlstats.com/): A set of free, embed-resources tutorials that run from within your RStudio terminal.
 - [**R for Data Science**](https://r4ds.had.co.nz/): A free online book for learning the basics of R and the tidyverse.
 - [**R and RStudio cheat sheets**](https://www.rstudio.com/resources/cheatsheets/): A large collection of simple cheat sheets for RStudio, **ggplot2**, and other R-related things.
 - [**Stat 545**](http://stat545.com/): [Dr. Jenny Bryan](https://twitter.com/JennyBryan) at RStudio has an entire introductory course in R, visualization, and data analysis online.

@@ -8,7 +8,7 @@ format:
     highlight-style: pygments
     slide-number: true
     show-slide-number: print
-    self-contained: true  
+    embed-resources: true  
 ---
 
 # Today's Plan {background-image="img/slide_9/NEDUS.gif" background="#9F281A" background-opacity="0.7"}

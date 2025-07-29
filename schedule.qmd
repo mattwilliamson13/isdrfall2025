@@ -26,7 +26,7 @@ Here's your roadmap for the semester!
 
 - [**Lesson**](/lesson/index.qmd) ({{< fa chalkboard-teacher >}}): This page contains a tutorial video and additional annotated R code and other supplementary information that you can use to help you prepare for the in-class exercises and assignments. These are most helpful if you watch them before in-class sessions so that you can ask questions when we start working through things together. 
 
-- [**Example**](/example/) ({{< fa laptop-code >}}): This page the scripts that we work on in class as a reminder of some of the live-coding exercises. These are provided as a reference to help you link your notes to the syntax we use in class.
+- [**Exercises**](/example/) ({{< fa laptop-code >}}): This page the scripts that we work on in class as a reminder of some of the live-coding exercises. These are provided as a reference to help you link your notes to the syntax we use in class.
 
 - [**Assignment**](/assignment/) ({{< fa pen-ruler >}}): This page contains the instructions for each assignment. Assignments are due by *11:59 PM* on the day they're listed. One more time!
 

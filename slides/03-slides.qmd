@@ -8,7 +8,7 @@ format:
     highlight-style: pygments
     slide-number: true
     show-slide-number: print
-    self-contained: true   
+    embed-resources: true   
 ---
 
 ## Today's Plan {background-image="img/slide_3/sweden.png" background-opacity="0.8"}

@@ -8,7 +8,7 @@ format:
     highlight-style: pygments
     slide-number: true
     show-slide-number: print
-    self-contained: true  
+    embed-resources: true  
 ---
 
 # Welcome to Space!! {background="#9F281A" background-image="img/slide_1/Helix_Nebula.jpeg"}
