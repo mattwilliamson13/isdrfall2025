@@ -1,6 +1,6 @@
 ---
 title: "Why Geographic Analysis"
-date: "2023-08-23"
+date: "2025-08-27"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
@@ -8,33 +8,40 @@ source(here::here("R", "slide-things.R"))
 
 ```
 
-Before we get inundated with technical details and syntax, I think it's important to remind ourselves why we need geographical analysis. We'll spend some time on the various conceptualizations of place and space, how those things show up in geographic data, and their implications for the kinds of science we can do when we're using geographic data. This session is meant to provide a bit of philosophical foundation for you to keep in mind as you work through various parts of the analytic pipeline.
+Today we'll be talking about reproducible workflows, why they're important (generally) and some considerations for working with geographic data. We'll also get introduced to version control and it's the practice of open, reproducible research. Finally, you'll meet `Quarto` our go-to tool to try and keep all of the pieces of the data analysis pipeline together.
+
 
 ## Readings
 
 The following readings are intended to give you some sense of the discussion surrounding the role of spatial data in understanding the world. They are a mix of old favorites and relatively recent reviews. You don't need to read all of them or memorize them, but they are worth a skim. I bet you'll find something interesting.
 
-{{< fa arrow-up-right-from-square >}} [Conservation biogeography: assessment and prospects](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1366-9516.2005.00143.x) by Whitaker et al. [-@whittaker2005] provides an overview of the of geography in understanding ecosystem function and shaping conservation strategies.
+- {{< fa arrow-up-right-from-square >}} [Open science, reproducibility, and transparency in ecology](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1002/eap.1822) by Powers and Hampton - discusses the importance of open science for ecologists.
 
-{{< fa arrow-up-right-from-square >}} [Economic geography, politics, and policy](https://www.annualreviews.org/doi/abs/10.1146/annurev-polisci-050718-033649) by Rickard [-@rickard2020] provides a review of the role of geography in understanding responses to globalization. 
+- {{< fa arrow-up-right-from-square >}} [Practical Reproducibility in Geography and Geosciences](https://eartharxiv.org/repository/view/3216/) by Nilst and Pebesma - describes the importance of reproducibility for geospatial analysis.
 
-{{< fa arrow-up-right-from-square >}} [Revolutionary and counter revolutionary theory in geography and the problem of ghetto formation](https://onlinelibrary.wiley.com/doi/epdf/10.1111/j.1467-8330.1972.tb00486.x) by David Harvey [-@Harvey1972] offers a scathing critique of quantitative geography (though Harvey was one of the founders of the field). See [@Barnes2009] for a relatively recent attempt to reconcile these views.
+- <i class="fas fa-book"></i> [The Whole Game](https://r4ds.hadley.nz/whole-game.html) - from Wickham et al., *R for Data Science* [@wickham2016r]. Focus on the sections that begin with "Workflow" to get a sense for how we'll start putting the pieces together.
 
-{{< fa arrow-up-right-from-square >}} [Does scale exist? An epistemological scale continuum for complex human–environment systems](https://www.sciencedirect.com/science/article/pii/S0016718506001564) by Steven Manson [-@MANSON2008] is one of my favorite summaries of the various definitions and confusion surrounding scale as a concept invoked in many disciplines.
+- {{< fa arrow-up-right-from-square >}} [Authoring in Quarto](https://quarto.org/docs/get-started/authoring/rstudio.html) - an intro to Quarto for developing different kinds of documents. Lots of other resources linked here!!
 
-{{< fa arrow-up-right-from-square >}} [Spatial Scaling in Ecology](https://www.jstor.org/stable/2389612) by John Wiens [-@Wiens1989] describes the fundamental challenges of scale in Ecology.
+### Coding Help
 
+- {{< fa book >}} [Chapter 1 - 6](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf) in Venables et al., *An Introduction to R* [@venables2009introduction] - for a quick refresher on data types in R (it's only 30 pages)
+
+- {{< fa arrow-up-right-from-square >}} [Chapters 1-2](https://intro2r.com/) in Douglas et al., *An Introduction to R* - provides another intro to R that's been updated and is an open-source book.
+
+- {{< fa arrow-up-right-from-square >}} [This RStudio Education](https://education.rstudio.com/learn/beginner/) page has a lot of additional tutorials to help you get started with `R`.
 
 ## Objectives
+
 By the end of today you should be able to:
 
-* **Define** what we mean by description, explanation, and prediction in geography.
+* **Describe** the benefits of reproducible data analysis workflows
 
-* **Describe** critiques and limitations of quantitative geographical analysis 
+* **Explain** the benefits of version control
 
-* **Define** 'scale' and its implications for geographic analysis
+* **Understand** how project set-up and structure contribute to reproducible workflows
 
-* **Place** your research in the broader context of geographic analysis
+* **Generate** a `Quarto` document and render it into `.html`
 
 ## Slides
 
