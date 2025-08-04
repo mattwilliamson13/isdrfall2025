@@ -38,7 +38,7 @@ By the end of today you should be able to:
 
 * **Understand** the organization of the course, the approach to grading, and the requirements for the final project
 
-* **Clone** the first self-reflection and know the process for submitting assignments
+* **Access** the course examples and assignments and know the process for submitting assignments
 
 ## Slides
 
