@@ -107,7 +107,7 @@ You will need the program Git for this tutorial. First, let's check to see if Gi
 
 Select the `Terminal` tab next to the `Console` tab in the section of Rstudio displaying your console (bottom-left panel). Enter the following:
 
-```{bash gitversion}
+```{text gitversion, eval = FALSE}
 which git
 git --version
 ```
@@ -177,12 +177,6 @@ Another function of Git is to store all your relevant files in a repository, sim
 
 1.  In Rstudio, select `File` in the top left corner, and then `New Project`
 2.  When the New Project menu appears, select `New Directory`
-
-```{r new directory, echo = FALSE, out.width = '60%', fig.align = 'center'}
-
-knitr::include_graphics("img/new_directory.PNG")
-```
-
 3.  On the following screen, select `New Project`
 4.  Finally, type the name you want to use for your new project, browse to the location where you want it saved on your computer, and select the `Create a git repository` box.
 

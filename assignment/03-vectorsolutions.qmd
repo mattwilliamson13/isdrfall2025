@@ -1,5 +1,7 @@
 ---
 title: "Assignment 3 Solutions: Coordinates and Geometries"
+execute:
+  eval: false
 ---
 
 

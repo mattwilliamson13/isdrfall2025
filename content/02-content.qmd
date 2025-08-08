@@ -1,5 +1,5 @@
 ---
-title: "Why Geographic Analysis"
+title: "Tools of the Trade"
 date: "2025-08-27"
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: "Getting Started"
-subtitle: "HES 505 Fall 2023: Session 1"
+title: "What Is This Class???"
+subtitle: "HES 505 Fall 2025: Session 1"
 author: "Matt Williamson"
 format: 
   revealjs:
@@ -10,6 +10,10 @@ format:
     show-slide-number: print
     embed-resources: true  
 ---
+
+```{r}
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
+```
 
 # Welcome to Space!! {background="#9F281A" background-image="img/slide_1/Helix_Nebula.jpeg"}
 
@@ -24,35 +28,18 @@ image courtesy of NASA/JPL-Caltech/Univ. of Ariz., Public domain, via Wikimedia 
 :::{style="font-size: 1.2em; text-align: middle; margin-top: 2em"}
 - Introductions
 
-- Why (not) R?
+- What can we do with spatial data?
 
 - Course logistics and resources
 
-- Testing out RStudio, git, and GitHub Classroom
+- Testing out RStudio and GitHub Classroom
 :::
 
-# Introductions {background="#9F281A"}
+# Introductions {background="#440065"}
 
-## About Me
-
-::: columns
-::: {.column width="40%"}
-::: incremental
--   What I do
-
--   My path to this point
-
--   Why I teach this course
-:::
-:::
-::: {.column width="60%"}
-![](img/slide_1/Buffalo_Mosaic.png)
-:::
-:::
-
-## What about you? { background-image="img/slide_1/camasprairie.jpeg" background-opacity="0.7"}
-:::{style="font-size: 1.2em; text-align: center; margin-top: 2em; color: #7C4A89"}
-:::{style="color: #9F281A"}
+## About you? { background-image="img/slide_1/camasprairie.jpeg" background-opacity="0.8"}
+:::{style="font-size: 1.2em; text-align: center; margin-top: 2em"}
+:::{style="color: #FFFF"}
 - Your preferred pronouns
 
 - Where are you from?
@@ -65,133 +52,242 @@ image courtesy of NASA/JPL-Caltech/Univ. of Ariz., Public domain, via Wikimedia 
 :::
 :::
 
-# Why (not) R? {background="#9F281A"}
-
-## Why R?
+## About Me
 
 ::: columns
-::: {.column width="30%"}
-::: incremental
+::: {.column width="40%"}
 
--   Open Source
+-   What I do
 
--   Huge useR community
+-   My path to this point
 
--   Integrated analysis pipelines
+-   Why I teach this course
 
--   Reproducible workflows
+:::
+::: {.column width="60%"}
+![](img/slide_1/Buffalo_Mosaic.png)
 :::
 :::
 
-::: {.column width="70%"}
 
-::: panel-tabset
-### Code
+# What can we do with spatial data? {background-image="img/slide_2/iceberg.jpeg" background-opacity="0.6"}
 
-```{r}
-#| echo: true
-library(maps)
-library(socviz)
-library(tidyverse)
-party_colors <- c("#2E74C0", "#CB454A") 
-us_states <- map_data("state")
-election$region <- tolower(election$state)
-us_states_elec <- left_join(us_states, election)
-p0 <- ggplot(data = us_states_elec,
-             mapping = aes(x = long, y = lat,
-                           group = group, 
-                           fill = party))
-p1 <- p0 + geom_polygon(color = "gray90", 
-                        size = 0.1) +
-    coord_map(projection = "albers", 
-              lat0 = 39, lat1 = 45) 
-p2 <- p1 + scale_fill_manual(values = party_colors) +
-    labs(title = "Election Results 2016", 
-         fill = NULL)
-```
+## What is geography
 
-### Plot
+- **Geo**: land, earth, terrain
+
+- **Graph**: writing, discourse
+
+- Tuan: **Space** (extent) and **Place** (location)
+
+- Analysis of the effects of extent and location on events or features
+
+## Five Themes in Geography
+::: columns
+::: {.column width="40%"}
+- Location
+
+- Place
+
+- Region
+
+- Movement
+
+- Human-Environment Interaction
+:::
+::: {.column width="60%"}
+![WGBH Educational Foundation](img/slide_2/earthsys_wgbh.png)
+:::
+:::
+
+## Location
+The place (on Earth) of a particular geographic feature
+
+<div style="display: flex; justify-content: center; gap: 2em;">
+  <img src="img/slide_2/zebra_usgs.png" style="height: 375px;">
+  <img src="img/slide_2/crime_map.png" style="height: 375px;">
+</div>
+
+## Place
+What is a location _like_?
+
+<div style="display: flex; justify-content: center; gap: 2em;">
+  <img src="img/slide_2/forest_cover.jpg" style="height: 355px;">
+  <img src="img/slide_2/gini-map-census.png" style="height: 355px;">
+</div>
+
+
+
+::: footer 
+:::{style="font-size: 0.8em; margin-bottom: -1.em; color:#fff"}
+Forest cover map by Robert Simmons via Wikimedia Commons 
+:::
+:::
+
+
+## Region
+What attributes to different geographies share? What distinguishes them?
+
+<div style="display: flex; justify-content: center; gap: 2em;">
+  <img src="img/slide_2/2021NLCD.png" style="height: 310px;">
+  <img src="img/slide_2/yall.jpg" style="height: 310px;">
+</div>
+
+
+## Movement
+How do genes, individuals, populations, ideas, goods, etc traverse the landscape.
+
+<div style="display: flex; justify-content: center; gap: 2em;">
+  <img src="img/slide_2/moveVis.gif" style="height: 375px;">
+  <img src="img/slide_2/landgrabu.png" style="height: 375px;">
+</div>
+
+::: footer 
+:::{style="font-size: 0.8em; margin-bottom: -1.em; color:#fff"}
+LandGrab maps courtesy of High Country News
+:::
+:::
+
+## Human-Environment Interactions
+How do people relate to and change the physical world to meet their needs?
+
+<div style="display: flex; justify-content: center; gap: 2em;">
+  <img src="img/slide_2/smoke.png" style="height: 360px;">
+  <img src="img/slide_2/nightlights.jpg" style="height: 360px;">
+</div>
+
+::: footer 
+:::{style="font-size: 0.7em; margin-bottom: -0.80em; color:#fff"}
+Smoke map courtesy of Capital Public Radio; Nightlights courtesy of NASA Earth Observatory.
+:::
+:::
+
+# {background="#44006"}
+:::{style="font-size: 1.4em; text-align: middle; margin-top: 2em"}
+Towards _quantitative_ spatial analysis
+:::
+
+# {background="#44006"}
+:::{style="font-size: 1.4em"}
+> ‘everything is usually related to all else but those which are near to each other
+>are more related when compared to those that are further away’.
+> `r tufte::quote_footer('Waldo Tobler')`
+:::
+
+# 3 "Faces" of Analysis
 
 ```{r}
 #| echo: false
+#| message: false
+#| crop: true
+#| fig-align: center
+
+library(ggplot2)
+D <- list("Description" = c(2, 3, 1), "Explanation" = c(4, 7, 1), "Prediction" = c(7, 5))
+
+p <- ggvenn::ggvenn(D, c("Description", "Explanation", "Prediction"),
+  show_percentage = FALSE,
+  show_elements = FALSE,
+  fill_color = c("#dfbbc8", "#ffc680", "#db8872"),
+  fill_alpha = 0.7,
+  set_name_color = "white",
+  text_size = 0.0001,
+  show_outside = "none"
+)
+
+p2 <- p + theme(
+  panel.border = element_rect(color = "#440065", fill = "transparent"),
+  panel.background = element_rect(fill = "#440065", color = "#440065"),
+  plot.background = element_rect(fill = "#440065"),
+  panel.grid.major = element_blank(),
+  panel.grid.minor = element_blank()
+)
+# ggsave("venn.png", p2, bg="transparent", width=6, units = "in")
 p2
 ```
-:::
-:::
-:::
 
-## Why not R? 
 
-```{r}
-#| code-overflow: wrap
-#| echo: true
 
-## ---
-## Error: could not find function "performance"
-## ---
-##  [1] "Error in if (str_count(string = f[[j]], 
-##  pattern = \"\\\\S+\") == 1) 
-##  { : \n  argument is of length zero"   
-## ---
-## Error in eval(expr, envir, enclos) : object 'x' not found
-## ---
-## Error in file(file, "rt") : cannot open the connection
-## ---
 
-```
+## Description
+
+<div style="display: flex; justify-content: center; margin-top: -0.8em">
+  <img src="img/slide_2/svi.png" style="width: 800px;">
+</div>
+
+:::{style="font-size: 0.8em; text-align: left; margin-top: -1.4em; margin-bottom: -0.8em;"}
+
 
 ::: columns
-::: {.column width="50%"}
--   Coding can be hard...
+::: {.column width="60%"}
+- Coordinates
+- Distances
+- Neighbors
+- Summary statistics
 
--   Memory challenges
 :::
-::: {.column width="50%"}
--   Speed
+::: {.column width="40%"}
+- Range Maps
+- Hotspots
+- Indices
+:::
+:::
+:::
 
--   Decision fatigue
-:::
+## Explanation and Inference
+:::{style="font-size: 0.85em; text-align: left; margin-top: -0.5em; margin-bottom: -0.8em;"}
+- **Cognitive Description**: collection ordering and classification of data
+
+- **Cause and Effect**: design-based or model-based testing of the factors that give rise to geographic distributions
+
+- **Systems Analysis**: describes the entire complex set of interactions that structure an activity
 :::
 
-## Getting Help
+<div style="display: flex; justify-content: center; margin-top: -0.9em">
+  <img src="img/slide_2/model.png" style="width: 700px;">
+</div>
+
+
+## Prediction
+
 ::: columns
-::: {.column width="50%"}
-- Google it!! 
-  - Use the exact error message
-  - Include the package name
-  - include "R" in the search
+::: {.column width="60%"}
+<div style="display: flex; justify-content: center; margin-top: -0.9em">
+  <img src="img/slide_2/climateproj.png" style="width: 1000px;">
+</div>
+
 :::
-::: {.column width="50%"}
-- Stack Overflow
-  - Reproducible examples 
-- Package "issue" pages
-- r_spatial slack channel
-- [Common errors](https://github.com/noamross/zero-dependency-problems/blob/master/misc/stack-overflow-common-r-errors.md)
+::: {.column width="40%"}
+:::{style="font-size: 0.85em; text-align: left"}
+
+- Extend description or explanation into unmeasured space
+- Stationarity: the rules governing a process do not _drift_ over space-time
 :::
 :::
-::: {style="font-size: 1.2em; text-align: center; color: #9F281A"} 
-**Ask Me**
 :::
 
-# Class Details {background="#9F281A"}
+
+# Class Details {background="#440065"}
 
 ## Logistics { background-image="img/slide_1/bison.jpeg"}
 
 :::{style="font-size: 1.2em; text-align: center; margin-top: 2em; color:#fff"}
-- Meet on Mondays and Wednesdays
+- Meet on Mondays and Wednesdays 
 
-- ~55 min lecture, 20 min practice
+- ~40 min lecture, 30 min practice 
 
-- 4 major sections
+- 5 major sections
 
-- Readings 
+- A note about readings 
+
+"Office Hours" immediately following class
 :::
 
 ## Course Webpage { background-image="img/slide_1/hellroaring.jpeg"}
 
-[https://isdrfall23.classes.spaseslab.com/](https://isdrfall23.classes.spaseslab.com/)
+[https://isdrfall23.classes.spaseslab.com/](https://isdrfall25.classes.spaseslab.com/){ style="font-size: 1.2em; text-align: center; margin-top: 2em; color:#fff"}
 
-:::{style="font-size: 1.2em; margin-top: 1.5em; color: #fff"}
+:::{style="margin-top: 1.5em; color: #fff"}
 - Syllabus
 
 - Schedule
@@ -208,7 +304,7 @@ p2
 **Check out the syllabus for more on grading!**
 :::
 :::{style="font-size: 0.8em"}
-::: incremental
+
 ::: columns
 ::: {.column width="50%"}
 - **Self-reflections** (2x)
@@ -216,100 +312,36 @@ p2
   - Evaluation criteria
 
 
-- **Coding exercises** (10x)
+- **In-class exercises** (30x)
   - Problem solving
   - Reproducible workflows
   - Muscle memory
 :::
 ::: {.column width="50%"}
-- **Code Revisions** (3x)
-  - Digging deeper
+- **Homework Assignments** (5x)
+  - Integrate skills from the section
+  - Practice visualization
+  - Build version control habits
+
+- **Code Revisions** (5x)
   - Common issues
   - More extensive feedback
   
-- **Final project** (1st draft, final draft)
-  - Practice a full analysis workflow
-  - Integrate analysis & visuals to tell a story
+
 ::: 
 :::
 :::
+:::{style="font-size: 0.8em; text-align: center; margin-top: -0.95em; margin-bottom: -0.8em;"}
+- **Final project** (1st draft, final draft): Practice a full analysis workflow; Integrate analysis & visuals to tell a story
 :::
 
-# Getting started {background="#9F281A"}
 
-## Orientation to RStudio and our RStudio server
-![](img/slide_1/rstudio.png)
-
-# Git and Github classroom {background="#9F281A"}
-
-
-
-## Introduce yourself to Git
-
-1. Lots of ways, but one easy way is:
-```{r}
-#| echo: true
-#| eval: false
-library(usethis) #you may need to install this using install.packages('usethis')
-use_git_config(user.name = "Jane Doe", user.email = "jane@example.org") #your info here
-```
-
-2. Generate a PAT token if you don't have one **(make sure you save it somewhere)**
-```{r}
-#| echo: true
-#| eval: false
-usethis::create_github_token()
-```
-
-
-
-## Introduce yourself to Git (cont'd)
-
-3. Store your credentials for use (times out after 1 hr)
-```{r}
-#| echo: true
-#| eval: false
-gitcreds::gitcreds_set()
-```
-
-4. Verify
-```{r}
-#| echo: true
-#| eval: false
-gitcreds::gitcreds_get()
-```
-
-## Joining the assignment and cloning the repo
-
-1. Click this [link](https://classroom.github.com/a/8TteH9XA)
-
-2. Bring the project into RStudio
-
-  * Go to File>New Project and choose the “Version Control” option
-  * Select “Git” (Not Subversion)
-  * Paste the link from the “Clone Repository” button into the “Repository URL” space
-
-## The git workflow
-
-* Make sure to **pull** everytime you start working on a project
-
-* Make some changes to code
-
-* Save those changes
-
-* Commit your changes
-
-* Push your work to the remote!
-
-# Wrapup {background="#9F281A"}
+# Wrapup {background="#440065"}
 
 ## Checking in
 
-1. What are some advantages and disadvantages of using `R` for spatial analysis
+1. What can I clarify about the course?
 
-2. What can I clarify about the course?
-
-3. How do you feel about git and github classroom? How can I make that easier for you?
 
 # End { background-image="img/slide_1/Kepler-world.jpeg" background-opacity="0.7"}
 ::: footer 

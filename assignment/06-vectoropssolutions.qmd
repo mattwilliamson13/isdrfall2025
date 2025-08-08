@@ -1,5 +1,7 @@
 ---
 title: "Assignment 6 Solutions: Vector Operations"
+execute:
+  eval: false
 ---
 
 <span style="color:#9F281A;"> We want to begin to assess the role of distance from schools in determining the education outcomes for Idahoans. We'll use the `landmarks_pnw.csv` and `cejst_pnw.shp` datasets as the basis for this assignment. You'll need to load the csv and convert it to an `sf` object. **We want to compare the percentage of individuals age 25 or over with less than a high school degree (`HSEF` in the cejst dataset) for of counties within 50km of a school (`MTFCC == K2543`) to those that are more than 50km.** </span> 

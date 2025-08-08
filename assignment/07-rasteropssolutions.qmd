@@ -1,5 +1,7 @@
 ---
 title: "Assignment 7 Solutions: Building Spatial Databases"
+execute:
+  eval: false
 ---
 
 

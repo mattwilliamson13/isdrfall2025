@@ -1,6 +1,6 @@
 ---
 title: "Generic"
-subtitle: "HES 505 Fall 2025: Session 9"
+subtitle: "HES 505 Fall 2025: Session 5"
 author: "Matt Williamson"
 format: 
   revealjs:

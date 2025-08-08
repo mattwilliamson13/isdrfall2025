@@ -1,5 +1,5 @@
 group,session,date,end_date,title,flag,deadline,content,lesson,example,assignment,note
-Getting Started,Session 1,2025-08-25,NA,Introduction to the Course,NA,NA,content/01-content,lesson/01-lesson,NA,NA,NA
+Getting Started,Session 1,2025-08-25,NA,Introduction to the Course,NA,NA,content/01-content,lesson/01-lesson,example/01-example,NA,NA
 Getting Started,Session 2,2025-08-27,NA,Tools of the Trade,NA,NA,content/02-content,lesson/02-lesson,example/intro-quarto,assignment/self-eval1,NA
 Getting Started,Session 2,2025-08-29,NA,Self-Evaluation 1 due,TRUE,23:59:00,NA,NA,NA,assignment/self-eval1,NA
 Getting Started,Session 3,2025-09-01,NA,No Class,NA,NA,NA,NA,NA,NA,(Labor Day)

@@ -1,5 +1,7 @@
 ---
 title: "Assignment 8 Solutions: Autocorrelation and Interpolation"
+execute:
+  eval: false
 ---
 
   

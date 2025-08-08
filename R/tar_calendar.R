@@ -11,8 +11,8 @@ save_ical <- function(df, path) {
 # Read the schedule CSV file and create/format columns for displaying on the
 # schedule page. Returns a data frame with all rows nested by group to make it
 # easier to display the schedule by group
-build_schedule_for_page <- function(schedule_file) {
-  schedule <- read_csv(schedule_file, show_col_types = FALSE) %>%
+build_schedule_for_page <- function(schedule_data) {
+  schedule <- schedule_data %>%
     # read_csv() parses the deadline "11:59 PM" as an hms object, which is fine,
     # and there's a format.hms() function that *should* allow for formatting
     # with strptime, but it doesn't---format.hms() just coerces the whole thing
@@ -74,10 +74,10 @@ build_schedule_for_page <- function(schedule_file) {
 
 # Read the schedule CSV file and create a dataset formatted as iCal data that
 # calendar::ic_write() can use
-build_ical <- function(schedule_file, base_url, page_suffix, content_number) {
+build_ical <- function(schedule_data, base_url, page_suffix, content_number) {
   dtstamp <- ic_char_datetime(now("UTC"), zulu = TRUE)
   
-  schedule <- read_csv(schedule_file, show_col_types = FALSE) %>%
+  schedule <- schedule_data %>%
     mutate(session = if_else(is.na(content), glue(""), glue("({session}) "))) %>%
     mutate(summary = glue("{content_number}: {session}{title}")) %>%
     mutate(date_start_dt = date,

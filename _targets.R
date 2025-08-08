@@ -62,12 +62,19 @@ list(
              pattern = map(xaringan_html_files),
              format = "file"),
 ## Class schedule calendar ----  
-tar_target(schedule_file2, here_rel("data", "schedule2.csv"), format = "file"),
-tar_target(schedule_page_data, build_schedule_for_page(schedule_file2)),
+tar_target(
+  schedule_data,
+  readr::read_csv(here_rel("data", "schedule2.csv"), show_col_types=FALSE),
+  format = "rds",    # or "rds"
+  cue = tar_cue("always")
+),
+tar_target(schedule_page_data, 
+           build_schedule_for_page(schedule_data),
+           cue = tar_cue("always")),
 tar_target(
   schedule_ical_data,
   build_ical(
-    schedule_file2, base_url,
+    schedule_data, base_url,
     page_suffix, class_number
   )
 ),
