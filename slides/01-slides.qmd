@@ -285,7 +285,7 @@ p2
 
 ## Course Webpage { background-image="img/slide_1/hellroaring.jpeg"}
 
-[https://isdrfall23.classes.spaseslab.com/](https://isdrfall25.classes.spaseslab.com/){ style="font-size: 1.2em; text-align: center; margin-top: 2em; color:#fff"}
+[https://isdrfall25.classes.spaseslab.com/](https://isdrfall25.classes.spaseslab.com/){ style="font-size: 1.2em; text-align: center; margin-top: 2em; color:#fff"}
 
 :::{style="margin-top: 1.5em; color: #fff"}
 - Syllabus

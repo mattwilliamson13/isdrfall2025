@@ -41,3 +41,29 @@ $presentation-heading-color: #ffc680 !default;
   max-height: 500px;
   white-space: pre;
 }
+
+div.attribution {
+    color: #ffffff; 
+    float: right;
+}
+
+.mermaid .cluster-label {
+  dominant-baseline: hanging;
+  text-anchor: start;
+  transform: translate(5px, calc(100% - 20px));
+}
+
+/* Shrink invisible nodes' shape */
+.mermaid .invisible > rect, 
+.mermaid .invisible > ellipse {
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+}
+
+/* Nudge the label node text near bottom-left */
+.mermaid .label > text {
+  dominant-baseline: hanging;
+  text-anchor: start;
+  transform: translate(0, 10px);
+}

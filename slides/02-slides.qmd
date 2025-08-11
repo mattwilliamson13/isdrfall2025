@@ -19,28 +19,65 @@ library(tidyverse)
 
 1. What can I clarify about the course?
 
+2. Are there any challenges you can already see?
 
-## Today's Plan {background-image="img/slide_2/hudbay.jpeg" background-opacity="0.4"}
+
+## Today's Plan {background-image="img/slide_2/hudbay.jpeg" background-opacity="0.6"}
 
 :::{style="font-size: 1.4em; text-align: middle; margin-top: 2em"}
 
-- What do we mean by reproducibility?
-
-- What is version control and why is it helpful?
+- Open Science, reproducibility, and R
 
 - What is a (spatial) data workflow?
 
-- Why (not) R?
+- Version control for fun and profit
 
 :::
 
-# Why (not) R? {background="#9F281A"}
+# A More Democratic Science? {background="#440065"}
 
-## Why R?
+## What is open science?
 
 ::: columns
 ::: {.column width="30%"}
-::: incremental
+::: {style="margin-left: -3em; font-size: 1.05em"}
+- Scientific research and its outcomes freely accessible to all
+
+- Accelerate research **AND** improve public trust
+
+- Our focus: [Open source software and code]{style="color:#db8872;"}
+:::
+:::
+:::{.column width="70%"}
+<div style="display: flex; justify-content: right; margin-top: -4.5em; 
+margin-right: -6.0em">
+  <figure>
+  <img src="img/slide_2/osp.png" style="width: 800px">
+  <figcaption style="font-size: 0.6em; margin-top: -4em"><a href="https://commons.wikimedia.org/wiki/File:UNESCO-Open_science-pillars-en.png">UNESCO.org</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons</figcaption>
+  </figure>
+</div>
+
+:::
+:::
+
+## Why open source software and code?
+
+- Future-proof: OSS development is fast and ongoing
+
+- Interoperability: Work across hardware types, integrate new software easily
+
+- Free!! (To use and maintain)
+
+- Sharing code and data enables innovation and _reproducibility_
+
+
+## Why (not) R?
+
+::: columns
+::: {.column width="50%"}
+::: {style="margin-left: -3em;"}
+
+![](img/slide_2/drakeyes.jpeg){style="image-align:center"}
 
 -   Open Source
 
@@ -48,12 +85,40 @@ library(tidyverse)
 
 -   Integrated analysis pipelines
 
--   Reproducible workflows
+-   [Reproducible workflows]{style="color:#db8872;"}
+
+:::
+:::
+::: {.column width="50%"}
+![](img/slide_2/drakeno.jpeg){style="image-align:center"}
+
+-   Coding can be hard...
+
+-   Memory challenges
+
+-   Speed
+
+-   Decision fatigue
 :::
 :::
 
+## Anatomy of an `R` session 
+
+::: columns
+::: {.column width="30%"}
+::: {style="margin-left: -3em; font-size: 0.9em;"}
+- Moving beyond **R**ead-**E**val-**P**rint **L**oops
+
+- `scripts`: contain a record of the code in your analysis and the _objects_ you created
+
+- `functions` perform operations on objects
+
+- `packages`: collections of related functions
+
+:::
+:::
 ::: {.column width="70%"}
-
+::: {style="margin-right: -3em;"}
 ::: panel-tabset
 ### Code
 
@@ -88,63 +153,163 @@ p2
 :::
 :::
 :::
+:::
 
-## Why not R? 
+# Reproducible workflows
 
-```{r}
-#| code-overflow: wrap
-#| echo: true
+#
 
-## ---
-## Error: could not find function "performance"
-## ---
-##  [1] "Error in if (str_count(string = f[[j]], 
-##  pattern = \"\\\\S+\") == 1) 
-##  { : \n  argument is of length zero"   
-## ---
-## Error in eval(expr, envir, enclos) : object 'x' not found
-## ---
-## Error in file(file, "rt") : cannot open the connection
-## ---
+> Science is a social process!!
+
+## Why Do We Need Reproducibility?
+
+::: columns
+::: {.column width="20%"}
+::: {style="margin-left: -3em"}
+- Noise!!
+
+- Confirmation bias
+
+- Hindsight bias
+:::
+:::
+::: {.column width="80%"}
+<div style="display: flex; justify-content: center; margin-top: -0.9em; margin-right: -3.0em">
+  <img src="img/slide_6/Munafo_et_al_nathumbeh2017.png" style="width: 1200px; height: 550px">
+</div>
+:::
+:::
+
+::: footer 
+:::{style="font-size: 0.8em; margin-bottom: -1.em; text-align: right; color:#fff"}
+Munafo et al. 2017. Nat Hum Beh.
+:::
+:::
+
+## What do we mean by reproducible "workflow"?
+
+```{mermaid}
+%%| fig-height: 8.5
+graph LR
+  classDef allnodes fill:#db8872,stroke:#ffff,stroke-width:2px,font-size:60px; 
+  classDef invisible fill:none,stroke:none,font-size:1px,padding:0px;
+
+  Import[Import] --> Tidy[Tidy]
+  Tidy --> EntryPoint[" "]:::invisible
+
+  subgraph Understand[" "]
+    EntryPoint --> Transform[Transform]
+    Transform ---> Visualize[Visualize]
+    Visualize ---> Model[Model]
+    Model ---> Transform 
+    Model -->  ExitPoint[" "]:::invisible
+    Label["Understand"]:::label
+  end
+
+  ExitPoint --> Communicate[Communicate]
+
+  style Understand fill:#44006540,stroke:#ffff,stroke-width:6px
+  class Tidy,Import,Transform,Visualize,Model,Communicate allnodes;
+
+  classDef label fill:none,stroke:none,font-weight:bold,font-size:24px,text-align:left;
 
 ```
 
-::: columns
-::: {.column width="50%"}
--   Coding can be hard...
 
--   Memory challenges
-:::
-::: {.column width="50%"}
--   Speed
+::: {style="font-size: 1em; text-align: center;"} 
+- End-to-End process between data and report
 
--   Decision fatigue
-:::
+- Explicit linkage between each step (including iteration)
+
+- Each step involves trials and choices
 :::
 
-## Getting Help
-::: columns
-::: {.column width="50%"}
-- Google it!! 
-  - Use the exact error message
-  - Include the package name
-  - include "R" in the search
+## Reproducibility and your code
 
-:::
-::: {.column width="50%"}
-- Stack Overflow
-  - Reproducible examples 
-- Package "issue" pages
-- r_spatial slack channel
-- [Common errors](https://github.com/noamross/zero-dependency-problems/blob/master/misc/stack-overflow-common-r-errors.md)
+- Scripts: may make your code reproducible (but not your analysis)
 
-:::
-:::
+- Commenting and [formatting](https://style.tidyverse.org/index.html) can help!
 
-::: {style="font-size: 1.2em; text-align: center; color: #9F281A"} 
-**Ask Me**
-:::
+- Think about future you...
+
+```{r}
+#| echo: fenced
+#| eval: false
+## load the packages necessary
+library(tidyverse)
+## read in the data
+landmarks.csv <- read_csv("/Users/mattwilliamson/Google Drive/My Drive/TEACHING/Intro_Spatial_Data_R/Data/2023/assignment01/landmarks_ID.csv")
+
+## How many in each feature class
+table(landmarks.csv$MTFCC)
+
+```
+
+## Reproducible scripts
+
+- Comments explain what the code is doing
+
+- Operations are ordered logically
+
+- Only relevant commands are presented
+
+- Useful object and function names
+
+- Script runs without errors (on your machine and someone else's)
 
 
+
+# Flipping the script
+
+## Toward Efficient Reproducible Workflows
+
+- Scripts can document what you did, but not why you did it!
+
+- Scripts separate your analysis products from your report/manuscript
+
+## What is literate programming?
+
+- Documentation containing code (not vice versa!)
+
+- Direct connection between code and explanation
+
+- Convey meaning to humans rather than telling computer what to do!
+
+## Why literate programming?
+
+- Your analysis scripts **are** computer software
+
+- Integrate math, figures, code, and narrative in one place
+
+- Explaining something helps you learn it
+
+
+# Introducing Quarto 
+
+## What is Quarto?
+
+- A multi-language platform for developing reproducible documents
+
+- A 'lab notebook' for your analyses
+
+- Allows transparent, reproducible scientific reports and presentations
+
+## Key components
+
+1. Metadata and global options: YAML
+
+2. Text, figures, and tables: Markdown and LaTeX
+
+3. Code: `knitr` (or `jupyter` if you're into that sort of thing)
+
+## For this class...
+
+- We'll use headers to outline the analysis
+
+- We'll use code chunks for small, self-contained operations
+
+- We'll create our own functions for repeated operations
+
+- We'll `knit` our documents into a standalone, readable document
 
 
