@@ -1,13 +1,13 @@
 ---
-title: "Introduction to Spatial Data in R"
-date: "2023-08-30"
+title: "Meeting Your Data"
+date: "2025-09-03"
 ---
 ```{r slides-videos, echo=FALSE, include=FALSE}
 source(here::here("R", "slide-things.R"))
 
 ```
 
-Now that we've covered some of the conceptual bases of spatial data and geographic analysis, it's time to get started working with actual data in `R`. Today's readings and lecture are focused on the basics of getting your data into the `R` environment and familiarizing yourself with the different components that make up spatial data objects. We'll do fancier things in the weeks to come!
+Now that you know a bit about the "why" and "how" of this course, it's time to start actually working with data. We'll spend a bit of time thinking about the 'nature' of data, the qualities of "good" data, and the responsibilities of data creators and users. We'll also practice generic approaches for getting your own data into `R` and accessing data via APIs and functions.
 
 ## Readings
 
@@ -23,13 +23,13 @@ Now that we've covered some of the conceptual bases of spatial data and geograph
 
 By the end of today, you should be able to:
 
-1. **Read** spatial data into your `R` environment.
+1. **Summarize** key debates surrounding the role of (spatial) data in solving environmental problems 
 
-2. **Describe** the various aspects of spatial data files and objects.
+2. **Describe** FAIR and CARE principles for data and their relationship to existing debates
 
-3. **Generate** simple summaries describing the spatial data object.
+3. **Read** data into your `R` environment.
 
-4. **Determine** the projection, extent, and resolution of spatial data objects.
+4. **Inspect** the data and summarize it using tables and simple plots
 
 
 ## Slides
