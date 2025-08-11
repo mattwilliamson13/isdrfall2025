@@ -312,4 +312,35 @@ table(landmarks.csv$MTFCC)
 
 - We'll `knit` our documents into a standalone, readable document
 
+# Version control, reproducibility, and sanity
 
+## Version control in general
+
+- Track changes without version explosion (via `git`)
+
+- Create specific snapshots of a project to facilitate experimentation (via `commit` and `branches`)
+
+- Create centralized backups and ease collaboration (via `GitHub`)
+
+## Version control and reproducibility
+
+- Documenting changes to code, manuscripts, figures increases transparency of the scientific process
+
+- Collaboration with other programmers is easier and less risky
+
+- Automates the sharing of code and original data
+
+## Version control and sanity
+
+- `commit` early, `commit` often
+
+- use sensible messages to remind yourself where you were
+
+- make sure you always have the most up-to-date version
+
+- **It will take some practice to `git` comfortable**
+
+
+
+
+ 
