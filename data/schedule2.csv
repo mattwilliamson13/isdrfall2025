@@ -4,7 +4,7 @@ Getting Started,Session 2,2025-08-27,NA,Tools of the Trade,NA,NA,content/02-cont
 Getting Started,Session 2,2025-08-29,NA,Self-Evaluation 1 due,TRUE,23:59:00,NA,NA,NA,assignment/self-eval1,NA
 Getting Started,Session 3,2025-09-01,NA,No Class,NA,NA,NA,NA,NA,NA,(Labor Day)
 Getting Started,Session 4,2025-09-03,NA,Meeting Your data,NA,NA,content/04-content,lesson/04-lesson,NA,NA,NA
-Getting Started,Session 5,2025-09-08,NA,Data Manipulation with the tidyverse,NA,NA,NA,lesson/05-lesson,example/data-manip,NA,NA
+Getting Started,Session 5,2025-09-08,NA,Data Manipulation with the tidyverse,NA,NA,content/05-content,lesson/05-lesson,example/data-manip,NA,NA
 Getting Started,Session 6,2025-09-10,NA,"Pipes, Functions, and Iteraion",NA,NA,content/06-content,lesson/06-lesson,NA,NA,NA
 Fundamentals of Spatial Data,Session 7,2025-09-15,NA,"Data Models, Coordinates, and Geometries",NA,NA,content/07-content,lesson/07-lesson,NA,NA,NA
 Fundamentals of Spatial Data,Session 8,2025-09-17,NA,"Projections, Ectent, and Resolution",NA,NA,content/08-content,lesson/08-lesson,example/vector-intro,NA,NA

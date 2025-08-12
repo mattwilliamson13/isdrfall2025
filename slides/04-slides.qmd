@@ -1,5 +1,5 @@
 ---
-title: "Generic"
+title: "Meeting Your Data"
 subtitle: "HES 505 Fall 2025: Session 4"
 author: "Matt Williamson"
 format: 
@@ -10,3 +10,25 @@ format:
     show-slide-number: print
     embed-resources: true  
 ---
+
+## Today's Plan {background="#9F281A" background-image="img/slide_1/Helix_Nebula.jpeg"}
+
+:::{style="font-size: 1.2em; text-align: middle; margin-top: 2em"}
+- Data, information, and knowledge
+
+- The elements of data quality
+
+- Concerns with the growth in available data
+
+- Towards data justice
+
+:::
+
+##
+
+<div style="display: flex; justify-content: center;">
+  <figure>
+  <img src="img/slide_4/dataInfoKnow.png" style="width: 1000px">
+  <figcaption style="font-size: 0.6em; margin-top: -1em"><a href="https://link.springer.com/article/10.1007/s00191-003-0181-9">Boisot and Canals, 2004</a></figcaption>
+  </figure>
+</div>

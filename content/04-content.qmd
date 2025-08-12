@@ -7,17 +7,25 @@ source(here::here("R", "slide-things.R"))
 
 ```
 
-Now that you know a bit about the "why" and "how" of this course, it's time to start actually working with data. We'll spend a bit of time thinking about the 'nature' of data, the qualities of "good" data, and the responsibilities of data creators and users. We'll also practice generic approaches for getting your own data into `R` and accessing data via APIs and functions.
+Now that you know a bit about the "why" and "how" of this course, it's time to start actually working with data. We'll spend a bit of time thinking about the 'nature' of data, the qualities of "good" data, and the responsibilities of data creators and users. We'll also practice some generic approaches for getting your own data into `R` and accessing data via APIs and functions.
 
 ## Readings
 
-{{< fa arrow-up-right-from-square >}} [Chapter 2](https://r.geocompx.org/spatial-class) in Geocomputation with R [@lovelace_geocomputation_2019] provides and overview of using `sf` for vector datasets and `terra` for raster data.
+### Setting the Stage
 
-{{< fa arrow-up-right-from-square >}} [Chapter 2](https://www.paulamoraga.com/book-spatial/spatial-data-in-r.html) from Moraga (2023) explores similar topics, but provides more explanation about projections, coordinates, etc.
+{{< fa arrow-up-right-from-square >}} [Geographies of conservation II: Technology, surveillance and conservation by algorithm](https://journals.sagepub.com/doi/full/10.1177/0309132517740220) by Adams [-@adams2019geographies] provides a critical perspective on the role of new data-sensing technology in the environment.
 
-{{< fa arrow-up-right-from-square >}} [Simple Features for R](https://r-spatial.github.io/sf/articles/sf1.html) provides a more in-depth, technical discussion of how the `sf` package organizes spatial data and attributes.
+{{< fa arrow-up-right-from-square >}} [The ethics of big data as a public good: Which public? Whose good?](https://royalsocietypublishing.org/doi/epdf/10.1098/rsta.2016.0126) by Taylor [-@taylor2016ethics] highlights some of the difficulties that arise when "big data" is largely owned and created by private companies.
 
-{{< fa arrow-up-right-from-square >}} [Ch 2.1-2.5 from Spatial Data Science with R and terra](https://rspatial.org/spatial/index.html) describes the basic functionality of `terra` for both vector and raster datasets. For reasons we'll discuss in class, we will rarely use `terra` for vector data.
+{{< fa arrow-up-right-from-square >}} [A Survey of Data Quality Requirements That Matter in ML Development Pipelines](https://dl.acm.org/doi/full/10.1145/3592616) by Priestley et al. [-@priestley2023survey] provides a practical discussion of the attributes of "good" data particularly in the context of applied machine learning. While a bit broader in focus, many of the 4 dimensions of data quality are directly relevant to the discussions in the other articles.
+
+{{< fa arrow-up-right-from-square >}} [Data justice and biodiversity conservation](https://conbio.onlinelibrary.wiley.com/doi/full/10.1111/cobi.13919) by Pritchard et al. [-@pritchard2022data] provides an accessible introduction to the concept of data justice and frameworks available for achieving it.
+
+### Technical Details
+
+{{< fa arrow-up-right-from-square >}} [The "Wrangle" section of R for Data Science](https://r4ds.had.co.nz/wrangle-intro.html) from Wickham [-@wickham2016r] provides the logic behind the `tidyverse` approach to data import and manipulation.
+
+[The "Data in `R`" section of Introduction to R](https://intro2r.com/data_r.html) by [@douglas2022introduction] gives an important overview of the different data types in `R` and how they are represented as objects within the `R` environment.
 
 ## Objectives
 
