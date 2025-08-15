@@ -1,5 +1,5 @@
 ---
-title: "Generic"
+title: "Data Manipulation with the `tidyverse`"
 subtitle: "HES 505 Fall 2025: Session 5"
 author: "Matt Williamson"
 format: 
@@ -10,3 +10,11 @@ format:
     show-slide-number: print
     embed-resources: true  
 ---
+
+## What is literate programming?
+
+- Documentation containing code (not vice versa!)
+
+- Direct connection between code and explanation
+
+- Convey meaning to humans rather than telling computer what to do!
