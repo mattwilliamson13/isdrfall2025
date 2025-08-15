@@ -42,9 +42,9 @@ By the end of today you should be able to:
 
 * **Explain** the benefits of version control
 
-* **Understand** how project set-up and structure contribute to reproducible workflows
-
 * **Generate** a `Quarto` document and render it into `.html`
+
+* **Execute** your first `commit` in GitHub classroom
 
 ## Slides
 

@@ -31,13 +31,15 @@ Now that you know a bit about the "why" and "how" of this course, it's time to s
 
 By the end of today, you should be able to:
 
-1. **Summarize** key debates surrounding the role of (spatial) data in solving environmental problems 
+* **Recognize** the role that data selection and documentation plays in reproducible workflows
 
-2. **Describe** FAIR and CARE principles for data and their relationship to existing debates
+* **Summarize** key debates surrounding the role of (spatial) data in solving environmental problems 
 
-3. **Read** data into your `R` environment.
+* **Describe** FAIR and CARE principles for data and their relationship to existing debates
 
-4. **Inspect** the data and summarize it using tables and simple plots
+* **Read** data into your `R` environment.
+
+* **Inspect** the data and summarize it using tables and simple plots
 
 
 ## Slides
