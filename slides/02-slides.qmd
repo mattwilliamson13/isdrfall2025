@@ -111,7 +111,7 @@ margin-right: -6.0em">
 
 - `scripts`: contain a record of the code in your analysis and the _objects_ you created
 
-- `functions` perform operations on objects
+- `functions`: perform operations on objects
 
 - `packages`: collections of related functions
 
@@ -188,41 +188,90 @@ Munafo et al. 2017. Nat Hum Beh.
 
 ## What do we mean by reproducible "workflow"?
 
-```{mermaid}
-%%| fig-height: 8.5
-graph LR
-  classDef allnodes fill:#db8872,stroke:#ffff,stroke-width:2px,font-size:60px; 
-  classDef invisible fill:none,stroke:none,font-size:1px,padding:0px;
 
-  Import[Import] --> Tidy[Tidy]
-  Tidy --> EntryPoint[" "]:::invisible
+```{r, engine='tikz'}
+\usetikzlibrary{arrows.meta, positioning, calc, shapes.geometric}
 
-  subgraph Understand[" "]
-    EntryPoint --> Transform[Transform]
-    Transform ---> Visualize[Visualize]
-    Visualize ---> Model[Model]
-    Model ---> Transform 
-    Model -->  ExitPoint[" "]:::invisible
-    Label["Understand"]:::label
-  end
+\tikzset{
+  phase/.style   = {rounded corners, draw, thick, fill=blue!15,
+                    minimum width=4cm, minimum height=2cm,
+                    align=center, font=\bfseries\Large},
+  inner/.style   = {circle, draw, thick, fill=green!15,
+                    inner sep=2pt, % small fixed padding
+                    align=center, font=\bfseries\large},
+  boxlab/.style  = {font=\bfseries\Huge, fill=white, inner sep=2pt},
+  link/.style    = {thick, -{Stealth[length=4mm,width=2.5mm]}}
+}
 
-  ExitPoint --> Communicate[Communicate]
+\begin{tikzpicture}[node distance=2.5cm and 3cm]
 
-  style Understand fill:#44006540,stroke:#ffff,stroke-width:6px
-  class Tidy,Import,Transform,Visualize,Model,Communicate allnodes;
+% ---------- Ideate inner nodes ----------
+\node (litrev)   [inner, fill=orange!15] {Literature Review};
+\node (resquest) [inner, fill=orange!15, below=1.2cm of litrev] {Research Questions};
+\draw[link] (litrev.south) -- (resquest.north);
 
-  classDef label fill:none,stroke:none,font-weight:bold,font-size:24px,text-align:left;
+% ---------- Ideate background ----------
+\node[draw, thick, rounded corners=6pt, fill=orange!10, minimum width=6.5cm, minimum height=4.5cm] 
+      (ideatebg) at ($(litrev)!0.5!(resquest)$) {};
+\node[boxlab] at ($(ideatebg.north)+(0,-0.25)$) {Ideate};
 
+% ---------- Get Data ----------
+\node (getdata) [phase, right=3.5cm of ideatebg] {Get Data};
+
+% ---------- Outer flow: Import / Tidy ----------
+\node (import) [phase, right=3cm of getdata] {Import};
+\node (tidy)   [phase, right=3cm of import] {Tidy};
+
+% ---------- Understand inner cycle ----------
+\node (transform) [inner, above right=1.5cm and 0.5cm of tidy] {Transform};
+\node (visualize) [inner, below right=1cm and 0.5cm of transform] {Visualize};
+\node (model)     [inner, below left=1cm and 0.5cm of visualize] {Model};
+
+% ---------- Understand background ----------
+\node[draw, thick, rounded corners=6pt, fill=gray!10, minimum width=6.5cm, minimum height=4.5cm] 
+      (understandbg) at ($(transform)!0.5!(model)$) {};
+\node[boxlab] at ($(understandbg.north)+(0,0.25)$) {Understand};
+
+% ---------- Communicate ----------
+\node (communicate) [phase, right=4cm of understandbg] {Communicate};
+
+% ---------- Arrows ----------
+% Main flow arrows in red
+\draw[link, red] (ideatebg.east) -- (getdata.west);
+\draw[link, red] (getdata.east) -- (import.west);
+\draw[link, red] (import.east) -- (tidy.west);
+\draw[link, red] (tidy.south) -- ($(transform.north)+(0,0.1)$);
+\draw[link, red] (understandbg.east) -- (communicate.west);
+
+% Inner cycle arrows (black)
+\draw[link, bend left=25] (transform) to (visualize);
+\draw[link, bend left=25] (visualize) to (model);
+\draw[link, bend left=25] (model) to (transform);
+
+% Curved return arrow (black) Communicate → Ideate
+\draw[link, bend left=35] (communicate.north) to (ideatebg.north);
+
+\end{tikzpicture}
 ```
 
 
-::: {style="font-size: 1em; text-align: center;"} 
-- End-to-End process between data and report
 
-- Explicit linkage between each step (including iteration)
 
-- Each step involves trials and choices
-:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Reproducibility and your code
 
@@ -238,10 +287,10 @@ graph LR
 ## load the packages necessary
 library(tidyverse)
 ## read in the data
-landmarks.csv <- read_csv("/Users/mattwilliamson/Google Drive/My Drive/TEACHING/Intro_Spatial_Data_R/Data/2023/assignment01/landmarks_ID.csv")
+landmarks_csv <- read_csv("/Users/mattwilliamson/Google Drive/My Drive/TEACHING/Intro_Spatial_Data_R/Data/2023/assignment01/landmarks_ID.csv")
 
 ## How many in each feature class
-table(landmarks.csv$MTFCC)
+table(landmarks_csv$MTFCC)
 
 ```
 
@@ -285,6 +334,19 @@ table(landmarks.csv$MTFCC)
 
 
 # Introducing Quarto 
+
+## What is Quarto?
+
+![](img/slide_2/rstudio-qmd-how-it-works.png)
+
+
+::: {style="font-size: 1em; text-align: center;"} 
+- End-to-End process between data and report
+
+- Explicit linkage between each step (including iteration)
+
+- Each step involves trials and choices
+:::
 
 ## What is Quarto?
 
