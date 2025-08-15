@@ -24,6 +24,13 @@ format:
 
 :::
 
+## Revisiting Workflows
+
+
+::: {style="font-size: 1em; text-align: center;"} 
+Get Data???
+:::
+
 ##
 
 <div style="display: flex; justify-content: center;">
@@ -32,3 +39,35 @@ format:
   <figcaption style="font-size: 0.6em; margin-top: -1em"><a href="https://link.springer.com/article/10.1007/s00191-003-0181-9">Boisot and Canals, 2004</a></figcaption>
   </figure>
 </div>
+
+## 
+
+> Observations become data through the filters we put on them
+
+::: {.incremental}
+
+* Our questions guide which observations we consider data
+
+* But what about found data?
+
+:::
+
+## Most spatial data is "found" data
+
+* Military advancement
+
+* Enumeration of populations 
+
+* Delineations of authority
+
+## Data Justice
+
+## Questions to ask yourself?
+
+# ... but you have data!!
+
+## Documenting your data
+
+## Exploring your data
+
+## Doing both with Quarto
