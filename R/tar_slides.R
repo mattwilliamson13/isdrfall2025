@@ -37,7 +37,7 @@ quarto_to_pdf <- function(slide_path){
   withr::local_options(list(crayon.enabled = NULL))
   path_sans_ext <- gsub("_site/","", paste0("_site/",tools::file_path_sans_ext(slide_path)))
   
-  input.pdf <-pagedown::chrome_print(input = slide_path)
+  input.pdf <-pagedown::chrome_print(input = slide_path, browser = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
   compress_pdf(input = input.pdf, output = paste0(path_sans_ext, ".pdf"))
   return(paste0(path_sans_ext,".pdf"))                   
 }
