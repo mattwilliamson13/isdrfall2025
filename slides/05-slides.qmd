@@ -18,3 +18,22 @@ format:
 - Direct connection between code and explanation
 
 - Convey meaning to humans rather than telling computer what to do!
+
+## What is a script?
+
+## Scripts and your workflow
+
+## Why care about style?
+
+# Introducing the tidyverse
+
+## What? Why?
+
+## Basic structure: Verbs
+
+## Basic structure: Helpers
+
+## Basic structure: Pipes
+
+## The `tidyverse` and spatial data
+
