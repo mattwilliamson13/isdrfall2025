@@ -10,11 +10,14 @@ This class relies on several tools that you may not be used to: an online instan
 
 `Rstudio` requires that a working version of `R` (to actually execute the code) along with a program to process graphics (usually `XQuartz`) and a suite of compilers to allow for various packages and functions to work (these are often a part of `Rtools` or `Xcode`). You should be able to install all of these on your laptop for your own work. **We are going to skip all of that and use an `RStudio` server.** While that might rob you of the joy of installing `R` on your own (though you probably should do that anyway), it ensures that everyone is using the exact same version of packages, operating system, and underlying architecture. This, in turn, should make it easier for us to work together to troubleshoot when we run into problems.
 
+### Getting credentials
+Because our server runs on a Boise State instance of Amazon Web Services, you'll need to have credentials to login. Because we may update packages or underlying data periodically throughout the course, your credentials may change in between logins. As such, you'll need to go [here](https://rstudio.aws.boisestate.edu/) before logging into the server to refresh your credentials and make sure you're updating the current version.
+
 ### Logging into our `Rstudio` server
 
-You should be able to get to our server by clicking [this link](https://rstudio.apps.aws.boisestate.edu/) or the [{{< fa cloud >}}](https://rstudio.apps.aws.boisestate.edu/) in the upper right corner of the webpage. Assuming you've registered for the course, I've given your name and email to our IT admin and they should have sent you a username and password. Once you've clicked that you should see:
+You should be able to get to our server by clicking [this link](https://rstudio.apps.aws.boisestate.edu/) or the [{{< fa cloud >}}](https://rstudio.apps.aws.boisestate.edu/) in the upper right corner of the webpage. Once you've clicked that you should see:
 ![](img/01/login.png)
-Enter your username and password (provided by OIT) and click `Sign In`. You should now see the main `Rstudio` environment.
+Assuming you followed the instructions in the previous step to get your credentials, you can enter them here and click `Sign In`. You should now see the main `Rstudio` environment.
 ![](img/01/RstudioVanilla.png)
 
 
