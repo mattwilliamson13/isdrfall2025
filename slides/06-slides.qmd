@@ -11,4 +11,43 @@ format:
     embed-resources: true  
 ---
 
+## What is literate programming?
 
+- Documentation containing code (not vice versa!)
+
+- Direct connection between code and explanation
+
+- Convey meaning to humans rather than telling computer what to do!
+
+## Why not just use scripts
+
+## Better documentation, better reproducibility: Quarto
+
+
+## Keeping your documents readable
+
+## Pipes
+
+## Iteration
+
+## Building your own functions
+
+## Documenting functions
+
+# Bringing it all together: Project Management
+
+## Directory structure
+
+## The `data` folder
+
+## The `scripts` folder
+
+## The `docs` folder
+
+## Avoiding pitfalls with `git`
+
+- Always pull before you start working on anything new
+
+- Avoid committing large files
+
+- Using `.gitignore`
