@@ -65,7 +65,7 @@ build_schedule_for_page <- function(schedule_data) {
     select(group, 
            ` ` = col_date, Title = col_title,
            Content = col_content, Lesson = col_lesson,
-           Excercises = col_example, Assignment = col_assignment) %>%
+           Exercises = col_example, Assignment = col_assignment) %>%
     group_by(group) %>%
     nest()
   
