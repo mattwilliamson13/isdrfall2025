@@ -15,7 +15,7 @@ library(pander)
 
 - {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
 - {{< fa university >}} &nbsp; {{< var instructor.office >}}
-- {{< fa envelope >}} &nbsp; <a href=mailto:{{< var instructor.email >}}</a>
+- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
 - {{< fa calendar-check >}} &nbsp; [Schedule an appointment]({{< var instructor.appointment_url >}})
 :::
 
@@ -147,7 +147,7 @@ I teach this course because I believe that a) we can learn a lot about social an
 **In-Class Excercises (3pts x 30):** The latter part of each class session will involve some hands-on practice in the form of in-class excercises. These exercises are designed to encourage you to work with your peers to practice different skills in class, allow me to identify any challenges you're experiencing, and encourage attendance. **Exercises are due at 3:00PM after each class period. I will not accept submissions after the deadline as these are about in-class participation.** If you turn the assignment in on-time you'll recieve full credit.
 
 ::: {.callout-tip}
-You can miss up to 3 in-class exercises and still recieve full-credit for this portion of the course.
+You can miss up to 3 in-class exercises and still receive full-credit for this portion of the course.
 :::
 
 **Unit Homework (20pts x 5):** There are five homework assignments, one at the end of each section. These exercises are designed to reinforce the material we cover in lecture, give you practice designing and implementing your own workflows, and build habits that promote reproducibility in science. They also allow me get a sense for your engagement in the course. **Exercises are due at 11:59PM on their due date (generally Thursdays). I will post the "key" within 3 days of the due date and will not accept submissions after the key is posted.** If you turn the assignment in on-time with the required number of commits, you'll recieve full credit.
