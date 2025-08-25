@@ -133,14 +133,23 @@ This syllabus reflects a plan for the semester. Deviations may become necessary 
 
 
 ## Assignments and Grades
-**NEED TO ADJUST THIS**
-- Points for course
-- Assignments/exercises complete/not
-- Revisions based on Goals from self assessment
-- Final Project based on goals from self assessment
-- Need to rework
 
 I teach this course because I believe that a) we can learn a lot about social and ecological processes by studying _where_ they happen, b) integrating spatial analysis directly into statistical workflows makes those analyses more robust and reproducible, and c) overcoming coding challenges can provide a profound sense of accomplishment. That said, I recognize that there are many reasons that _you_ are taking this course and that my objectives may differ from yours. In order to make sure that you get what you need out of this class, we'll be using a mix of approaches for determining your grade in this course.
+
+```{r}
+#| echo: false
+#| message: false
+library(kableExtra)
+
+points_df <- tibble(`Assignment Group` = c("Self Reflection", "Class Exercises", "Unit Homework", "Homework Revision", "Final Project"),
+                        `Points Possible` = c(25, 81, 100, 200, 150)) %>% mutate(`Percentage of Grade` = round(`Points Possible`/sum(`Points Possible`), digits = 2) *100) 
+
+points_df %>% 
+  kbl() %>% 
+  kable_classic_2()
+
+```
+
 
 **Self-assessment (12.5 pts x 2): ** During the first week of the course, I'm going to ask you to reflect on what you want out of this course (concepts, skills, practice, etc.). This assessment will help me do a better job of aligning the content of the course to your specific needs. Grading for the self-assessment is described on the [assignments page](/assignment/).
 
@@ -152,7 +161,7 @@ You can miss up to 3 in-class exercises and still receive full-credit for this p
 
 **Unit Homework (20pts x 5):** There are five homework assignments, one at the end of each section. These exercises are designed to reinforce the material we cover in lecture, give you practice designing and implementing your own workflows, and build habits that promote reproducibility in science. They also allow me get a sense for your engagement in the course. **Exercises are due at 11:59PM on their due date (generally Thursdays). I will post the "key" within 3 days of the due date and will not accept submissions after the key is posted.** If you turn the assignment in on-time with the required number of commits, you'll recieve full credit.
 
-**Assignment Revisions (40pts x 5):** We will have three "assignment revisions" due during the course. These provide an opportunity for me to check in and see how things are going. You'll be able to update your responses to the homeworks based on the keys and reflect on what you've learned throughout the course of the assignments. You'll also be able to provide additional feedback on how the course is going for you. Rather than assign arbitrary points to each assignment, I'm going to grade your assignment revisions using the following 'levels' (inspired by Sarah K. Johnson's [description](https://sites.tufts.edu/teaching/2022/03/10/ungrading-a-graduate-data-analysis-course/) of her graduate data analysis course at Tufts):
+**Assignment Revisions (50pts x 5):** We will have five "assignment revisions" due during the course. These provide an opportunity for me to check in and see how things are going. You'll be able to update your responses to the homeworks based on the keys and reflect on what you've learned throughout the course of the assignments. You'll also be able to provide additional feedback on how the course is going for you. Rather than assign arbitrary points to each assignment, I'm going to grade your assignment revisions using the following 'levels' (inspired by Sarah K. Johnson's [description](https://sites.tufts.edu/teaching/2022/03/10/ungrading-a-graduate-data-analysis-course/) of her graduate data analysis course at Tufts):
 
 * **Please Resubmit:** This indicates that either your code does not run as written (i.e., your Quarto document will not compile on my computer), you did not use Git as instructed, and/or that your responses to the questions I posed indicate that you do not quite understand the material as well as I would like. You'll need to schedule an appointment to talk with me and we'll work out what you need to do to get credit for the assignment. Although there isn't a hard deadline for this resubmission, the assignments build on each other so it's in your best interest to complete the resubmission before you get to the next assessment. Failure to resubmit will result in no credit for the assessment.
 
@@ -160,22 +169,56 @@ You can miss up to 3 in-class exercises and still receive full-credit for this p
 
 * **Good To Go:** All of your code works, you completed the necessary Git steps, and all of the pieces are there and polished. I may have some minor comments, but I don't need you to address them for this assignment. 
 
-**Final Project (150pts): ** The final project asks you to conduct an entire spatial analysis from layout to results. Grades on the final project are based on your objectives and your self-assessment of whether or not you achieved those objectives. Your first draft of the final project will be due __December 5__. I'll make comments based on the same categories for the homework revision and you'll have time to revise your submission prior to the final deadline of __December 14__. 
+::: {.callout-tip}
+You can miss 1 assignment revision and still receive full-credit for this portion of the course.
+:::
+
+**Final Project (150pts): ** The final project asks you to conduct an entire spatial analysis from layout to results. Grades on the final project are based on your objectives and your self-assessment of whether or not you achieved those objectives. 
+
+::: {.callout-tip title="Final Project Deadlines and Points"}
+
+Points for the project are broken down by:
+
+  * Grading Contract Submitted (October 1): 10 pts (full credit if submitted)
+  
+  * Proposed Project Description (November 1): 15 pts (full credit if submitted)
+  
+  * First Draft Submitted (December 9): 25 pts (full credit if submitted)
+  
+  * Final Draft Submitted with Self Evaluation (December 19): 100 pts (based on contract grade and self-evaluation)
+  
+:::
+
 
 You can find descriptions for all the assignments on the [assignments page](/assignment/).
 
 ### Grades
-We'll use a form of [contract grading](https://en.wikipedia.org/wiki/Contract_grading#:~:text=Contract%20grading%20is%20a%20form,correspond%20to%20specific%20letter%20grades.) to determine your grades in the course. Contract grading allows us to have a conversation about what you want out of the course, what you expect to put into it, and what I think you need to be successful in deploying the skills we learn here. Based on your goals for course, we'll sign a contract that instantiates your objectives into the grade you'll receive for the course. Complete the assignments and meet your objectives and you'll get the grade you chose. 
 
-The expectations for the grades are:
+```{r}
+#| echo: false
+#| message: false
 
-* **A** You complete all of the self-assessments and at least 8 of the exercises. All of the assignment revisions achieve the "Good to Go" level. Your final project achieves the "Good to Go" level. My assessment of the various levels will be based on your objectives for the course and your ability to follow instructions.
+grades_df <- tibble(Grade = c('A','A-','B+','B', 'B-','C+', 'C', 'C-','D+', 'D'),
+                    `Total Points` = 
+                      c(round(0.93*sum(points_df$`Points Possible`), digits = 0),
+                        round(0.90*sum(points_df$`Points Possible`), digits = 0),
+                        round(0.87*sum(points_df$`Points Possible`), digits = 0),
+                        round(0.83*sum(points_df$`Points Possible`), digits = 0),
+                        round(0.8*sum(points_df$`Points Possible`), digits = 0),
+                        round(0.77*sum(points_df$`Points Possible`), digits = 0),
+                        round(0.73*sum(points_df$`Points Possible`), digits = 0),
+                        round(0.7*sum(points_df$`Points Possible`), digits = 0),
+                        round(0.67*sum(points_df$`Points Possible`), digits = 0),
+                        round(0.63*sum(points_df$`Points Possible`), digits = 0)))
 
-* **B** You complete all of the self-assessments and at least 8 of the exercises. At least one of the assignment revisions achieves the "Good to Go" level with the remainder achieving "Resubmit if you like". Your final project achieves the "Resubmit if you like" level. My assessment of the various levels will be based on your objectives for the course and your ability to follow instructions.
 
-* **C** You complete all of the self-assessments and at least 6 of the exercises. All of your assignment revisions achieve the "Resubmit if you like" level. Your final project achieves the "Resubmit if you like" level. My assessment of the various levels will be based on your objectives for the course and your ability to follow instructions.
 
-* **D** You complete all of the self-assessments and at least 4 of the exercises. At least one of your assignment revisions achieves the "Resubmit if you like" level. Your final project achieves the "Resubmit if you like" level. My assessment of the various levels will be based on your objectives for the course and your ability to follow instructions.
+grades_df %>% 
+  kbl() %>% 
+  kable_classic_2()
+
+```
+
 
 ### Attendance and incomplete assignments 
 Attendance is an important part of this course. You are allowed to miss 2 classes without providing any justification (stuff happens). Beyond that, each additional absence will result in a 0.5 grading reduction (i.e., an A becomes and A-). Similarly, completing the assignments to a satisfactory level is vital to ensure you have a firm grip on the code and concepts. Hence, each assignment that fails to achieve a "Resubmit If You Like" will result in 0.5 grading reduction.
