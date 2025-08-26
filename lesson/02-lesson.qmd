@@ -1,6 +1,49 @@
 ---
-title: "Generic Lesson"
+title: "Introducing Git and Quarto"
 ---
+
+## Objectives 
+1. Successfully clone a repository into your RStudio Session
+2. Edit a Quarto document, save the changes, and commit them to git
+3. Render a Quarto document into a final html page
+
+## Gitting started
+
+### Cloning a repository to RStudio
+
+Each assignment in Github Classroom creates a repository for you in your Github account. To work on it; however, you'll have to get it into Rstudio. I'll show you how to do that now.
+
+Start by creating a new project. Click on the little cube in the top right of RStudio, it should give you a dropdown that looks like this:
+
+![Untitled](img/02/new_proj.png)
+
+Click on the New project button it should bring up a window that looks like:
+
+![Untitled](img/02/version_control_directory.PNG)
+
+Click on the version control option which will bring up
+
+![Untitled](img/02/clone_page.png)
+
+Select the Git option
+
+![Untitled](Managing%20the%20webpage%20a16820ff28ad4db5a891c87b069d1c46/Untitled%207.png)
+
+Now go back to our Github page, make sure your branch is listed in the top left corner (here it says Matt_NewBranch), and click the Code dropdown button (green in the topright)
+
+![Untitled](Managing%20the%20webpage%20a16820ff28ad4db5a891c87b069d1c46/Untitled%208.png)
+
+Copy the link that appears under the HTTPS option and pasted it in the repository URL in the RStudio Git interface.
+
+![image.png](Managing%20the%20webpage%20a16820ff28ad4db5a891c87b069d1c46/image.png)
+
+Now you should be able to click “Create Project” and clone the website onto your computer and edit in RStudio.  If you were successful, your RStudio screen should look something like this:
+
+![image.png](Managing%20the%20webpage%20a16820ff28ad4db5a891c87b069d1c46/image%201.png)
+
+You’ll see a “Git” tab in the same pane as your “Environment” pane, you’ll see all of the files and folders associated with the webpage in the “Files” pane, you’ll see the project name in the top right corner next to the R box, and you see the branch you’re working on in the “Git” tab of your environment pane (here it’s the main, but you should always be working in the branch you created.
+
+Now that you've successfully 
 
 ## The git workflow
 
