@@ -54,9 +54,9 @@ height_shade2 <- function (heightmap,
 }
 
 
-map <- "fchurch"
-protected_areas <- get_padus(template = "Frank Church-River Of No Return Wilderness",
-                             label = "FCWA") 
+map <- "sawtooth"
+protected_areas <- get_padus(template = "Sawtooth Wilderness",
+                             label = "SWA") 
 
 pa_buff <- protected_areas[[1]] %>% 
   st_buffer(., dist = 1)
@@ -67,8 +67,8 @@ mat <- raster_to_matrix(zelev)
 pal <- "gray_arches2"
 
 c1 <- scico(palette = "grayC", n = 5)
-c2 <- natparks.pals(name = "Volcanoes", n = 7)
-colors <- c(c1[2:4], rev(c2[3:7]))
+c2 <- natparks.pals(name = "Arches2", n = 7)
+colors <- c(c1[2:3], rev(c2[4:7]))
 # Calculate the aspect ratio of the plot so you can translate the dimensions
 
 w <- nrow(mat)
@@ -117,7 +117,7 @@ mat %>%
           background = "white") 
 
 # Use this to adjust the view after building the window object
-render_camera(phi = 36, zoom = 0.65, theta = -20)
+render_camera(phi = 36, zoom = 0.65, theta = 60)
 
 ###############################
 # Create High Quality Graphic #
@@ -180,3 +180,5 @@ saveRDS(list(
   end_time <- Sys.time()
   cat(glue("Total time: {end_time - start_time}"))
 }
+
+

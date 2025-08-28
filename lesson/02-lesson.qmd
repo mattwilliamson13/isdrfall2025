@@ -7,6 +7,8 @@ title: "Introducing Git and Quarto"
 2. Edit a Quarto document, save the changes, and commit them to git
 3. Render a Quarto document into a final html page
 
+<iframe src="https://boisestate.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=56546862-e006-4cd0-ac23-b3470112896a&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&captions=true&interactivity=all" height="253" width="450" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="Thu Aug 28 2025 10:39:33 AM" ></iframe>
+
 ## Gitting started
 
 ### Cloning a repository to RStudio

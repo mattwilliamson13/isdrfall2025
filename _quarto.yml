@@ -167,7 +167,6 @@ website:
         - section: "Final Project"
           contents:
             - assignment/final-proj.qmd
-
     - title: "Examples"
       contents:
         - section: "Overview"
