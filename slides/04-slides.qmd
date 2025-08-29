@@ -11,6 +11,15 @@ format:
     embed-resources: true  
 ---
 
+## Checking in
+
+* Have you used the videos and lessons?
+
+* How can I make them more useful?
+
+* Anything I can clarify from last class?
+
+
 ## Today's Plan {background="#9F281A" background-image="img/slide_1/Helix_Nebula.jpeg"}
 
 :::{style="font-size: 1.2em; text-align: middle; margin-top: 2em"}
@@ -52,6 +61,18 @@ Get Data???
 
 :::
 
+## FAIR Data and Found Data
+
+<div style="display: flex; justify-content: center;">
+  <figure>
+  <img src="img/slide_4/FAIR_data_principles.jpg" style="width: 900px">
+  <figcaption style="font-size: 0.6em; margin-top: -1em"><a href="https://roadtofair.hypotheses.org/47">Alvan&#xe7;o 2021</a></figcaption>
+  </figure>
+</div>
+
+>FAIR data improves our ability to leverage existing data, but we haven't really reached this ideal.
+
+
 ## Most spatial data is "found" data
 
 * Military advancement
@@ -60,9 +81,8 @@ Get Data???
 
 * Delineations of authority
 
-## Data Justice
+## Making the invisible visible...
 
-* Making the invisible visible...
 
 ::: {.incremental}
 
@@ -79,7 +99,26 @@ Get Data???
   
 ## Data Justice in Practice
 
-  
+<div style="display: flex; justify-content: center;">
+  <figure>
+  <img src="img/slide_4/data_justice.jpg" style="width: 705px">
+  <figcaption style="font-size: 0.6em; margin-top: -1em"><a href="https://www.tandfonline.com/doi/full/10.1080/02681102.2022.2091505">Hoefsloot et al., 2022</a></figcaption>
+  </figure>
+</div>
+
+## From FAIR to CARE
+
+<div style="display: flex; justify-content: center;">
+  <figure>
+  <img src="img/slide_4/fare_care.png" style="width: 705px">
+  <figcaption style="font-size: 0.6em; margin-top: -1em"><a href="https://www.gida-global.org/care">Global Indigenous Data Alliance</a></figcaption>
+  </figure>
+</div>
+
+
+* FAIR is about access and documentation
+
+* CARE is about sovereignty, governance, and justice
 
 ## Questions to ask yourself?
 
@@ -91,8 +130,10 @@ Get Data???
 
 # ... but you have data!!
 
-## Documenting your data
+## ...but you have data!!
 
-## Exploring your data
+1. Documenting your data
 
-## Doing both with Quarto
+2. Exploring your data
+
+3. Doing both with Quarto

@@ -21,6 +21,8 @@ Now that you know a bit about the "why" and "how" of this course, it's time to s
 
 {{< fa arrow-up-right-from-square >}} [Data justice and biodiversity conservation](https://conbio.onlinelibrary.wiley.com/doi/full/10.1111/cobi.13919) by Pritchard et al. [-@pritchard2022data] provides an accessible introduction to the concept of data justice and frameworks available for achieving it.
 
+{{< fa arrow-up-right-from-square >}}[The CARE Principles for Indigenous Data Governance](https://static1.squarespace.com/static/5d3799de845604000199cd24/t/6397b1aff7a6fb54defdf687/1670885815820/dsj-1158_carroll.pdf) by [-@carroll2023care] outlines a framework for data justice in an Indigenous context.
+
 ### Technical Details
 
 {{< fa arrow-up-right-from-square >}}[Tidy Data](https://www.jstatsoft.org/article/view/v059i10) by [-@wickham2014] provides the foundations for thinking about `tidy` data. What it is, why it's helpful, etc.

@@ -22,6 +22,8 @@ The following readings are intended to give you some sense of the discussion sur
 
 - <i class="fas fa-book"></i> [The Whole Game](https://r4ds.hadley.nz/whole-game.html) - from Wickham et al., *R for Data Science* [@wickham2016r]. Focus on the sections that begin with "Workflow" to get a sense for how we'll start putting the pieces together.
 
+- <i class="fas fa-book"></i>[The FAIR Guiding Principles for scientific data management and stewardship](https://www.nature.com/articles/sdata201618) by [-@wilkinson2016fair] provides an overview of the FAIR framework for accessible, reproducible data.
+
 ### Technical Details
 
 - {{< fa arrow-up-right-from-square >}} [Authoring in Quarto](https://quarto.org/docs/get-started/authoring/rstudio.html) - an intro to Quarto for developing different kinds of documents. Lots of other resources linked here!!
