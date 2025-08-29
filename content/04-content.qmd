@@ -23,9 +23,12 @@ Now that you know a bit about the "why" and "how" of this course, it's time to s
 
 ### Technical Details
 
+{{< fa arrow-up-right-from-square >}}[Tidy Data](https://www.jstatsoft.org/article/view/v059i10) by [-@wickham2014] provides the foundations for thinking about `tidy` data. What it is, why it's helpful, etc.
+
+
 {{< fa arrow-up-right-from-square >}} [The "Wrangle" section of R for Data Science](https://r4ds.had.co.nz/wrangle-intro.html) from Wickham [-@wickham2016r] provides the logic behind the `tidyverse` approach to data import and manipulation.
 
-[The "Data in `R`" section of Introduction to R](https://intro2r.com/data_r.html) by [@douglas2022introduction] gives an important overview of the different data types in `R` and how they are represented as objects within the `R` environment.
+{{< fa arrow-up-right-from-square >}}[The "Data in `R`" section of Introduction to R](https://intro2r.com/data_r.html) by [@douglas2022introduction] gives an important overview of the different data types in `R` and how they are represented as objects within the `R` environment.
 
 ## Objectives
 

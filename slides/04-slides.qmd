@@ -62,7 +62,32 @@ Get Data???
 
 ## Data Justice
 
+* Making the invisible visible...
+
+::: {.incremental}
+
+  * Globalization of data resources
+  * Data "traces" and policing
+  * Bias in data &rArr; Bias in policy
+
+:::
+
+## Data Justice
+
+
+>**Data Justice** promotes ethical and equitable practices in the collection, analysis, and use of data to serve the dignity, rights, and well-being of individuals and communities, especially those who have been historically marginalized
+  
+## Data Justice in Practice
+
+  
+
 ## Questions to ask yourself?
+
+* Where did this data come from and why was it collected?
+
+* How might the intention and biases of the collector affect the data?
+
+* Who might benefit or suffer from this analysis and what do I owe them?
 
 # ... but you have data!!
 

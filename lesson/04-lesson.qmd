@@ -1,4 +1,40 @@
 ---
-title: "Generic Lesson"
+title: "Introducing your Data"
 ---
+
+## Objectives
+
+1. Practice getting data into `R` from different sources
+2. Learn to identify common import errors
+3. Generate summaries of imported data
+
+### Common Sources of Data
+
+
+#### It's yours!
+
+#### It comes with a package
+
+#### You download it
+
+
+### Checking yourself (or at least `R`)
+
+#### Did you get it all?
+
+#### Is it meaningful?
+
+#### Does `R` recognize it?
+
+### Exploring your new data
+
+#### Basic stats
+
+#### Data frequency
+
+#### Oddballs
+
+
+
+
 
