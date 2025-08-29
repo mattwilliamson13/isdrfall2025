@@ -202,6 +202,7 @@ website:
             - resource/r.qmd
             - resource/rmarkdown.qmd
             - resource/getting-setup.qmd
+            - resource/dataclasses.qmd
             
 
   page-footer:
