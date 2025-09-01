@@ -8,10 +8,24 @@ title: "Introducing your Data"
 2. Learn to identify common import errors
 3. Generate summaries of imported data
 
+## A Note about Project Management
+
+You'll notice that every repository we use for assignments in this class has a set folder structure (with `data`, `docs`, etc.). This helps ensure that once anyone has cloned the repository all of the paths to files, code, etc will be the same regardless of who's running the code. For this lesson, we'll be working within the `data` folder. You'll notice that within the `data` folder, there is a subfolder for `original` and one for `processed`. **The `original` folder is reserved for unmodified data.** This could be your initial spreadsheet of data, the version of a dataset that you downloaded for an analysis, or any other file that you will eventually modify for your analysis. If you make any changes (rename variables, filter observations, modify values), those changes should be saved to an object in the `processed` folder
+
+::: {.callout-warning}
+For your analysis to be reproducible, any filtering, cleaning, or modification of that original data should be documented in your scripts or Quarto document and the outputs stored in the `processed` folder.
+
+:::
+
 ### Common Sources of Data
 
+There are, in general, three types of data that you will encounter that meet our `original` data criteria. Data you've collected, data you've downloaded from somehere else, or data you've accessed via a package.
 
 #### It's yours!
+
+So far, this is the type of data that most students bring into class. It's usually some sort of spreadsheet that contains all of that hard-earned field data. Although there are `R` packages for dealing with Microsoft Excel spreadsheets, we won't focus on those for two reasons: 1) Excel is a proprietary software and so may not be available to all users and 2) Excel makes a lot of formatting choices for you that may not actually be helpful in your analysis.
+
+Instead, we'll focus on a more general idea, the "delimited" text file. A delimited text file is flat (i.e., there's only one "sheet") and uses a consistent character (like a `,` or a `tab`) to denote when column breaks should occur.
 
 #### It comes with a package
 
