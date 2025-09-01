@@ -128,6 +128,8 @@ Get Data???
 
 * Who might benefit or suffer from this analysis and what do I owe them?
 
+* Are there ways I can address this in my analysis or interpretation?
+
 # ... but you have data!!
 
 ## ...but you have data!!
