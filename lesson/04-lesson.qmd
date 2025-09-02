@@ -79,18 +79,21 @@ library(sf)
 id_counties <- counties(state="ID", year = 2024)
 
 ```
-
+Here we are providing the API with a state and a year which `counties` converts into an API call to the census page. There are more complicated versions of this that we'll explore down the road once you're more comfortable with the spatial packages.
 
 
 #### It comes with a package
 
+One final option for obtaining data is that it "ships" with a package. That is, when you install the package, you get the data along with the functions. You're not likely to use this much for your own analysis, but it can be critical when you're trying to get help with a coding problem. Most help sites (e.g., StackOverflow, Posit Community) require a [minimally reproducible example](https://forum.posit.co/t/faq-how-to-do-a-minimal-reproducible-example-reprex-for-beginners/23061). Minimally reproducible examples allow others to diagnose your coding problem without you having to share your dataset and without them needing to run all of the cleanup steps.  You can type `library(help = "datasets")` to get a list of a variety of example datasets. We'll load the `iris` dataset here just so you can see how it works should you need it.
 
-
-The final way
-
-The last 
+```{r}
+data(iris)
+head(iris)
+```
 
 ### Checking yourself (or at least `R`)
+
+Ok, so you've got your data into `R`, the first thing you need to do is to make sure that the import was successful. Before you do anything in `R` it's worth familiarizing yourself with the metadata (data about the data) and building your intuition for how the data _should_ look. Let's take a look at the [page](https://www.fec.gov/data/receipts/?data_type=processed&committee_id=C00331397&two_year_transaction_period=2026) where the data was exported. We can see that there are 233 individual entries and what appears to be 6 columns. 
 
 #### Did you get it all?
 
