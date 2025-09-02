@@ -35,6 +35,13 @@ format:
 
 ## Revisiting Workflows
 
+<div style="display: flex; justify-content: center;">
+  <figure>
+  <img src="img/slide_4/flowchart.png" style="width: 1000px">
+  </figure>
+</div>
+
+
 
 ::: {style="font-size: 1em; text-align: center;"} 
 Get Data???

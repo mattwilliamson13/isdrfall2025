@@ -31,18 +31,64 @@ There are a variety of functions in base `R` that will read delimited files (`re
 
 We'll talk more about the `tidyverse` next week, but for the time being it's worth knowing that the general structure of `tidyverse` functions is to combine a `verb` with and `object`. So in order to read a delimited file, we might use the `read_delim()` function where `read` is the `verb` and `delim` is the `object`
 
-For this example, I've downloaded a file from the [Federal Elections Committee](www.fec.gov) depicting the campaign contributions to one of our Congressman in the 2025-2026 fiscal year. It's located in your `data/original` folder. You can read it into your environment using `read_delim` and specifying a `,` for the `delim` argument. Because we'll want to look at this data later, I'm assigning it to an object called `election_data` using the assignment operator `<-`. If you look at the help file for `read_delim` (by typing `?read_delim`), you'll see that there are a variety of other options (like `read_csv` or `read_tsv`) that allow you to eliminate specifying the `delim` argument. 
+For this example, I've downloaded a file from the [Federal Elections Committee](www.fec.gov) depicting the campaign contributions to one of our Congressman in the 2025-2026 fiscal year. It's located in your `data/original` folder. You can read it into your environment using `read_delim` and specifying a `,` for the `delim` argument (if you have tab delimited `.txt` file you would use `\\t`). Because we'll want to look at this data later, I'm assigning it to an object called `election_data` using the assignment operator `<-`. If you look at the help file for `read_delim` (by typing `?read_delim`), you'll see that there are a variety of other options (like `read_csv` or `read_tsv`) that allow you to eliminate specifying the `delim` argument. I'll demonstrate that here, too.
 
 ```{r}
 library(readr)
-election_data <- read_delim("data/original/fec_reciepts.csv", 
+election_data_1 <- read_delim("data/original/fec_reciepts.csv", 
                             delim = ",")
+
+election_data_2 <- read_csv("data/original/fec_reciepts.csv")
+
+```
+**A Note About Parsing**
+
+
+You'll notice that both `read_` functions return a bit of output telling you the names and [data types](/resource/dataclasses.html) of each column in the dataset. This is one of the features of using `readr::read_` - it attempts to guess what datatype each column should be based on the value you give to the `guess_max` argument. You can see from the helpfile that the default value for guess_max is `min(1000, n_max)` meaning that it will look at the first `n_max` or 1000 rows, whichever is smaller. This can be helpful for large datasets, but it can also introduce some challenges as the different versions of `read_` assign column types a little differently. You can see this by running:
+
+```{r}
+identical(election_data_1, election_data_2)
+all.equal(election_data_1, election_data_2)
 
 ```
 
+Despite the fact that the two objects were created from exactly the same file, `identical` returns `FALSE` while `all.equal ` returns `TRUE`. This is an indication that while the data is exactly the same between both objects, there is something a little different about how `R` is storing the objects (`identical` is very strict). We don't need to worry about that now, but I'm pointing it out as you may run into places where this causes errors that are difficult to interpret. For now, we'll just be excited that the data is in `R`!
+
 #### You download it
 
+Occasionally, you'll find data that is directly downloadable from a webpage (meaning the webaddress points directly to a `.csv` or `.txt` file). When that's the case, you can still use the `read_` functions to download and assign the data to an object. Like this:
+
+```{r}
+election_data_web <- read_csv("https://raw.githubusercontent.com/BSU-Spatial-Data-In-R-Fall2025/inclass-04/refs/heads/main/data/original/fec_reciepts.csv")
+
+```
+
+::: {.callout-note}
+When you call the webpage inside of `read_` the data is not automatically saved. If you've assigned it to an object (like `election_data_web`) it will be stored there until you decide to save it (which we'll do next week). If you haven't assigned it to an object, the data will just be printed to the screen.
+:::
+
+There are more complicated workflows for `.zip` files (using `download.file`) or Google Drive files (using the `googledrive` package) which we'll introduce later in the course. Those approaches add a bit more syntax on the front-end to get the file into your `data/original` folder, but after that the `read_` step is the same.
+
+
+The more common way of downloading data from the web is via Application Programming Interfaces (APIs). Although there are lots of APIs in the world, the typical application for getting data is a web-service that expects a particular set of inputs and then returns (possibly for download) a set of outputs matching your query. For example, the US Census has an API that allows you to access all of the Decennial Census and American Community Survey data by providing the state, county, year, and dataset that your are interested in. There are a lot of `R` packages designed to make these API calls easier. For example, the `tidycensus` package in `R` allows easy downloading of Census data, the `FedData` package allows you to download a variety of federally created spatial datasets, and the `elevatr` package allows easy download of global elevation datasets. We'll explore these more in the future, but for now, we'll use a simple example with the `tigris` package. The `tigris` package is a means of accessing the US TIGER (Topologically Integrated Geographic and Referencing System) files. The TIGER datsets contains US roads, state and county boundaries, and a variety of other data related to the US Census. Here's a simple bit of code to download Idaho county boundaries.
+
+```{r}
+library(tigris)
+library(sf)
+
+id_counties <- counties(state="ID", year = 2024)
+
+```
+
+
+
 #### It comes with a package
+
+
+
+The final way
+
+The last 
 
 ### Checking yourself (or at least `R`)
 
