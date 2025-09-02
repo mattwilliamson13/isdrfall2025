@@ -25,12 +25,24 @@ There are, in general, three types of data that you will encounter that meet our
 
 So far, this is the type of data that most students bring into class. It's usually some sort of spreadsheet that contains all of that hard-earned field data. Although there are `R` packages for dealing with Microsoft Excel spreadsheets, we won't focus on those for two reasons: 1) Excel is a proprietary software and so may not be available to all users and 2) Excel makes a lot of formatting choices for you that may not actually be helpful in your analysis.
 
-Instead, we'll focus on a more general idea, the "delimited" text file. A delimited text file is flat (i.e., there's only one "sheet") and uses a consistent character (like a `,` or a `tab`) to denote when column breaks should occur.
+Instead, we'll focus on a more general idea, the "delimited" text file. A delimited text file is flat (i.e., there's only one "sheet") and uses a consistent character (like a `,` or a `tab`) to denote when column breaks should occur. Delimited text files can be created and read in a variety of free software making them more accessible to others. It's also a fairly trivial exercise to save an Excel spreadsheet into a `.csv`.
 
-#### It comes with a package
+There are a variety of functions in base `R` that will read delimited files (`read.csv`, `read.table`, and `read.delim` are just a few examples), but we're going to use the `readr` package from the `tidyverse` because it will help you get used to some of the `tidyverse` conventions and because it automates more of the data import process. 
+
+We'll talk more about the `tidyverse` next week, but for the time being it's worth knowing that the general structure of `tidyverse` functions is to combine a `verb` with and `object`. So in order to read a delimited file, we might use the `read_delim()` function where `read` is the `verb` and `delim` is the `object`
+
+For this example, I've downloaded a file from the [Federal Elections Committee](www.fec.gov) depicting the campaign contributions to one of our Congressman in the 2025-2026 fiscal year. It's located in your `data/original` folder. You can read it into your environment using `read_delim` and specifying a `,` for the `delim` argument. Because we'll want to look at this data later, I'm assigning it to an object called `election_data` using the assignment operator `<-`. If you look at the help file for `read_delim` (by typing `?read_delim`), you'll see that there are a variety of other options (like `read_csv` or `read_tsv`) that allow you to eliminate specifying the `delim` argument. 
+
+```{r}
+library(readr)
+election_data <- read_delim("data/original/fec_reciepts.csv", 
+                            delim = ",")
+
+```
 
 #### You download it
 
+#### It comes with a package
 
 ### Checking yourself (or at least `R`)
 
