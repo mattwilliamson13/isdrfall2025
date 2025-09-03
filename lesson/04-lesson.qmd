@@ -107,15 +107,48 @@ This returns the number of rows and then columns. Based on this we can see that 
 
 #### Is it meaningful?
 
+One of the things that `readr::read_` does is to try and parse the column names in your data and assign it to a particular [data types](/resource/dataclasses.html). That doesn't guarantee, however, that it got it right. We should inspect that. The first thing we might do is take a look at the column names (using the `colnames` function from base `R`). 
+
+```{r}
+colnames(election_data_1)
+
+```
+
+Nothing seems obviously wrong here. The names all seem readable and broken into distinct categories which suggests taht the delimitter worked and we didn't end up with oddball columns.
+
 #### Does `R` recognize it?
+
+Now to take a look at whether `readr::read_` correctly guessed the type of data contained in each column. We can use `dplyr::glimpse` from the `tidyverse` or `str` (short for structure) from base `R` to get a quick look at the data.
+
+```{r}
+glimpse(election_data_1)
+
+```
+
+You'll notice that each column shows up after the `$` operator, followed by the datatype enclosed in `<>`, followed by the first few observations from the dataset. The nice part about `glimpse` is the colored highlighting of `NA` values which can help draw your attention to potential mistakes. For now, we're going to focus on the data types. You'll see `<chr>` for many of the columns indicating that the data in those columns is of the `character` data type, you'll also see `<dbl>` indicating that the column is a `numeric` data type with a "double float" precision which refers to the number of decimal points `R` will track for a numeric value. You'll also notice the `<lgl>` or `logical` datatype referring to data that is either `TRUE/FALSE` and the `<dttm>` for dates and times. One thing you might also notice is that for many columns the first set of entries that `glimpse` shows us are entirely `NA`.   When you're working with your own data, hopefully you'll know whether or not `NA`s are appropriate, but here, because this is "found" data, it's a good idea here to check a few of the images to see whether these `NA`s are expected. The other thing you'll notice is that a variety of "ID" fields (e.g., `sub_id`, `file_id`, `image_id`) were parsed as a `double` data type. This could be a problem as id columns are often meant to denote individuals and so act as a label (i.e., `character`) rather than a number. If there are leading 0's (i.e., 00134) `R` will drop those when converting it to a `numeric` data type. Because we're just looking at the data, we won't worry about it now, but I wanted to draw your attention to it.
 
 ### Exploring your new data
 
+Okay, you've got the data into `R` and you've checked that things look correct. Now it's time to get a sense for what the data actually has in it. We might want some information of the distribution of numeric values, frequencies of categorical values, and maybe to look for values that fall outside of the expected range.
+
+
 #### Basic stats
+
+One quick (and ugly) way to get a sense for the range of values in your data (along with summary stats for numeric data) is to use the `summary` function.
+
+```{r}
+summary(election_data_1)
+```
+
+We can look at the `contribution_receipt_amount` and the `contributor_aggregate_ytd` columns as those are the only true `numeric` values. We can see that the `Max` contribution amount for any single observation is 5000 whereas the `Max` aggregate amount is 55400. Looking at the aggregate value a bit more you'll see that the `Mean` is actually larger than the 3rd quartile values which suggests that there are a handful of very larger contributors relative to the rest. If you were planning to analyze this data, you'll have to think about how to deal with those observations carefully.
+
+#### Oddballs
+The other thing that `summary` can help with is
+
 
 #### Data frequency
 
-#### Oddballs
+
 
 
 
