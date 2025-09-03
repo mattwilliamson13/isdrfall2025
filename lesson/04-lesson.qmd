@@ -93,9 +93,17 @@ head(iris)
 
 ### Checking yourself (or at least `R`)
 
-Ok, so you've got your data into `R`, the first thing you need to do is to make sure that the import was successful. Before you do anything in `R` it's worth familiarizing yourself with the metadata (data about the data) and building your intuition for how the data _should_ look. Let's take a look at the [page](https://www.fec.gov/data/receipts/?data_type=processed&committee_id=C00331397&two_year_transaction_period=2026) where the data was exported. We can see that there are 233 individual entries and what appears to be 6 columns. 
+Ok, so you've got your data into `R`, the first thing you need to do is to make sure that the import was successful. Before you do anything in `R` it's worth familiarizing yourself with the metadata (data about the data) and building your intuition for how the data _should_ look. Let's take a look at the [page](https://www.fec.gov/data/receipts/?data_type=processed&committee_id=C00331397&two_year_transaction_period=2026) where the data was exported. 
 
 #### Did you get it all?
+
+The first thing we might want to check is whether we actually got all of the date. Based on a quick look at the data it appears that there are 233 observations and columns. We can check that our data matches that by using the `dim` function (short for "dimensions").
+
+```{r}
+dim(election_data_1)
+```
+
+This returns the number of rows and then columns. Based on this we can see that are 233 observations (rows) and 78(!) columns. Where did all of these columns come from??  It's not immediately obvious. You'll notice that if you click on an individual record there's an option to "View Image". If you do that, you'll see the actual tax form that is entered into the database. That form actually has 78 boxes so it would appear that we're good on that front.
 
 #### Is it meaningful?
 
