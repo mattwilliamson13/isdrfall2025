@@ -182,3 +182,139 @@ saveRDS(list(
 }
 
 
+library(tidyverse)
+library(maps)
+library(geosphere)
+
+# Example flow data
+df <- read_csv("data/original/fec_reciepts.csv")%>% 
+  group_by(contributor_state) %>% 
+  summarize(contributions = sum(contribution_receipt_amount)/1000,
+            proportion = (contributions/sum(contributions))) %>%
+  mutate(to = "ID") %>% 
+  rename("from" = contributor_state)
+
+# State centroid lookup
+state_locs <- tibble(
+  state = st$NAME,
+  abb   = st$STUSPS,
+  lon   = st$x,
+  lat   = st$y
+) %>%
+  filter(!abb %in% c("AK","HI"))
+
+
+st <- tigris::states() 
+st_coords <- st %>% 
+  st_centroid() %>% 
+  st_coordinates() %>% 
+  as.data.frame() %>% 
+  rename(x = "X", y = "Y")
+st <- cbind(st, st_coords)
+
+# Attach coordinates
+flows_coords <- df %>%
+  left_join(state_locs, by = c("from" = "abb")) %>%
+  rename(lon_from = lon, lat_from = lat) %>%
+  left_join(state_locs, by = c("to" = "abb")) %>%
+  rename(lon_to = lon, lat_to = lat) %>%
+  filter(!is.na(lon_from), !is.na(lat_from),
+         !is.na(lon_to),   !is.na(lat_to),
+         !(from == to)) 
+
+make_arc <- function(from_lon, from_lat, to_lon, to_lat) {
+  if (is.na(from_lon) | is.na(from_lat) | is.na(to_lon) | is.na(to_lat)) {
+    return(NULL)
+  }
+  if (from_lon == to_lon & from_lat == to_lat) {
+    return(NULL)
+  }
+  mat <- tryCatch(
+    geosphere::gcIntermediate(c(from_lon, from_lat),
+                              c(to_lon, to_lat),
+                              n = 100, addStartEnd = TRUE),
+    error = function(e) NULL
+  )
+  if (is.null(mat)) return(NULL)
+  st_linestring(as.matrix(mat))
+}
+
+
+flow_lines <- flows_coords %>%
+  rowwise() %>%
+  mutate(geometry = list(make_arc(lon_from, lat_from, lon_to, lat_to))) %>%
+  ungroup() %>%
+  filter(!sapply(geometry, is.null)) %>%   # drop failed arcs
+  st_as_sf(crs = 4326)
+
+
+albers_crs <- st_crs("+proj=aea +lat_1=39 +lat_2=45 +lat_0=37 +lon_0=-96")
+
+flow_proj   <- st_transform(flow_lines, albers_crs)
+
+states_sf <- st_as_sf(map("state", plot = FALSE, fill = TRUE)) %>%
+  filter(!ID %in% c("alaska","hawaii")) %>%
+  st_transform(albers_crs)
+
+
+ggplot() +
+  geom_sf(data = states_sf, fill = "gray10", color = "gray50") +
+  geom_sf(data = flow_proj, aes(size = contributions, alpha = contributions),
+            color = "darkorchid4", lineend = "round") +
+  scale_size(range = c(0.1, 1.5), guide = "none") +
+  scale_alpha_continuous(range = c(0.5,1)) +
+  theme_void() +
+  theme(panel.background = element_rect(fill = "black"))
+
+
+
+
+# Generate great-circle paths
+flow_paths <- flows_coords %>%
+  rowwise() %>%
+  mutate(path = list(as_tibble(
+    geosphere::gcIntermediate(
+      c(lon_from, lat_from),
+      c(lon_to, lat_to),
+      n = 100,            # smooth curve
+      addStartEnd = TRUE,
+      breakAtDateLine = FALSE
+    )
+  ) %>% mutate(t = seq(0, 1, length.out = n()))) ) %>%  # add position along path
+  ungroup() %>%
+  select(from, to, contributions, proportion, path) %>%
+  unnest(path) %>%
+  group_by(from, to) %>%
+  mutate(group_id = cur_group_id()) %>%
+  ungroup()
+
+# Base map
+states_map <- map_data("state") %>%
+  filter(!region %in% c("alaska", "hawaii"))
+
+id_val <- states_map %>% 
+  filter(region == "idaho") %>% 
+  mutate(dollars = )
+
+# Plot
+flow_plot <- ggplot() +
+  geom_polygon(
+    data = states_map,
+    aes(x = long, y = lat, group = group),
+    fill = "black", color = "gray50"
+  ) +
+  geom_path(
+    data = flow_paths,
+    aes(x = lon, y = lat, group = group_id, color = contributions, 
+        size = contributions),
+    lineend = "round",
+    alpha = 0.6
+  ) +
+  scale_size(range = c(0.1, 1.5), guide="none") +
+  scale_color_gradient(low = "white",high = "darkorchid4") +
+  coord_map("gilbert", xlim = c(-125, -66), ylim = c(24, 50)) +
+  labs(color = "Contributions \n(in 1000s of USD)") +
+  theme_void() +
+  theme(panel.background = element_rect(fill = "transparent", color = NA),  legend.position = "bottom", legend.direction = "horizontal", legend.key.width = unit(0.5, "in"), legend.title.position = "top", legend.title = element_text(color = "white", face = "bold"),legend.text = element_text(colour = "white"))
+
+ggsave("images/flow_plot.png",flow_plot)
