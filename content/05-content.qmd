@@ -12,11 +12,20 @@ We've established some of the reasons why data reproducibility and transparency 
 
 ## Readings
 
-{{< fa arrow-up-right-from-square >}} 
+### Setting the Stage
 
-{{< fa arrow-up-right-from-square >}} 
+{{< fa arrow-up-right-from-square >}} [Good enough practices in scientific computing](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510) by Wilson et al. [-@wilson2017]. Provides some helpful guidance on organizing projects for people that aren't necessarily computer scientists.
 
-{{< fa arrow-up-right-from-square >}} 
+{{< fa arrow-up-right-from-square >}} [Pseudocode: what it is and how to write it](https://builtin.com/data-science/pseudocode) - A nice blogpost by Sara Metawalli the sketches out the logic of pseudocode and why it can be helpful.
+
+### Technical Details
+
+{{< fa arrow-up-right-from-square >}} [Data Tidying from R. for Data Science](https://r4ds.hadley.nz/data-tidy.html)from Wickham [-@wickham2016r] provides the logic behind tidy data and how it works in the `tidyverse`.
+
+{{< fa arrow-up-right-from-square >}} [Data Transformation](https://r4ds.hadley.nz/data-transform.html) from the same book introduces `dplyr` and the various functions for altering, summarizing, and reshaping data.
+
+{{< fa arrow-up-right-from-square >}} [Joins](https://r4ds.hadley.nz/joins.html) introduces relational databases and a tidy approach for merging datasets. **This one will prove to be important when we start working with spatial data.**
+
 
 ## Objectives
 By the end of today you should be able to:
@@ -34,7 +43,7 @@ By the end of today you should be able to:
 The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
 
 ```{r show-slide-tabs, echo=FALSE, results="asis"}
-slide_buttons("/slides/03-slides")
+slide_buttons("/slides/05-slides")
 ```
 
 <div>
