@@ -5,7 +5,7 @@ author: "Matt Williamson"
 format: 
   revealjs:
     theme: mytheme.scss
-    highlight-style: pygments
+    highlight-style: printing
     slide-number: true
     show-slide-number: print
     embed-resources: true  
@@ -13,20 +13,29 @@ format:
 
 ## What is literate programming?
 
-- Documentation containing code (not vice versa!)
+## Readable scripts: pipes
 
-- Direct connection between code and explanation
+* `|>` and ` %>%` pass _outputs_ of the left-hand as _inputs_ to the right-hand
 
-- Convey meaning to humans rather than telling computer what to do!
+* Default is first argument of right-hand
 
-## Why not just use scripts
+* `.` is the placeholder for ` %>% ` and `_` is the placeholder for `|>`
+
+* `_` is much simpler and has less functionality
+
+
+## Readable Documents: functions
+
+* Stop copy/pasting, start _abstracting_
+
+
 
 ## Better documentation, better reproducibility: Quarto
 
 
-## Keeping your documents readable
 
-## Pipes
+
+
 
 ## Iteration
 

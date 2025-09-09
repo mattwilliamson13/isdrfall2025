@@ -1,6 +1,6 @@
 ---
-title: "Literate Programming, Quarto, and Workflows"
-date: "2025-09-6"
+title: "Pipes, Functions, and Iteration"
+date: "2025-09-10"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
@@ -9,26 +9,34 @@ source(here::here("R", "slide-things.R"))
 
 ```
 
-Today we'll focus on some of the tools for reproducible workflows using `R`. We'll introduce Quarto as a means of authoring different kinds of documents. We'll talk about literate programming and leaving breadcrumbs for yourself (and others). Finally, we'll begin to work through the ideas of workflow planning
+In our last section of "The Fundamentals", we'll take on one of the trickier (at least for me) parts of programming in `R`: writing functions and iteration. Many of the tasks we'll complete in processing and analyzing spatial data require repeating the same operation(s) on multiple files. Not only that, but some of the "weirdness" of "found" spatial data means that we might need more flexibility in functions than the default version of `tidyverse` functions. For that reason, we're going to try and build a little intuition for building our own functions and using the iteration capabilities of `purrr` and `dplyr` on tabular data _before_ we get started on spatial data.
 
-## Readings
-
-- {{< fa arrow-up-right-from-square >}} [Authoring in Quarto](https://quarto.org/docs/get-started/authoring/rstudio.html) - an intro to Quarto for developing different kinds of documents. Lots of other resources linked here!!
-
-- {{< fa arrow-up-right-from-square >}} [Pseudocode: what it is and how to write it](https://builtin.com/data-science/pseudocode) - A nice blogpost by Sara Metawalli the sketches out the logic of pseudocode and why it can be helpful.
-
-- <i class="fas fa-book"></i> [The Whole Game](https://r4ds.hadley.nz/whole-game.html) - from Wickham et al., *R for Data Science* [@wickham2016r]. Focus on the sections that begin with "Workflow" to get a sense for how we'll start putting the pieces together.
+### Setting the Stage
 
 - <i class="fas fa-book"></i> [Scripts, algorithms, and functions](https://geocompr.robinlovelace.net/algorithms.html) - chapter 11 in in Lovelace et al., *Geocomputation with R* [@lovelace_geocomputation_2019] introduces some concepts behind geospatial programming. A few of these pieces will make more sense in the next few weeks, but the general advice on constructing code and planning analyses is useful now.
+
+### Technical Details
+
+- {{< fa arrow-up-right-from-square >}} [Functions](https://r4ds.hadley.nz/functions.html) - from _`R` for Data Science_ by Wickham [-@wickham2016r] provides an overview of writing functions and ideas for when functions are necessary.
+
+- {{< fa arrow-up-right-from-square >}} [Writing Functions](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/05-functions.html) - From Vanderplas [-@vanderplas2025] Statistical Computing using `R` and `python` takes things a little further by describing function environments and scopes. There's also nice examples of translating pseudocode into `R` functions.
+
+- <i class="fas fa-book"></i> [Debugging](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/06-debugging.html) - from the same book has great advice for working through errors, building reproducible examples, and coding defensively to avoid errors in the first place.
+
+- {{< fa arrow-up-right-from-square >}} [Iteration](https://r4ds.hadley.nz/iteration.html) - from _`R` for Data Science_ by Wickham [-@wickham2016r] introduces the `purrr` package and the `map_` family of functions.
+
+- {{< fa arrow-up-right-from-square >}} [Learning to `purrr`](https://rebeccabarter.com/blog/2019-08-19_purrr#map-functions-beyond-apply) provides a nice justification for why we might prefer the `map_` family over the `apply` family from base `R` along with more explanation of many of the examples from Wickham.
+
+[purrr <-> base R](https://purrr.tidyverse.org/articles/base.html) from the `purrr` manual provides a nice crosswalk between functions in the `apply` family and functions in the `purrr` family.
 
 ## Objectives
 By the end of today you should be able to:
 
-* **Develop** basic docs with Quarto
+* **Use** pseudocode to write out the "algorithm" for a function.
 
-* **Understand** the basics of creating readable code
+* **Write** your own simple functions to automate repetitive tasks.
 
-* **Use** pseudocode to sketch out a computational problem
+* **Practice** using iteration to avoid copy-and-paste.
 
 ## Slides
 The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
