@@ -136,7 +136,23 @@ long_list_of_outputs <- map(long_vector_of_inputs,
 
 ```
 
+## Readable Documents: iteration
 
+* Also works with 1-time functions
+
+```{r}
+#| echo: true
+#| eval: false 
+
+long_list_of_outputs <- map(long_vector_of_inputs,
+                            function(x) do_something(x) %>% 
+                              do_something_else())
+
+long_list_of_outputs <- map(long_vector_of_inputs,
+                            \(x) do_something(x) %>% 
+                              do_something_else())
+
+```
 
 # Bringing it all together: Project Management
 
