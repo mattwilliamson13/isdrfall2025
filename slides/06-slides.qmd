@@ -154,6 +154,15 @@ long_list_of_outputs <- map(long_vector_of_inputs,
 
 ```
 
+## A Note on serial vs. parallel processing
+
+* purrr still does things seriously
+
+* furrr allows things to run in parallel
+
+* Works when one step isn't dependent on the other
+
+
 # Bringing it all together: Project Management
 
 ## Directory structure
