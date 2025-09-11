@@ -79,7 +79,7 @@ contribution_data <- list.files(here::here("data/original/"),
 ```
 This is helpful, but I would like to keep track of who the data belongs to, so I'm going to step back and write my own 1-time function inside of `map`.
 
-```{r iterread2}
+```{r iterread5}
 
 contribution_data <- list.files(here::here("data/original/"), 
                                  pattern = "17_26.csv", 
@@ -102,10 +102,93 @@ This is the first time we've really encountered the `list` data class. Lists can
 
 One of the tricky bits is actually getting to data in each slot. We can do this by using the `[[` notation.
 
-```{r iterinspect}
+```{r iterinspect2}
 glimpse(contribution_data[[1]])
 
 ```
 By using `[[1]]` I'm telling `glimpse` to run on the object that's in the first slot of `contribution_data`. Once we're inside the `list` the data behaves the same way it would if it didn't exist in the list.
 
+## Choosing the Correct Columns
 
+Last time, we used a pretty clunky way to narrow down all of the data.
+
+```{r lasttime}
+#| echo: true
+#| eval: false
+
+select_vars <- c("is_individual", "contributor_name",  "contribution_receipt_amount", "committee_name", "report_year")
+
+simpson_subset <- simpson_receipts %>% 
+  select(all_of(select_vars)) %>% 
+  filter(is_individual == TRUE)
+
+fulcher_subset <- fulcher_receipts %>% 
+  select(all_of(select_vars)) %>% 
+  filter(is_individual == TRUE)
+
+crapo_subset <- crapo_receipts %>% 
+  select(all_of(select_vars)) %>% 
+  filter(is_individual == TRUE)
+
+risch_subset <- risch_receipts %>% 
+  select(all_of(select_vars)) %>% 
+  filter(is_individual == TRUE)
+
+```
+
+Let's clean this up creating our own function:
+
+```{r newfun}
+
+select_ind_donors <- function(df, vars, donor_type){
+  df %>% 
+    select(all_of({{ vars }})) %>% 
+    filter(is_individual == donor_type)
+}
+
+```
+
+Our function `select_ind_donors`, has a descriptive name and takes 3 arguments (`df`, `vars`, and `donor_type`). The one thing to notice is our use of _embracing_ to pass our variables into the function. Let's test it on 1 slot of our list.
+
+```{r testfun}
+select_vars <- c("is_individual", "contributor_name",  "contribution_receipt_amount", "committee_name", "report_year",
+                 "representative")
+
+test_fun <- select_ind_donors(df = contribution_data[[1]],
+                              vars = select_vars,
+                              donor_type = TRUE)
+glimpse(test_fun)
+```
+
+Looks like that worked! Now let's use iteration to do that to all of the slots in our list.
+
+```{r iterfun}
+select_vars <- c("is_individual", "contributor_name",  "contribution_receipt_amount", "committee_name", "report_year",
+                 "representative")
+
+ind_donors <- map(contribution_data, 
+                  \(x) select_ind_donors(df = x,
+                              vars = select_vars,
+                              donor_type = TRUE))
+
+```
+
+Here you can see the power of lists combined with `map`: each slot gets passed to our function so that we don't have to extract each dataframe to run our function.
+
+The only problem left is to get this into a single dataframe. We can do that easily enough using `bind_rows`:
+
+```{r iterfundf}
+select_vars <- c("is_individual", "contributor_name",  "contribution_receipt_amount", "committee_name", "report_year",
+                 "representative")
+
+ind_donors <- map(contribution_data, 
+                  \(x) select_ind_donors(df = x,
+                              vars = select_vars,
+                              donor_type = TRUE)) %>% 
+  bind_rows()
+
+```
+
+## Final Thoughts
+
+This is just the tip of the iceberg. We'll continue practicing building functions and iterating as we move throug the rest of the semester. For now, I just want you to get some practice building intution for how this works.
