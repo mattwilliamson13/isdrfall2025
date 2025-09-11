@@ -110,7 +110,7 @@ study_area_join <- st_join(x = sa_sensors, y = st, join=st_covered_by) %>%
 
 sa_download <- map(study_area_join$sensor_index,
                    function(x) try(get_sensor_history(sensor_index = x,
-                                               fields = c("pm2.5_cf_1", "pm2.5_atm"),
+                                               fields = c("pm2.5_cf_1", "pm2.5_atm", "temperature", "humidity"),
                                                average = "1month",
                                                start_timestamp =as.POSIXct("2020-01-01"),
                                                end_timestamp = as.POSIXct("2025-08-30"))))
@@ -120,12 +120,11 @@ row_counts <- sapply(sa_download, function(x) {
 })
 
 names(sa_download) <- study_area_join$sensor_index
-sa_subset <- sa_download[row_counts > 40]  
+sa_subset <- sa_download[row_counts > 0]  
 
 subset_df <- bind_rows(sa_subset, .id = "id") %>% 
   mutate(id = as.integer(id)) %>% 
-  left_join(., study_area_join, by = join_by(id == sensor_index)) %>% 
-  select(-c(date_up, uptime))
+  left_join(., study_area_join, by = join_by(id == sensor_index)) 
 
 
 subset_df %>% 
