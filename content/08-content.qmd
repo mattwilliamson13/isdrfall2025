@@ -1,6 +1,6 @@
 ---
-title: "Areal Data: Vectors"
-date: "2023-09-13"
+title: "Projections, Extent, and Resolution"
+date: "2025-09-17"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
@@ -11,7 +11,16 @@ source(here::here("R", "slide-things.R"))
 Now that you have started working with the various components of coordinates and coordinate reference systems, it's time to start learning the fundamental aspects of working with vector data in `sf` and `R`. The syntax is a little confusing at first, but once you've gotten a sense for the logic behind it you should be able to start piecing together the functions necessary to implement the pseudocode you write for an analysis. We'll spend more time on vector manipulation in the coming weeks so you'll get plenty of practice with the ideas we introduce today.
 
 ## Readings
-Same as last class really, but hopefully you'll begin to understand them better...
+
+### Setting the Stage
+
+[Scale and Projections](https://open.lib.umn.edu/mapping/chapter/3-scale-and-projections/) by Matson et al. provides an accessible overview to what projections are and why we need them.
+
+- <i class="fas fa-external-link-square-alt"></i> [Lying With Maps](https://open.lib.umn.edu/mapping/chapter/7-lying-with-maps/) by Nelson et al. provides a nice introduction to the ways that the representation of spatial data can be misleading. 
+
+### Technical Details
+
+{{< fa arrow-up-right-from-square >}} [Chapter 2](https://www.paulamoraga.com/book-spatial/spatial-data-in-r.html) from Moraga (2023) explores similar topics, but provides more explanation about projections, coordinates, etc.
 
 - <i class="fas fa-external-link-square-alt"></i> The introductory vignette for the [`sf` package](https://r-spatial.github.io/sf/articles/sf1.html) has a lot of useful info on `sf` objects and conventions.
 

@@ -1,6 +1,6 @@
 ---
-title: "Areal Data: Coordinates and Geometries"
-date: "2023-09-11"
+title: "Data Models, Coordinates, and Geometries"
+date: "2025-09-15"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
@@ -8,29 +8,36 @@ source(here::here("R", "slide-things.R"))
 
 ```
 
-Now that you have a bit of the fundamentals of geographic data and have had a chance to start using `R`, it's time to get into more complicated workflows. To do that, you'll have to have a bit more of a foundation in coordinates, coordinate reference systems, and geometries and how to access those in `R`. We'll start there today and move into functions that change or relate geometries in the next few classes.
+Now that you've gotten an introduction (or refresher) to the logic of tidy data and the `tidyverse`, we can move into the actual spatial portion of the class! The first step in doing that is understanding how/why spatial data differs from more traditional tabular datasets.  
 
 ## Readings
+
+### Setting the Stage
+
+[Data Types and Spatial Data Models](https://www.opengeomatics.ca/types-of-data.html) by Skeeter and Pickell provides a general overview of different data types and how we might think about storing them spatially.
+
+{{< fa arrow-up-right-from-square >}} [Types of Spatial Data](https://www.paulamoraga.com/book-spatial/types-of-spatial-data.html) from Paula Moraga's new book Spatial Statistics for Data Science: Theory and Practice with `R` provides a nice overview of the types of spatial data from the perspective of a statistical analyst.
+
+{{< fa arrow-up-right-from-square >}} [Attributes and Support](https://r-spatial.org/book/05-Attributes.html) from Pebesma and Bivand's Spatial Data Science with Applications in `R` gives more info and examples on the nature of the relationship between geometries and support.
+
+### Technical Details
+
 - <i class="fas fa-external-link-square-alt"></i> The introductory vignette for the [`sf` package](https://r-spatial.github.io/sf/articles/sf1.html) has a lot of useful info on `sf` objects and conventions.
 
-- <i class="fas fa-book"></i> [Section 2.2](https://geocompr.robinlovelace.net/spatial-class.html) on Vector Data and [Sections 5.1-5.3](https://geocompr.robinlovelace.net/geometric-operations.html) on Geographic Operations in Lovelace et al. [@lovelace_geocomputation_2019] - for more details about vectors and geometric operations on vectors.
+{{< fa arrow-up-right-from-square >}} [Chapter 2](https://r.geocompx.org/spatial-class) in Geocomputation with R [@lovelace_geocomputation_2019] provides and overview of using `sf` for vector datasets and `terra` for raster data.
 
-- <i class="fas fa-external-link-square-alt"></i> [Chapter 2, Sections 1-3](https://r-spatial.org/book/02-Spaces.html) and [Chapter 3, Section 1](https://r-spatial.org/book/03-Geometries.html) of Spatial Data Science by Edzer Pebesma and Roger Bivand (of the `sf`, `sp`, `rgeos`, and `rgdal` packages)
 
 ## Objectives
-
-By the end of today, you should be able to: 
-
-* Define coordinate, coordinate system, datum, and coordinate reference system
-
-* Access coordinate and geometry information for simple features in `R`
-
-* Understand the rules for simple feature geometries
-
-* Access and transform the coordinate reference system for vector and raster data in `R`
+By the end of today you should be able to:
 
 
+* **Contrast** the different "views" of spatial data and their incorporation in GIS.
 
+* **Identify** key elements that make data "spatial".
+
+* **Recognize** the relationship between geometries and support.
+
+* **Access** geographic attributes of spatial objects using `sf` and `terra`
 
 ## Slides
 The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
@@ -47,4 +54,3 @@ slide_buttons("/slides/07-slides")
 
 </div>
 
-[Link to Panopto Recording](https://boisestate.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=66bcc3f4-2064-4e9d-a853-b07a0135efc6)
