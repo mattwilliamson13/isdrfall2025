@@ -1,4 +1,45 @@
 ---
-title: "Generic Lesson"
+title: "Data Models, Coordinates, and Geometries"
 ---
 
+## Objectives
+
+We're going to introduce the `sf`, `terra`, and `tidyterra` packages today as a way of reading and inspecting spatial data. By the end of this lesson, you should be able to:
+
+1. Read in spatial data from both the vector and raster data model.
+
+2. Recognize the required components of a spatial data object
+
+3. Convert a spreadsheet into spatial data
+
+4. Use `plot` as a way to perform a quick check on your data.
+
+
+
+## Getting Started
+
+First, [join the repository](https://classroom.github.com/a/X4ivBDX3). Then, we'll have to [get our credentials](https://rstudio.aws.boisestate.edu/) and login to a [new RStudio session](https://rstudio.apps.aws.boisestate.edu/). Finally, create a new, version control, git-based project (using the link to the repo you just created). 
+
+Once you've done that, you'll need to load your packages. We're going to add 3 new packages to the `tidyverse`; the `sf`, `terra`, and `tidyterra` packages. We'll also add the `googledrive` so that we can use a custom function for downloading data from a shared Google Drive folder. Note that when you load these, the conflicts that the `tidyverse` reports will be different. In order to overcome these conflicts, you'll need to use explicit calls like `package::function` so `R` knows which ones to use.
+
+```{r ldpkg}
+library(googledrive)
+library(sf)
+library(terra)
+library(tidyterra)
+library(tidyverse)
+```
+
+## Loading a Custom Function
+
+You'll notice that your `scripts/utilities` folder has a file called `download_utils.R`. This file has some custom functions for downloading data directly from websites and from a Google Drive Folder. In order to give yourself access to these functions you'll need to `source` them into your environment. You can do this by typing:
+
+```{r srcfun}
+source("scripts/utilities/download_utils.R")
+
+```
+
+The first time you run the `gdrive_folder_download` function, you'll be taken to a webpage where you need to give `googledrive` access to your Google Drive folders. Make sure you've checked all the boxes and click Allow. You should get a message saying that authorization is complete and that you can close the tab.
+
+
+## Reading Data: Vectors
