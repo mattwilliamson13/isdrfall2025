@@ -37,9 +37,14 @@ download_and_unzip <- function(url, extdir, pat) {
 
 gdrive_folder_download <- function(filelst, dstfldr){
   gdid <- as_id(filelst$id)
-  fname <- sub("\\_.*", "", filelst$name)
-  homedir <- paste0("data/original/", dstfldr)
-  ifelse(!dir.exists(homedir), dir.create(homedir), FALSE)
-  drive_download(gdid, path = paste0(homedir,"/", fname, ".csv"), overwrite = TRUE)                  
-  return(paste0(homedir,"/", fname, ".csv"))
+  fname <- sub("\\_.*", "", tools::file_path_sans_ext(filelst$name))
+  ext   <- tools::file_ext(filelst$name)
+  
+  homedir <- file.path("data/original", dstfldr)
+  if (!dir.exists(homedir)) dir.create(homedir, recursive = TRUE)
+  
+  outpath <- file.path(homedir, paste0(fname, ".", ext))
+  drive_download(gdid, path = outpath, overwrite = TRUE)
+  
+  return(outpath)
 }

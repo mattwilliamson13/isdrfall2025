@@ -1,4 +1,103 @@
 ---
-title: "Generic Lesson"
+title: "Projections, Extent, and Resolution"
 ---
 
+## Objectives
+
+Now that you know how to read in some spatial data, we'll spend a bit of time learning the `sf` and `terra` syntax for accessing and changing the projection, extent, and resolution. By the end of this lesson, you should be able to:
+
+1. Access the current CRS, extent, and resolution of a spatial data object
+
+2. Use `sf` and `terra` to modify 1 spatial attribute or all 3 at once
+
+3. Align vector and raster data for analysis and combination
+
+
+
+## Getting Started
+
+First, [join the repository](https://classroom.github.com/a/XWzfBM16). Then, we'll have to [get our credentials](https://rstudio.aws.boisestate.edu/) and login to a [new RStudio session](https://rstudio.apps.aws.boisestate.edu/). Finally, create a new, version control, git-based project (using the link to the repo you just created). 
+
+Once you've done that, you'll need to load your packages. We're going to use the same packages as last time and source our custom download function.
+
+```{r ldpkg}
+library(googledrive)
+library(sf)
+library(terra)
+library(tidyterra)
+library(tidyverse)
+source("scripts/utilities/download_utils.R")
+```
+
+## Some Context
+
+You likely noticed in your quick maps that the two datasets look different. Sure, one is a vector with lots of `POLYGON` elements and the other is a raster (stored as a `SpatRaster`). If you looked a little, you probably noticed that the orienation (angle) of the areas was a bit different. If you looked a little harder, you probably saw that the general shapes of the states is a bit different, too. And, maybe if you squint, you can see that the boundaries of the maps looks a little different. We'll work through some ways of looking at and fixing those things today! Let's load our datasets and get started!
+
+```{r dlld}
+file_list <- drive_ls(drive_get(as_id("https://drive.google.com/drive/u/1/folders/1PwfUX2hnJlbnqBe3qvl33tFBImtNFTuR")))
+
+
+file_list %>% 
+  dplyr::select(id, name) %>%
+  purrr::pmap(function(id, name) {
+    gdrive_folder_download(list(id = id, name = name),
+                           dstfldr = "inclass08")
+  })
+
+cejst_shp <- read_sf("data/original/inclass08/cejst.shp")
+fire_prob <- rast("data/original/inclass08/wildfire.tif")
+```
+
+
+## What is the Current Extent?
+
+Because extent is part of our internal definition of scale and because getting our extents aligned is a big part of making sure our data sandwich doesn't fall apart, we'll start by checking to see what the extent is for each dataset.
+
+### Vector Data
+By convention, the `sf` package uses a standard syntax for spatial operations that starts with `st_`. In addition, the extent of a vector dataset is known as the **bounding box**. We can access that using `st_bbox`
+
+
+
+```{r sfbbox}
+
+st_bbox(cejst_shp)
+
+cejst_shp %>% 
+  filter(., SF == "Idaho") %>% 
+  st_bbox()
+
+```
+There are three things to know about the bounding box. First, it is, by definition, a rectangle that encompases the vertices of your vector object. So, even if you've got an irregularly shaped `POLYGON` or a series of `POINTS`, the bounding box  necessarily returns the rectangle that encompasses all of the vertices in the object.  Second, using `st_bbox` returns an object of class `bbox` (you can check this by running `st_bbox(your_data) %>% class()` which is a special kind of object. Finally, if you use `dplyr` verbs to alter your the composition of your vector dataset, the bounding box will update to reflect those changes. You can see that in the values returned in the example above, but you can also plot it.
+
+To do that, we have to convert the `bbox`to a simple feature collection (`sfc`) we can do that using the `st_as_sfc` command and then use base `plot` to give us a sense for how different the two bounding boxes are.
+
+```{r pltbbox}
+all_bbox <- st_bbox(cejst_shp) %>% 
+  st_as_sfc()
+id_bbox <- cejst_shp %>% 
+  filter(., SF == "Idaho") %>% 
+  st_bbox() %>% 
+  st_as_sfc()
+
+plot(all_bbox)
+plot(id_bbox, add=TRUE, border ="red")
+```
+
+### Raster Data
+## How Can I Change the Extent?
+### Vector Data
+### Raster Data
+## What is the Current Resolution?
+### Vector Data
+### Raster Data
+## How Can I Change the Current Resolution?
+### Vector Data
+### Raster Data
+## What is the Current Projection?
+### Vector Data
+### Raster Data
+## How Can I Change the Projection?
+### Vector Data
+### Raster Data
+
+## A Note on Assigning Spatial Attributes

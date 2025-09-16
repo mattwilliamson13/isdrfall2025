@@ -8,7 +8,8 @@ source(here::here("R", "slide-things.R"))
 
 ```
 
-Now that you have started working with the various components of coordinates and coordinate reference systems, it's time to start learning the fundamental aspects of working with vector data in `sf` and `R`. The syntax is a little confusing at first, but once you've gotten a sense for the logic behind it you should be able to start piecing together the functions necessary to implement the pseudocode you write for an analysis. We'll spend more time on vector manipulation in the coming weeks so you'll get plenty of practice with the ideas we introduce today.
+Congratulations, You've loaded your first spatial data into `R`!! Now we're going to start learning how to access and manipulate the 3 fundamental properties of spatial data: coordinates/geometries, extent, and resolution.
+We'll spend some time talking about why these things matter, both philosophically and operationally. Then learn how to use `sf` and `terra` to access and manipulate these attributes.
 
 ## Readings
 
@@ -20,7 +21,7 @@ Now that you have started working with the various components of coordinates and
 
 ### Technical Details
 
-{{< fa arrow-up-right-from-square >}} [Chapter 2](https://www.paulamoraga.com/book-spatial/spatial-data-in-r.html) from Moraga (2023) explores similar topics, but provides more explanation about projections, coordinates, etc.
+{{< fa arrow-up-right-from-square >}} [Chapter 2](https://www.paulamoraga.com/book-spatial/spatial-data-in-r.html) from Moraga (2023) provides more explanation projections, coordinates, etc. and their representation in `R`.
 
 - <i class="fas fa-external-link-square-alt"></i> The introductory vignette for the [`sf` package](https://r-spatial.github.io/sf/articles/sf1.html) has a lot of useful info on `sf` objects and conventions.
 
@@ -33,15 +34,13 @@ Now that you have started working with the various components of coordinates and
 
 By the end of today, you should be able to: 
 
-* Implement approaches for checking and reparing geometries in R
+* **Describe** a Coordinate Reference System and why they matter.
 
-* Understand `predicates` and `measures` in the context of spatial operations in sf
+* **Understand** what a projection is, the constraints of projections, and how we navigate them in `R`
 
-* `Use st_*` to evaluate attributes of geometries and calculate measurements
+* **Link** concepts of scale to measurements like extent and resolution
 
-
-
-
+* **Access** the projection, extent, and resolution using `R`
 
 ## Slides
 The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
@@ -57,5 +56,3 @@ slide_buttons("/slides/08-slides")
 ```
 
 </div>
-
-[Link to Panopto Recording](https://boisestate.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=41b7cbdb-2590-453c-8fe9-b07c011c9f29)
