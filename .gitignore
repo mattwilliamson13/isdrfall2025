@@ -17,3 +17,5 @@ README.html
 /assignment/data/**
 /assignment/*_cache/**
 .DS_Store
+/data/**
+/lesson/data**
