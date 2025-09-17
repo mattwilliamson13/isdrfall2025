@@ -83,10 +83,75 @@ plot(all_bbox)
 plot(id_bbox, add=TRUE, border ="red")
 ```
 
+
+One nice thing about `sf` objects is that there is a built-in `geom_` in `ggplot2` that will allow us to make maps with all of the flexibility of `ggplot`. 
+
+```{r ggbbox}
+
+ggplot() +
+  geom_sf(data = all_bbox, color = "yellow", fill = "darkorchid4") +
+  geom_sf(data= id_bbox, fill = "orangered") +
+  theme_bw()
+
+```
+In the `ggplot` call, I've done several things. First, I used `geom_sf` to add each vector dataset. Then instead of using the `mapping = aes()` to tell `ggplot` which column I want to use for the colors, I set the `color` and `fill` manually by specifying them outside of the `aes()` call and setting them manually.  Finally, I called `theme_bw()` to set the plotting options [using one of the preset `ggplot` themes](https://r-charts.com/ggplot2/themes/). Using `ggplot` gives a lot more flexibility and allows us to layer data on top of each other to create maps!
+
+
 ### Raster Data
+
+Unfortunately, the `terra` package uses some different conventions and `tidyterra` only provides functionality for some operations that are more complex. That said, many of the functions in `terra` match our intuition for the operations we'd like to use so it doesn't take too much to figure out how to get what we need. In this case, we are interested in the **extent** of our raster.  If you look at the `terra` helpfile (`?terra`), you'll see the entire list of functions available within the package. If you look for the "Getting and setting dimensions" section, you'll see that there are a number of functions for getting information about `SpatRaster` objects. A quick scan reveals that the function for getting the extent is `ext`.
+
+```{r terext}
+ext(fire_prob)
+
+```
+You'll notice a few things about this object. First, it has a new `class`, a `SpatExtent`. Next, you'll notice that the ordering and structure of the data is different from that of `sf`'s `bbox`. 
+
+We can use `plot` directly on a `SpatExtent` object to be able to look at the extent.
+
+```{r plotext}
+plot(ext(fire_prob), border = "red")
+plot(fire_prob, add=TRUE)
+```
+
+Similar to the `bbox` from `sf`, `ext` returns a rectangle encompassing the entire `SpatRaster` object. The `tidyterra` package allows us to use `filter` as a way to subset rasters without using indexing. We can use that here to find all of the cells whose wildfire hazard potential is greater than 30000. While the behavior of `filter` is the same for both `sf` and `terra` (meaning it keeps only the values that meet your `filter` criteria), you'll notice that, unlike the `bbox` of `sf`, the extent of a `SpatRaster` does not change to match the subset data. 
+
+```{r subrst}
+
+fire_subset <- fire_prob %>% 
+  filter(WHP_ID > 30000)
+
+plot(ext(fire_subset), border = "red")
+plot(fire_subset, add=TRUE)
+
+```
+
 ## How Can I Change the Extent?
+
+There may be occasions where you want to manually change the extent of your spatial objects. Both `sf` and `terra` provide multiple functions for changing the `extent` as part of additional spatial operations (we'll talk more about this in the coming weeks), but sometimes you might want to adjust the extent of an object without modifying anything else about it. Sometimes we might do this to create inset maps. Sometimes we might want to create asymmetric buffers around an existing extent. This is a somewhat rare, but it's worth knowing how to do it just to get a feel for how extents work.
+
 ### Vector Data
+
+If you look at `?st_bbox` you'll see an example of the manual creation of a `bbox` object. We can exploit the fact that `st_bbox` returns a `named.vector` to access the values in the original bounding box and "shrink" it by adding (or subtracting) values from the existing bounding box. Two things are tricky here. First, the original data is in a **geodetic** projection so the units are in degrees (which I have no real intuition for). Second, the goal of "shrinking" the bounding box means we have to think about how we might move "up" or "in" along the graticules. I exploited the plot above to figure out some reasonable numbers and add them here. 
+
+```{r chgbbox}
+orig_bbox <- st_bbox(cejst_shp)
+
+new_bbox <- st_bbox(c(orig_bbox["xmin"] + 1, orig_bbox["xmax"] - 1,  orig_bbox["ymax"] - 1, orig_bbox["ymin"] + 1), crs = st_crs(orig_bbox)) %>% st_as_sfc()
+```
+
+You can verify this again with a plot.
+
+```{r bboxchg}
+
+ggplot() +
+  geom_sf(data = st_as_sfc(orig_bbox), color = "yellow", fill = "darkorchid4") +
+  geom_sf(data= new_bbox, fill = "orangered") +
+  theme_bw()
+  
+```  
 ### Raster Data
+The process is similar for rasters with `terra`
 ## What is the Current Resolution?
 ### Vector Data
 ### Raster Data
