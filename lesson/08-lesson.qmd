@@ -94,6 +94,7 @@ ggplot() +
   theme_bw()
 
 ```
+
 In the `ggplot` call, I've done several things. First, I used `geom_sf` to add each vector dataset. Then instead of using the `mapping = aes()` to tell `ggplot` which column I want to use for the colors, I set the `color` and `fill` manually by specifying them outside of the `aes()` call and setting them manually.  Finally, I called `theme_bw()` to set the plotting options [using one of the preset `ggplot` themes](https://r-charts.com/ggplot2/themes/). Using `ggplot` gives a lot more flexibility and allows us to layer data on top of each other to create maps!
 
 
@@ -105,6 +106,7 @@ Unfortunately, the `terra` package uses some different conventions and `tidyterr
 ext(fire_prob)
 
 ```
+
 You'll notice a few things about this object. First, it has a new `class`, a `SpatExtent`. Next, you'll notice that the ordering and structure of the data is different from that of `sf`'s `bbox`. 
 
 We can use `plot` directly on a `SpatExtent` object to be able to look at the extent.
@@ -150,19 +152,123 @@ ggplot() +
   theme_bw()
   
 ```  
-### Raster Data
-The process is similar for rasters with `terra`
-## What is the Current Resolution?
-### Vector Data
-### Raster Data
-## How Can I Change the Current Resolution?
-### Vector Data
-### Raster Data
-## What is the Current Projection?
-### Vector Data
-### Raster Data
-## How Can I Change the Projection?
-### Vector Data
+
 ### Raster Data
 
-## A Note on Assigning Spatial Attributes
+The process is similar for rasters with `terra`, but we need to get the `SpatExtent` object into a more useable format. The other thing to notice is that our raster is in a projection that uses meters as its measurement unit (you can tell by the differene in the orders of magnitude in the values). This means we need to think a bit differently about how to shift the box.
+
+```{r chgext}
+
+orig_ext <- as.vector(ext(fire_prob))
+
+new_ext <- ext(as.numeric(c(
+  orig_ext["xmin"] + 100000,
+  orig_ext["xmax"] - 100000,
+  orig_ext["ymin"] + 100000,
+  orig_ext["ymax"] - 100000
+)))
+
+plot(orig_ext)
+plot(new_ext, add=TRUE, border = "red")
+
+```
+
+## What is the Current Resolution?
+
+For vector datsets, we don't tend to think about resolution because vectors can be stretched or subset. Instead, we need to think about the **support** underlying the data. This isn't readily apparent in the data itself. Instead, you'll need to look into the metadata or the sources of the data to understand what the "true" resolution of the data is.
+
+For raster data, this is easy enough using the `res` function in `terra`
+
+```{r terres}
+res(fire_prob)
+```
+
+## How Can I Change the Current Resolution?
+
+In some cases you may want to sharpen or coarsen the resolution. You can use `aggregate` or `disagg` in `terra` to do this. The key bit is the `fact` argument. Which tells you the factor by which we create that surface.
+
+```{r reschg}
+coarser_fire <- aggregate(fire_prob, fact = 5)
+finer_fire <- disagg(fire_prob, fact = 5)
+
+res(coarser_fire)
+ext(coarser_fire)
+res(finer_fire)
+ext(finer_fire)
+plot(coarser_fire)
+plot(finer_fire)
+```
+
+
+
+## What is the Current Projection?
+You probably noticed from your initial plots that the "shapes" of the data are different. This is a pretty good clue that the data is in different projections. We can verify that relatively easily in both `sf` and `terra`.
+
+### Vector Data
+
+When we are considering projections, our true interest is in the Coordinate Reference System (CRS). For `sf` we can use `st_crs` to access the CRS for a vector object.
+
+```{r sfcrs}
+st_crs(cejst_shp)
+
+```
+
+You'll notice a fairly verbose output from this. This is a `.wkt`(well-known text) output that describes all of the parameters underlying the projection (here it's WGS84). You'll notice in the last line that there is "EPSG" code. EPSG stands for European Petroleum Survey Group, an entity that standardizes codes and parameters for projections. These codes can be used as shorthand in `R` to alter projections so that you don't have to know all of the .wkt parameters.
+
+### Raster Data
+The process is largely the same for `terra`, but without the `st_` prefix.
+```{r crsrst}
+crs(fire_prob)
+```
+
+Here again, you get the .wkt output, but it's in a slightly different format. This makes difficult to compare projections programmatically. Instead you've got to look to see if things match. One thing you'll notice is that the wkt says "unnamed" suggesting that `R` isn't entirely sure what this is. However, all of the necessary parameters are there, so we'll move on for now.
+
+## How Can I Change the Projection?
+In order to make sure that our "data sandwich" is lined up that any combinations of data we create truly correspond to the same location. We can **reproject** the data to ensure alignment. In `sf`, we can use `st_transform` to _transform_ the CRS of a spatial layer.
+
+::: {.callout-warning}
+In general, it is better to re-project vector data to match raster data, as the vector form is more flexible (because vectors can stretch, but raster cells can't).
+:::
+
+### Vector Data
+
+Let's start by reprojecting the vector dataset. 
+```{r rprjvect}
+
+cejst_reproject <- cejst_shp %>% 
+  st_transform(., st_crs(fire_prob_new))
+```
+
+You'll notice that we used the new version of the raster data. This is because we've given it a complete, intact CRS. Failing to do that would return an error. 
+
+Now let's look at what's changed about the vector data.
+
+```{r vectchg}
+st_crs(cejst_reproject)
+st_crs(cejst_shp)
+st_bbox(cejst_reproject)
+st_bbox(cejst_shp)
+```
+### Raster Data
+
+Even though it's not a particularly great idea, we can reproject the raster to match our existing shapefile too. You can learn more about this from `?project`. You'll also notice that there are a number of recommendations to help you do this safely and without breaking something.
+
+For this to work, we need to get the crs from our data in a format the `terra` can understand. Unlike `sf`, `terra` relies primarily on the wkt form (instead of epsg), so we get that first. Then we build the template - because the projection of the cejst data is in lat/long, we have to specify the resolution of the template in degrees (annoying).
+
+```{r rstprj}
+
+
+target_crs <- st_crs(cejst_shp)$wkt  # WKT string
+
+fire_reproj <- project(fire_prob, target_crs)
+
+crs(fire_reproj)
+crs(fire_prob)
+ext(fire_reproj)
+ext(fire_prob)
+res(fire_reproj)
+res(fire_prob)
+
+```
+
+You can

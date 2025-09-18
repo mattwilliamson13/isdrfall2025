@@ -181,6 +181,7 @@ Source: [Data Carpentry: Geospatial Concepts](https://datacarpentry.org/organiza
 :::
 
 ## Projections are Political
+
 ```{r}
 #| echo: false
 
@@ -228,6 +229,7 @@ worlds_anim = ggplot() +
 worlds_animate = animate(worlds_anim, nframes = 20)
 anim_save("img/slide_8/worlds_animate.gif", worlds_animate)
 ```
+
 ![](img/slide_8/worlds_animate.gif)
 
 ## Projections are Political
@@ -236,11 +238,11 @@ anim_save("img/slide_8/worlds_animate.gif", worlds_animate)
 __Projection necessarily induces some form of distortion (tearing, compression, or shearing)__
 :::
 
-<div style="display: flex; justify-content: center; gap: 1em; margin-right: -3.0em; margin-left: -3.0em;">
+<div style="display: flex; justify-content: center; gap: 1em; margin-right: -3.0em; margin-left: -3.0em">
   <figure>
     <img src="img/slide_8/mercator.png" style="height: 375px;">
     <img src="img/slide_8/equal-earth.png" style="height: 375px;">
-    <figcaption style="font-size: 0.8em"><a href="https://correctthemap.org/">Mercator vs. Equal Earth projection from Correct the Map</a>
+    <figcaption style="font-size: 0.8em"><a href="https://correctthemap.org/">Mercator vs. Equal Earth projection from Correct the Map</a></figcaption>
   </figure>  
 </div>
 
