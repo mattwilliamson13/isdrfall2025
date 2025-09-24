@@ -9,13 +9,13 @@ Getting Started,Session 6,2025-09-10,NA,"Pipes, Functions, and Iteration",NA,NA,
 Getting Started,Session 6,2025-09-26,NA,Homework 1,TRUE,NA,NA,NA,NA,assignment/01-assignment,NA
 Fundamentals of Spatial Data,Session 7,2025-09-15,NA,"Data Models, Coordinates, and Geometries",NA,NA,content/07-content,lesson/07-lesson,example/07-example,NA,NA
 Fundamentals of Spatial Data,Session 8,2025-09-17,NA,"Projections, Extent, and Resolution",NA,NA,content/08-content,lesson/08-lesson,example/08-example,NA,NA
-Fundamentals of Spatial Data,Session 9,2025-09-18,NA,Homework 1 Revision,TRUE,NA,NA,NA,NA,assignment/01-assignmentrev,NA
 Fundamentals of Spatial Data,Session 9,2025-09-22,NA,Attribute Data Operations,NA,NA,content/09-content,lesson/09-lesson,example/09-example,NA,NA
 Fundamentals of Spatial Data,Session 10,2025-09-24,NA,Spatial Data Operations,NA,NA,content/10-content,lesson/10-lesson,example/10-example,NA,NA
 Fundamentals of Spatial Data,Session 11,2025-09-29,NA,Geometry Data Operations and Troubleshooting,NA,NA,content/11-content,lesson/11-lesson,example/11-example,NA,NA
 Fundamentals of Spatial Data,Session 12,2025-10-01,NA,Building Spatial Databases,NA,NA,content/12-content,lesson/12-lesson,example/12-example,NA,NA
 Fundamentals of Spatial Data,Session 12,2025-10-01,NA,Final Project Contract Due,TRUE,NA,NA,NA,NA,assignment/final-proj,NA
 Fundamentals of Spatial Data,Session 12,2025-10-02,NA,Homework 2,TRUE,NA,NA,NA,NA,assignment/02-assignment,NA
+Fundamentals of Spatial Data,Session 9,2025-10-06,NA,Homework 1 Revision,TRUE,NA,NA,NA,NA,assignment/01-assignmentrev,NA
 Describing Spatial Patterns,Session 13,2025-10-06,NA,Point Patterns I,NA,NA,content/13-content,lesson/13-lesson,example/13-example,NA,NA
 Describing Spatial Patterns,Session 14,2025-10-08,NA,Point Patterns II,NA,NA,content/14-content,lesson/14-lesson,example/14-example,NA,(remote)
 Describing Spatial Patterns,Session 14,2025-10-09,NA,Homework 2 Revision,TRUE,NA,NA,NA,NA,assignment/02-assignmentrev,NA

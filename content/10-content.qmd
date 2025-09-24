@@ -1,6 +1,6 @@
 ---
-title: "Introduction to Mapping Geographic Data"
-date: "2023-09-20"
+title: "Spatial Data Operations"
+date: "2025-09-24"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
@@ -8,26 +8,28 @@ source(here::here("R", "slide-things.R"))
 
 ```
 
-Now that we're getting into actual operations on spatial data and beginning to actually modify the geometries and attributes of spatial data, it'll be important for you to be able to visualize the results. At this point, we'll be focusing on rough visualization as a way of "gut-checking" the outcomes of your code. We'll focus more on creating informative, aesthetically pleasing, publication quality visualizations.
+Last class you learned a bit about joining attributes across tabular and spatial data. As you hopefully have learned, simply getting the attributes lined up doesn't avoid the potential fallacies involved in spatial analysis. Doing that requires not just aligning who the data belongs to (i.e., via the attributes), but also ensuring that the _scales of measurement align with our questions_. Today, we'll learn some of the spatial operations available in `R` that help us change the `geometry` of our data to better align the scales of measurement with the scales of our question.
+
+
 
 
 ## Readings
 
-- <i class="fas fa-external-link-square-alt"></i> [Ch.3 Tmap in a nutshell](https://r-tmap.github.io/tmap-book/nutshell.html) from "Elegant and informative maps with tmap" by Martijn Tennekes and Jakub Nowosad provides a great "quick start" for using the `tmap` package for visualizing spatial data.
+- <i class="fas fa-external-link-square-alt"></i> [Ecological Correlations and the Behavior of Individuals](https://www.jstor.org/stable/2087176?seq=3) by [@lovelace_geocomputation_2019] by [@robinson1950] is the foundational paper on the ecological fallacy. Note that the language here is pretty out-of-date, but many of the issues and challenges he raises remain important 70 years later.
 
-- <i class="fas fa-external-link-square-alt"></i> [Making maps with `R`](https://geocompr.robinlovelace.net/adv-map.html) by [@lovelace_geocomputation_2019] introduces the `tmap` package for making nice maps with relatively minimal syntax.
+- <i class="fas fa-external-link-square-alt"></i> [Incorporating geography into a new generalized theoretical and statistical framework addressing the modifiable areal unit problem](https://link.springer.com/article/10.1186/s12942-019-0170-3) by [@tuson2019] provides some really nice examples of how the MAUP can manifest in your data and why it matters.
 
-- <i class="fas fa-external-link-square-alt"></i> [Making maps in `R`](https://www.emilyburchfield.org/courses/eds/making_maps_in_r) by Emily Burchfield illustrates some quick mapping syntax with base `plot`, `ggplot`, and `tmap`. For now, just focus on the base `plot` and `tmap` sections as we'll take on the ggplot stuff later in the course.
+- <i class="fas fa-external-link-square-alt"></i> [Evaluating data stability in aggregation structures across spatial scales: revisiting the modifiable areal unit problem](https://www.tandfonline.com/doi/full/10.1080/15230406.2015.1093431#abstract) by [@nelson2017evaluating] introduces statistical techniques for assessing the stability of analytic results across different levels of spatial aggregation.
 
 ## Objectives
 
 By the end of today, you should be able to: 
 
-*   Describe the basic components of data visualization as a foundation for mapping syntax
+*  **Describe** the Modifiable Areal Unit Problem (MAUP).
 
-*   Understand layering in both base `plot` and `tmap`
+*  **Link** the inferential problems of the ecological fallacy to the statistical problems of the MAUP.
 
-*   Make basic plots of multiple spatial data objects
+*  **Modify** the geometries of spatial objects to explore the MAUP.
 
 ## Slides
 The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
@@ -44,4 +46,3 @@ slide_buttons("/slides/10-slides")
 
 </div>
 
-[Link to today's Panopto Slides](https://boisestate.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=fb4619f1-cd01-49ee-920e-b0830142b65f)

@@ -1,6 +1,6 @@
 ---
-title: "Areal Data: Rasters"
-date: "2023-09-18"
+title: "Attribute Data Operations"
+date: "2025-09-22"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
@@ -8,15 +8,23 @@ source(here::here("R", "slide-things.R"))
 
 ```
 
-Now that we've learned a bit about how to assess some of the important quantities of vector-based spatial data, we'll try to apply a bit of the same logic to raster data. We'll be using the `terra` package for the majority of raster options in this course primarily because it of its speed. That said, it is not a `tidyverse` package and so some of the intuition we used to organize the `sf` functions will be a little harder to extend here. I'll do my best to help you make the links!!
+At this point, you should be (somewhat) familiar with the `dplyr` approach to manipulating tabular data. No only that, but you can get spatial data into `R`!! Now it's time to start bringing different datasets together to answer our questions. For the next 3 sessions, we'll be working towards this. Today, the focus is on creating and manipulating attribute data, with a special focus on using spatial location as the foundation for doing that.
 
 ## Readings
 
-- <i class="fas fa-book"></i> [Chapter 4](https://www.paulamoraga.com/book-spatial/the-terra-package-for-raster-and-vector-data.html) from Paula Moraga's Spatial Statistics for Data Science: Theory and Practice with R provides a quick intro to using `terra` for raster and vector data.
+### Setting the Stage
 
-- <i class="fas fa-book"></i> [The `terra` reference page](https://rspatial.github.io/terra/reference/terra-package.html) provides a brief overview of all of the functions and their categories. We'll only focus on the `SpatRaster` methods.
+- <i class="fas fa-book"></i> [Spatio-temporal modeling of particulate air pollution in the conterminous United States using geographic and meteorological predictors](https://ehjournal.biomedcentral.com/articles/10.1186/1476-069X-13-63?utm_source=chatgpt.com#Sec2) by [@yanosky2014spatio] illustrates the use of combined vector, raster, and tabular data to generate high-resolution predictions of particulate matter exposure in the US. The authors use ArcGIS for the spatial stuff, but you could easily replicate this analysis in `R`.
 
-- <i class="fas fa-book"></i> [Raster Data Manipulation](https://rspatial.org/spatial/8-rastermanip.html) from the Spatial Data Science with `R` and `terra` ebook provides some nice examples of `terra` functions in the context of spatial workflows.
+- <i class="fas fa-book"></i> [Quantitative Conservation Geography](https://www.sciencedirect.com/science/article/pii/S0169534721002275?via%3Dihub#s0015) by [@didi2021conservation] highlights the role that geography plays in environmental issues, identifies the need to integrate datasets, but also makes some pretty big assumptions about the goals of conservation geographers and the applicability of the data at hand.
+
+- <i class="fas fa-book"></i> [Manufacturing Desolation: Unauthorized Border Crosser Mortality, Disappearance, and the Sociopolitical Construction of Remoteness in U.S. Boundary Enforcement](https://www.tandfonline.com/doi/full/10.1080/24694452.2025.2514034?af=R#d1e282) by [@boyce2025manufacturing] is a really interesting example of combining social, environmental, and physiological data to understand how policy changes might alter human mortality through changes in the distribution of water.
+
+### Technical Details
+
+- <i class="fas fa-book"></i> [Attribute Data Operations](https://r.geocompx.org/attr) from [@lovelace_geocomputation_2019] links `tidyverse` and base `R` approaches to data manipulation to the `sf` world.
+
+- <i class="fas fa-book"></i> [Welcome to `tidyterra`](https://dieghernan.github.io/tidyterra/articles/welcome.html) along with the rest of the articles on this page give a sense for the places where `tidyterra` can help integrate rasters into existing `dplyr` pipelines.
 
 
 
@@ -24,13 +32,13 @@ Now that we've learned a bit about how to assess some of the important quantitie
 
 By the end of today, you should be able to: 
 
-- Access the elements that define a raster
+- **Define** Spatial Analysis and distinguish it from making maps. 
 
-- Build rasters from scratch using matrix operations and `terra`
+- **Recognize** the role of database structure and spatial geometry in generating attributes
 
-- Evaluate logical conditions with raster data
+- **Develop** appreciation for the link between attribute operations and analysis validity. 
 
-- Calculate different measures of raster data
+- **Perform** attribute operations on vector and raster data.
 
 ## Slides
 The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
