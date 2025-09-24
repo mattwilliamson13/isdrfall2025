@@ -20,7 +20,7 @@ library(terra)
 library(mvtnorm)
 library(tidyverse)
 library(patchwork)
-
+library(googledrive)
 source("scripts/utilities/download_utils.R")
 
 ```
@@ -166,7 +166,7 @@ aggregate_polygons <- function(sf_obj, pop_col = "pop", threshold = 1000,
 
 ```
 
-Let's try it out and see how it goes.
+Let's try it out and see how it goes. We'll set a series of thresholds and pass them with `map` to create a list of `sf` objects. We'll then use a second function to generate the maps. Finally, we use `wrap_plots` from `patchwork` to make a multiplanel plot.
 
 ```{r}
 thresholds <- c(750, 1500, 3000, 6000, 12000)  # population cutoffs
@@ -188,6 +188,9 @@ wrap_plots(plots, ncol = 3)
 
 ```
 
+
+## How Does Aggregation Affect Measured Correlation
+
 ```{r}
 corr_at_threshold <- function(threshold, polygons, pop_col, r1, method = "greedy", seed = NULL) {
   # aggregate polygons
@@ -199,7 +202,9 @@ corr_at_threshold <- function(threshold, polygons, pop_col, r1, method = "greedy
   tibble(threshold = threshold,
          correlation = cor(v1[,1], v1[,2], use = "complete.obs"))
 }
+```
 
+```{r}
 # --- apply across thresholds ---
 
 
@@ -216,6 +221,7 @@ ggplot(results, aes(x = threshold, y = correlation)) +
 
 
 ```
+
 
 ```{r}
 
