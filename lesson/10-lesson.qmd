@@ -191,6 +191,8 @@ wrap_plots(plots, ncol = 3)
 
 ## How Does Aggregation Affect Measured Correlation
 
+Now that we have developed some different spatial aggregations, let's see how that affects our conclusions about the correlation between the two datasets. We'll use the same function above, but nest it inside another function to make this easier. You'll notice that we first create the aggregated polygons, then we extract the values from the raster (using `extract`) and convert that into a table with our results.
+
 ```{r}
 corr_at_threshold <- function(threshold, polygons, pop_col, r1, method = "greedy", seed = NULL) {
   # aggregate polygons
@@ -203,6 +205,9 @@ corr_at_threshold <- function(threshold, polygons, pop_col, r1, method = "greedy
          correlation = cor(v1[,1], v1[,2], use = "complete.obs"))
 }
 ```
+
+
+Once we've got the function written, we can apply the function using `map` across our `threshold` values. You'll notice that we use `map_dfr` because the outcome of our function is a single row `tibble` that we ultimately want this as a `data.frame` (hence the `_dfr`).
 
 ```{r}
 # --- apply across thresholds ---
@@ -222,11 +227,18 @@ ggplot(results, aes(x = threshold, y = correlation)) +
 
 ```
 
+## What if the Underlying Data is More Coarse?
+
+You might imagine that you get data from a source that is at a coarser resolution than the process you're actually interested in. We can mimic this situation by using`aggregate` to "upscale" the underlying rasters.
+
+Once we do that, it's basically the same process as before, but we change the `r1` argument to `rsts2` instead of `rsts`.
 
 ```{r}
 
 
 rsts2 <- terra::aggregate(rsts, fact = 4, method = "bilinear")
+cor(values(rsts2[[1]]), values(rsts2[[2]]))
+plot(rsts2)
 
 results2 <- map_dfr(thresholds, ~corr_at_threshold(.x, polygons = population_data, "value", r1=rsts2, method = "greedy"))
 
@@ -240,6 +252,11 @@ ggplot(results2, aes(x = threshold, y = correlation)) +
        title = "Effect of polygon aggregation on observed correlation")
 ```
 
+## What if We Change Our Sampling Frame
+
+In the previous examples, we rely on aggregation differences that arise from combining units based on their existing population. What if we have point data? We might imagine that we think our points capture some broader area of the landscape. We might also imagine that our choice of sampling frame affects the relatioiships we uncover.
+
+We do a few new things here. First we use **unary transformers** like `st_transform` and `st_crop` to get our purple air sensors into the right projection and to reduce (crop) the dataset so that we're only using the points that are within our existing study area. Then we use a final transformer, `st_buffer` to draw a new, circular polygon around the points with a radius equal to the `dist` argument. We pass a `vector` of buffer distances to `st_buffer` using `map` and then plot the resulting outcome. 
 
 ```{r}
 
@@ -263,9 +280,11 @@ plots_buff <- map(pa_buffs,
 
 # Combine automatically into a multipanel layout
 wrap_plots(plots_buff, ncol = 3)
+```
 
+We modify our original correlation function to deal with the buffers and return a slightly different tibble as an output.
 
-
+```{r}
 corr_at_buff <- function(polys, r1) {
   # extract raster values (mean within each polygon)
   v1 <- terra::extract(r1, vect(polys), fun = mean, na.rm = TRUE)[, -1]
@@ -273,7 +292,11 @@ corr_at_buff <- function(polys, r1) {
   tibble(buff_dist = unique(polys$buff_dist),
          correlation = cor(v1[,1], v1[,2], use = "complete.obs"))
 }
+```
 
+Finally, we run this new function one more time to generate our comparison plot.
+
+```{r}
 results3 <- map_dfr(pa_buffs, ~corr_at_buff(polys = .x,  r1=rsts))
 
 ggplot(results3, aes(x = buff_dist, y = correlation)) +
@@ -281,7 +304,11 @@ ggplot(results3, aes(x = buff_dist, y = correlation)) +
   geom_point(size = 2) +
   geom_hline(yintercept = rho, linetype = 2, color = "red") +
   theme_minimal() +
-  labs(x = "Population aggregation threshold",
+  labs(x = "Population aggregation buffer",
        y = "Correlation (r1 vs r2)",
-       title = "Effect of polygon aggregation on observed correlation")
+       title = "Effect of polygon buffer on observed correlation")
 ```
+
+## Final Thoughts
+
+Hopefully this exercise has illustrated the unpredictable nature of how aggregation affects the observed correlation between variables. You've also gotten to practice a variety of spatial operations in increasingly complicated functions. 

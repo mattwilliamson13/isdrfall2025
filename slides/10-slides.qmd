@@ -21,10 +21,23 @@ format:
 
 # Problems of Inference
 
+* Atomic Fallacy
+
+* Ecological Fallacy
 
 # Problems of Analysis
 
 ## MAUP and the Ecological Fallacy
+
+* Modifiable Areal Unit Problem (MAUP)
+
+* Statistical relations depend on boundaries
+
+* (One) Indicator of the ecological fallacy
+
+## MAUP and the Ecological Fallacy
+
+![](img/slide_10/MAUP.png)
 
 # Modifying Spatial Objects
 
