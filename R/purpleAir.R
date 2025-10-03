@@ -105,7 +105,7 @@ study_area_join <- st_join(x = sa_sensors, y = st, join=st_covered_by) %>%
   select(sensor_index, name, date_up, uptime, STUSPS) %>% 
   filter(year(date_up) < 2020)%>% 
   group_by(STUSPS) %>% 
-  slice_sample(n=10)
+  slice_sample(n=50)
   
 
 sa_download <- map(study_area_join$sensor_index,
@@ -123,7 +123,9 @@ names(sa_download) <- study_area_join$sensor_index
 sa_subset <- sa_download[row_counts > 0]  
 
 subset_df <- bind_rows(sa_subset, .id = "id") %>% 
-  mutate(id = as.integer(id)) %>% 
+  mutate(id = as.integer(id)) 
+
+%>% 
   left_join(., study_area_join, by = join_by(id == sensor_index)) 
 
 
