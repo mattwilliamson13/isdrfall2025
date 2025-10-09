@@ -11,6 +11,7 @@ title: "Using Spatial Operations to Change Geometries and Explore MAUP"
 3. Explore the Modifiable Areal Unit Problem with known data.
 
 ## Getting Started
+First, we'll have to [get our credentials](https://rstudio.aws.boisestate.edu/) and login to a [new RStudio session](https://rstudio.apps.aws.boisestate.edu/). You can create your own repository if you'd like to track these things. You'll have to copy your googledrive download function from a previous repo.
 
 We'll start like we usually do, by loading packages. There are a few new packages here. The `mvtnorm` packages is a way for generating random numbers from a multivariate normal distribution (like `rnorm`). The `patchwork` package provides a lot of functionality for making multipanel plots. We'll also `source` our utility function.
 

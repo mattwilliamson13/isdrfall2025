@@ -8,6 +8,8 @@ You've now used the PurpleAir data a few times. A fairly obvious question seems 
 
 ## Getting Started
 
+First, we'll have to [get our credentials](https://rstudio.aws.boisestate.edu/) and login to a [new RStudio session](https://rstudio.apps.aws.boisestate.edu/). You can create your own repository if you'd like to track these things. You'll have to copy your googledrive download function from a previous repo.
+
 I've added a few additional datasets to our Google Drive folder, so we'll need to load packages, download our data, and get a few things setup before we start building.
 
 First, let's get our packages and our Google Drive download script loaded.

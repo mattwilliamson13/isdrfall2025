@@ -184,6 +184,7 @@ Source: [Data Carpentry: Geospatial Concepts](https://datacarpentry.org/organiza
 
 ```{r}
 #| echo: false
+#| eval: false
 
 library(sf)             
 library(rnaturalearth)  

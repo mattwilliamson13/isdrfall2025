@@ -16,13 +16,13 @@ Fundamentals of Spatial Data,Session 12,2025-10-01,NA,Building Spatial Databases
 Fundamentals of Spatial Data,Session 12,2025-10-01,NA,Final Project Contract Due,TRUE,NA,NA,NA,NA,assignment/final-proj,NA
 Fundamentals of Spatial Data,Session 12,2025-10-02,NA,Homework 2,TRUE,NA,NA,NA,NA,assignment/02-assignment,NA
 Fundamentals of Spatial Data,Session 9,2025-10-06,NA,Homework 1 Revision,TRUE,NA,NA,NA,NA,assignment/01-assignmentrev,NA
-Describing Spatial Patterns,Session 13,2025-10-06,NA,Point Patterns I,NA,NA,content/13-content,lesson/13-lesson,example/13-example,NA,NA
-Describing Spatial Patterns,Session 14,2025-10-08,NA,Point Patterns II,NA,NA,content/14-content,lesson/14-lesson,example/14-example,NA,(remote)
+Describing Spatial Patterns,Session 13,2025-10-06,NA,Building Spatial Databases II,NA,NA,content/13-content,lesson/13-lesson,example/13-example,NA,NA
+Describing Spatial Patterns,Session 14,2025-10-08,NA,Workday,NA,NA,content/14-content,lesson/14-lesson,example/14-example,NA,(no inclass session)
 Describing Spatial Patterns,Session 14,2025-10-09,NA,Homework 2 Revision,TRUE,NA,NA,NA,NA,assignment/02-assignmentrev,NA
-Describing Spatial Patterns,Session 15,2025-10-13,NA,Surface Metrics I,NA,NA,content/15-content,lesson/15-lesson,example/15-example,NA,NA
-Describing Spatial Patterns,Session 16,2025-10-15,NA,Surface Metrics II,NA,NA,content/16-content,lesson/16-lesson,example/16-example,NA,NA
-Describing Spatial Patterns,Session 17,2025-10-20,NA,Multivariate Description I,NA,NA,content/17-content,lesson/17-lesson,example/17-example,NA,NA
-Describing Spatial Patterns,Session 18,2025-10-22,NA,Multivariate Description II,NA,NA,content/18-content,lesson/18-lesson,example/18-example,NA,NA
+Describing Spatial Patterns,Session 15,2025-10-13,NA,Point Patterns I,NA,NA,content/15-content,lesson/15-lesson,example/15-example,NA,NA
+Describing Spatial Patterns,Session 16,2025-10-15,NA,Point Patterns II,NA,NA,content/16-content,lesson/16-lesson,example/16-example,NA,NA
+Describing Spatial Patterns,Session 17,2025-10-20,NA,Surface Metrics,NA,NA,content/17-content,lesson/17-lesson,example/17-example,NA,NA
+Describing Spatial Patterns,Session 18,2025-10-22,NA,Multivariate Description,NA,NA,content/18-content,lesson/18-lesson,example/18-example,NA,NA
 Describing Spatial Patterns,Session 18,2025-10-23,NA,Homework 3,TRUE,NA,NA,NA,NA,assignment/03-assignment,NA
 Explaining Spatial Patterns,Session 19,2025-10-27,NA,Interpolation,NA,NA,content/19-content,lesson/19-lesson,example/19-example,NA,NA
 Explaining Spatial Patterns,Session 20,2025-10-29,NA,Kriging,NA,NA,content/20-content,lesson/20-lesson,example/20-example,NA,NA
@@ -39,12 +39,9 @@ Fall Break,Session 27,2025-11-24,NA,No Class,NA,NA,NA,NA,NA,NA,(Fall Break)
 Fall Break,Session 28,2025-11-26,NA,No Class,NA,NA,NA,NA,NA,NA,(Fall Break)
 Predicting Spatial Patterns,Session 29,2025-12-01,NA,Spatial Predictions,NA,NA,content/29-content,lesson/29-lesson,example/29-example,NA,NA
 Predicting Spatial Patterns,Session 29,2025-12-02,NA,Homework 4 Revision,TRUE,NA,NA,NA,NA,assignment/04-assignmentrev,NA
-Predicting Spatial Patterns,Session 30,2025-12-03,NA,Model Evaluation I,NA,NA,content/30-content,lesson/30-lesson,example/30-example,NA,NA
+Predicting Spatial Patterns,Session 30,2025-12-03,NA,Prediction and Model Evaluation I,NA,NA,content/30-content,lesson/30-lesson,example/30-example,NA,NA
 Predicting Spatial Patterns,Session 31,2025-12-08,NA,Model Evaluation II,NA,NA,content/31-content,lesson/21-lesson,example/31-example,NA,NA
-Predicting Spatial Patterns,Session 31,2025-12-09,NA,Homework 5,TRUE,NA,NA,NA,NA,assignment/05-assignment,NA
-Wrapup,Session 31,2025-12-09,NA,Draft Final Project Due,TRUE,23:59:00,NA,NA,NA,assignment/final-proj,NA
+Wrapup,Session 31,2025-12-08,NA,Draft Final Project Due,TRUE,23:59:00,NA,NA,NA,assignment/final-proj,NA
 Wrapup,Session 32,2025-12-10,NA,Conclusion,NA,NA,content/32-content,lesson/32-lesson,NA,NA,NA
-Wrapup,Session 32,2025-12-11,NA,Homework 5 Revision,TRUE,NA,NA,NA,NA,assignment/05-assignmentrev,NA
-Wrapup,Session 32,2025-12-12,NA,Final Project Workday,NA,NA,NA,NA,NA,NA,(optional)
 Wrapup,Final Project,2025-12-18,NA,Final Project Due,TRUE,23:59:00,NA,NA,NA,assignment/final-proj,NA
 Wrapup,Final Project,2025-12-19,NA,Final Self-Evaluation Due,TRUE,23:59:00,NA,NA,NA,assignment/self-eval3,NA
