@@ -1,6 +1,6 @@
 ---
-title: "Combining Spatial and Tabular Data"
-date: "2023-10-9"
+title: "Point Patterns I"
+date: "2025-10-13"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
@@ -8,33 +8,36 @@ source(here::here("R", "slide-things.R"))
 
 ```
 
-Today we'll begin exploring typical workflows for spatial analysis by working with attribute data. Attributes generally provide additional information about a location that we can use for visualization and analysis. Unlike spatial operations that we'll explore next week, attribute data do not all require geographic information (but they do need some means of relating to a geography). These chapters are not 'prerequisite' reading for the week, but provide a lot of helpful background for attribute operations in R.
+Point patterns, where the only data are the location of a set of points (and potentially a few attributes of the points), are among the simplest (in terms of data structure) and ubiquitous (in terms of their frequency in the real world) spatial data we will encounter. That said, statistical analysis of point patterns remains an area of rapid methodological development which continues to inform many areas of spatial statistical development.
 
 ## Resources
 
-- <i class="fas fa-book"></i> The [Tidy Data](https://r4ds.had.co.nz/tidy-data.html) and [Relational Data](https://r4ds.had.co.nz/relational-data.html) sections from __R For Data Science__ [@wickham2016r] provide a great overview to data cleaning and manipulation functions available in the `tidyverse`.
+### Bigger Picture
 
-- <i class="fas fa-book"></i> [Doing things with multiple tables](https://ready4r.netlify.app/labbook/part-5-doing-useful-things-with-multiple-tables.html) has a lot of nice visual examples of for using the `_join` functions in `dplyr`.
+- <i class="fas fa-external-link-square-alt"></i>  [Chapter 11: Point Pattern Analysis](https://mgimond.github.io/Spatial/chp11_0.html) in Manuel Gimond's Introduction to GIS and Spatial Analysis `bookdown` project provides a nice (and free) introduction to some of these introductory point process methods. 
 
-- <i class="fas fa-book"></i> This [article](https://www.cell.com/trends/ecology-evolution/fulltext/S0169-5347(21)00227-5) [@di2021conservation] provides a recent recap of a variety of reasons why we may need to combine data from multiple, often disparate, sources. 
+- <i class="fas fa-external-link-square-alt"></i> [Rings, circles, and null-models for point pattern analysis in ecology](https://onlinelibrary.wiley.com/doi/full/10.1111/j.0030-1299.2004.12497.x?casa_token=D8RfesZ_AjUAAAAA%3AkLmb_B8BubHk4swR3flI9QS4sQnO87wZSImZXsQFD41Q9iEExMEO_bDTPvnvOHtERcit-3YmShhyU0g) by [@wiegand] provides an introduction to metrics for spatial clustering with applications in ecology.
 
-- <i class="fas fa-book"></i> The [Spatial Data Operations Chapter](https://geocompr.robinlovelace.net/spatial-operations.html) in [@lovelace_geocomputation_2019] makes the concepts of a network concrete (literally) by using a transportation route example to illustrate the various components of a network analysis in `R`.
+- <i class="fas fa-external-link-square-alt"></i> [Ecological information from spatial patterns of plants: insights from point process theory](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2745.2009.01510.x) by [@law2009] provides a "plants-eye view" linkage between the sorts of the data ecologists often collect and the (somewhat esoteric) math of point patterns. Don't get intimidated by the math here, just try to get an intuition for how the density and distance metrics relate to theories of spatial processes.
+
+- <i class="fas fa-external-link-square-alt"></i> [Spatial Point Pattern Analysis and Its Application in Geographical Epidemiology](https://www.jstor.org/stable/pdf/622936.pdf) by [@gatrell1996] provides a broad overview of point patterns and processes along with some extensions and critiques based on the nature of epidemiological data. Some important points here for anyone thinking about a process that might be considered "contagious" (or spreading). 
+
+### Technical Details
+
+- <i class="fas fa-book"></i> [Chapters 17 and 18](https://www.paulamoraga.com/book-spatial/spatial-point-patterns.html) on Spatial Point Processes and the `spatstat` package in Paula Moraga's book _Spatial Statistics for Data Science: Theory and Practice with R_.
+
+- <i class="fas fa-book"></i> [Chapter 11](https://r-spatial.org/book/11-PointPattern.html) in [@sds] illustrates the interaction between the `sf` package and `spatstat` package for point pattern analysis.
 
 ## Objectives
 
 By the end of today, you should be able to: 
 
-- Define _spatial analysis_
+- **Define** first, and second order effects in point patterns
 
-- Describe the steps in planning a spatial analysis
+- **Simulate** point patterns in `spatstat`
 
-- Understand the structure of relational databases
+- **Compare** quadrat counts to kernel density estimates for describing point patterns
 
-- Use attributes and topology to subset data
-
-- Generate new features using geographic data
-
-- Join data based on attributes and location
 
 
 ## Slides

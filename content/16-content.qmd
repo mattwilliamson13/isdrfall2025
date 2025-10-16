@@ -1,35 +1,40 @@
 ---
-title: "Integrating Rasters and Vector Data"
-date: "2023-10-16"
+title: "Point Patterns II"
+date: "2025-10-15"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
 source(here::here("R", "slide-things.R"))
 
 ```
-The goal of much of our spatial data "munging" is to create a dataframe that can be used in subsequent statistical analyses. It can be difficult to link all of the steps of filtering, selecting, extracting, etc into a coherent problem when you are just being exposed to the syntax (as we discovered last week). Today, I'll try to use a motivating example to help you see a path forward.
+
+We'll continue our discussion of point patterns by looking at second-order effects and approaches for incorporating "marks" into our analysis.
 
 ## Resources
 
-- <i class="fas fa-book"></i> The [Spatial Data Operations Chapter](https://geocompr.robinlovelace.net/spatial-operations.html) in [@lovelace_geocomputation_2019] makes the concepts of a network concrete (literally) by using a transportation route example to illustrate the various components of a network analysis in `R`.
+### Bigger Picture
 
-- <i class="fas fa-book"></i>  [Chapter 3. Processing Tabular Data](https://bookdown.org/mcwimberly/gdswr-book/tables.html) from _Geographic Data Science with R_ by Michael C. Wimberly has a nice introduction to many of the `dplyr` verbs for manipulating tabular data.
+- <i class="fas fa-external-link-square-alt"></i> [Point process models for presence-only analysis](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.12352) by [@Renner2015] has an excellent overview of ways to treat presence-only data (i.e., things from citizen science datasets, herbariums, arrest locations, etc where there was not a systematic sample for presences **and** absences) in a point process modeling framework.
 
-- <i class="fas fa-book"></i>  [Chapter 9. Combining Vector Data with Continuous Raster Data](https://bookdown.org/mcwimberly/gdswr-book/combining-vector-data-with-continuous-raster-data.html) from _Geographic Data Science with R_ by Michael C. Wimberly introduces data extraction and zonal statistics for raster data.
+- <i class="fas fa-external-link-square-alt"></i> [Spatial Point Pattern Analysis and Its Application in Geographical Epidemiology](https://www.jstor.org/stable/pdf/622936.pdf) by [@gatrell1996] provides a broad overview of point patterns and processes along with some extensions and critiques based on the nature of epidemiological data. Some important points here for anyone thinking about a process that might be considered "contagious" (or spreading). 
 
-- <i class="fas fa-book"></i>  [Chapter 10. Combining Vector Data with Discrete Raster Data](https://bookdown.org/mcwimberly/gdswr-book/tables.html) from _Geographic Data Science with R_ by Michael C. Wimberly extends Chapter 9 for discrete rasters, but also adds some additional buffering and data manipulation syntax.
+### Technical Details
+
+- <i class="fas fa-book"></i> [Chapters 17 and 18](https://www.paulamoraga.com/book-spatial/spatial-point-patterns.html) on Spatial Point Processes and the `spatstat` package in Paula Moraga's book _Spatial Statistics for Data Science: Theory and Practice with R_.
+
+- <i class="fas fa-book"></i> [Chapter 11](https://r-spatial.org/book/11-PointPattern.html) in [@sds] illustrates the interaction between the `sf` package and `spatstat` package for point pattern analysis.
 
 ## Objectives
 
 By the end of today you should be able to:
 
-- Use `dplyr` with `predicates` and `measures` to subset and manipulate data
+- **Recognize** the linkage between point process models and the Poisson Distribution
 
-- Use `extract` to access raster data
+- **Differentiate** between first- and second-order effects in point processes
 
-- Use `zonal` to summarize access data
+- **Simulate** point patterns and use density and distance functions to assess first- and second-order effects
 
-- Join data into a single analyzable dataframe
+
 
 
 ## Slides
