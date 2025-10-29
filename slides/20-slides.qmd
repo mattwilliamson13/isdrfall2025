@@ -10,3 +10,138 @@ format:
     show-slide-number: print
     embed-resources: true  
 ---
+
+```{r}
+#| include: false
+library(terra)
+library(sf)
+library(tidyverse)
+library(gstat)  # Used for the dirichlet tesselation function
+```
+
+## Interpolation
+
+>Spatial interpolation is the process of predicting values of a target variable or attribute at an unobserved location, from a set of values at known (observed) locations
+
+## Deterministic vs. Probabalistic Interpolation
+
+::: incremental
+
+* **Deterministic**- interpolated values calculated as a function of distance
+
+* **Probabilistic**- interpolated values are _predicted_ based on statistical models
+:::
+
+## Kriging
+
+::: {style="font-size: 0.8em"}
+* Previous methods predict $z$ as a (weighted) function of distance
+
+* Treat the observations as perfect (no error)
+
+* If we imagine that $z$ is the outcome of some spatial process such that:
+
+$$
+\begin{equation}
+z(\mathbf{x}) = \mu(\mathbf{x}) + \epsilon(\mathbf{x})
+\end{equation}
+$$
+
+then any observed value of $z$ is some function of the process ($\mu(\mathbf{x})$) and some error ($\epsilon(\mathbf{x})$)
+
+* Kriging exploits autocorrelation in $\epsilon(\mathbf{x})$ to identify the trend and interpolate accordingly
+
+:::
+
+## Autocorrelation
+
+* __Correlation__ the tendency for two variables to be related
+
+* __Autocorrelation__ the tendency for observations that are closer (in space or time) to be correlated
+
+* __Positive autocorrelation__ neighboring observations have $\epsilon$ with the same sign
+
+* __Negative autocorrelation__ neighboring observations have $\epsilon$ with a different sign (rare in geography)
+
+## Ordinary Kriging
+
+* Assumes that the deterministic part of the process ($\mu(\mathbf{x})$) is an unknown constant ($\mu$)
+
+$$
+\begin{equation}
+z(\mathbf{x}) = \mu + \epsilon(\mathbf{x})
+\end{equation}
+$$
+
+## Steps for Ordinary Kriging
+
+* Removing any **spatial trend** in the data (if present).
+** Computing the **experimental variogram**, $\gamma$, which is a measure of spatial autocorrelation.
+* Defining an **experimental variogram model** that best characterizes the spatial autocorrelation in the data.
+* Interpolating the surface using the experimental variogram.
+
+## (semi)Variograms
+
+* Relationship between observation variance and distance
+
+* __nugget__ - the proportion of semivariance that occurs at small distances
+
+* __sill__ - the maximum semivariance between pairs of observations
+
+* __range__ - the distance at which the __sill__ occurs 
+
+## Variograms
+
+* Empirical vs. fitted.
+
+```{r}
+#| echo: false
+
+show.vgms(par.strip.text = list(cex = 0.75))
+
+```
+
+
+## Universal Kriging
+
+* Assumes that the deterministic part of the process ($\mu(\mathbf{x})$) is now a function of the location $\mathbf{x}$
+
+* Could be the location or some other attribute
+
+* Now `y` is a function of some aspect of `x`
+
+## Co-Kriging
+
+* relies on autocorrelation in $\epsilon_1(\mathbf{x})$ for $z_1$ AND cross correlation with other variables ($z_{2...j}$)
+
+* Extending the ordinary kriging model gives:
+
+$$
+\begin{equation}
+z_1(\mathbf{x}) = \mu_1 + \epsilon_1(\mathbf{x})\\
+z_2(\mathbf{x}) = \mu_2 + \epsilon_2(\mathbf{x})
+\end{equation}
+$$
+
+* Note that there is autocorrelation within both $z_1$ and $z_2$ (because of the $\epsilon$) and cross-correlation (because of the location, $\mathbf{x}$)
+
+* Not required that all variables are measured at exactly the same points
+
+## Why Krig?
+
+* Allows empirical estimate of autocorrelation
+
+* Incorporate actual spatial structure
+
+* Increased accuracy
+
+* Uncertainty estimates
+
+## Why Not Krig?
+
+* Computationally intensive
+
+* Smoothing not guarenteed
+
+* Variograms (somewhat) subjective
+

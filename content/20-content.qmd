@@ -3,6 +3,8 @@ title: "Probabilistic Interpolation"
 date: "2025-10-29"
 ---
 
+Last class we talked about deterministic interpolation to fill in gaps in our data by leveraging the first law of geography (closer things should be similar). These approaches use the distance between observed data point and the observations themselves to calculate the values that occur between the obseved points. These approaches are deterministic - there is no uncertainty or stochasticity in the values they produce. Today, we'll look at probabilistic approaches to interpolate missing values based on statistical models built on asssumptions about first- and second-order stationarity and estimates of covariance in our observed data. 
+
 ```{r slides-videos, echo=FALSE, include=FALSE}
 source(here::here("R", "slide-things.R"))
 
@@ -24,13 +26,13 @@ from Paula Moraga's new book Spatial Statistics for Data Science: Theory and Pra
 
 By the end of today you should be able to:
 
-* Describe and implement statistical approaches to interpolation
+* **Differentiate** deterministic from probabilistic interpolation
 
-* Describe the case for identifying neighbors with areal data
+* **Recognize** how first- and second-order properties relate to geostatistical interpolation
 
-* Implement contiguity-based neighborhood detection approaches
+* **Define** key components of a semi-variogram
 
-* Implement graph-based neighborhood detection approaches
+* **Implement** ordinary and universal krigging using `gstat`, `sf`, and `terra`
 
 
 
