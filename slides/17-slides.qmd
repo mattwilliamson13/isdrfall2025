@@ -1,12 +1,106 @@
 ---
-title: "Generic"
+title: "Surface Metrics"
 subtitle: "HES 505 Fall 2025: Session 17"
 author: "Matt Williamson"
 format: 
   revealjs:
     theme: mytheme.scss
-    highlight-style: pygments
+    highlight-style: printing
     slide-number: true
     show-slide-number: print
     embed-resources: true  
 ---
+
+## Objectives
+
+* **Describe** the importance of measuring recurrent landscape patterns
+
+* **Distinguish** between patch, class, and landscape-level metrics
+
+* **Implement** patch metric calculations using the `landscapemetrics` package for `R`
+
+# What do we mean by landscape?
+
+## Definining landscapes
+
+![](img/slide_17/landscapehier.png)
+
+## Defining Landscapes
+
+![](img/slide_17/wordcloud.png)
+
+## Core Concepts
+
+* Heterogeneity is a defining feature of a landscape
+
+* Landscapes can be defined and studied at any scale
+
+* Patterns and processes occur across scales
+
+* Not limited to terrestrial systems
+
+## Heterogeneity and Dynamics
+
+::: columns
+::: {.column width="60%"}
+
+![](img/slide_17/heterogeneitydyn.png)
+
+:::
+::: {.column width="40%"}
+* Composition
+
+* Matrix vs. patch-mosaic vs. gradients
+
+* Community composition
+
+* Turnover and invasion
+
+:::
+:::
+
+## Measuring Patches
+
+![](img/slide_17/patterns.png)
+
+## Measuring Patches
+
+::: columns
+::: {.column width="60%"}
+![](img/slide_17/processpattern.png)
+:::
+::: {.column width="40%"}
+![](img/slide_17/metricspackage.png)
+
+:::
+:::
+
+## Measuring Patches
+
+* **Patch** metrics: describe attributes of each patch
+
+* **Class** metrics: describe the distribution of patches within each category
+
+* **Landscape** metrics: describe the composition of the landscape based on patches and categories
+
+> Scale Matters!!!
+
+## Most Metrics Are Correlated
+
+* Combinations are possible (PCA - Wednesday)
+
+* **Strength** - The average variance in configuration explained by a metric/combination
+
+* **Consistency** - Do the metrics/combinations mean the same thing in different patches/landscapes
+
+* **Universality** - The percentage of regions where the metric/combination plays a role
+
+## Why Do We Care
+
+* Describe the landscape mosaic
+
+* As a foundation for varying rates in point process models
+
+* As predictors for other models
+
+* As an objective for planning

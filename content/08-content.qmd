@@ -15,7 +15,7 @@ We'll spend some time talking about why these things matter, both philosophicall
 
 ### Setting the Stage
 
-[Scale and Projections](https://open.lib.umn.edu/mapping/chapter/3-scale-and-projections/) by Matson et al. provides an accessible overview to what projections are and why we need them.
+- <i class="fas fa-external-link-square-alt"></i> [Scale and Projections](https://open.lib.umn.edu/mapping/chapter/3-scale-and-projections/) by Matson et al. provides an accessible overview to what projections are and why we need them.
 
 - <i class="fas fa-external-link-square-alt"></i> [Lying With Maps](https://open.lib.umn.edu/mapping/chapter/7-lying-with-maps/) by Nelson et al. provides a nice introduction to the ways that the representation of spatial data can be misleading. 
 

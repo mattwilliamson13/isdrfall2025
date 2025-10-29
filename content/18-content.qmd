@@ -1,6 +1,6 @@
 ---
-title: "Combining Data and Point Patterns"
-date: "2023-10-18"
+title: "Multivariate Description"
+date: "2025-10-22"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
@@ -8,31 +8,37 @@ source(here::here("R", "slide-things.R"))
 
 ```
 
-Today we'll finish up our example of combining data for analysis and introduce point process models as a first version of spatial analysis. We'll need a few new packages here, but many of the key data management processes will remain the same.
+Now that we've looked at describing spatial patterns using point processes and patch metrics, we'll finish by taking a look at multivariate methods for making sense of spatial patterns. We'll focus on two, relatively simple approaches. Principal components analysis for identifying and mapping latent gradients in quantitative data and clustering for identifying qualitative 'groups' in data based on quantitative data. These are just two approaches in a broader class of "dimension reduction" methods, but they are illustrative of the basic tasks of multivariate description.
 
 ## Resources
 
-- <i class="fas fa-book"></i> The [Chapters 17 and 18](https://www.paulamoraga.com/book-spatial/spatial-point-patterns.html) on Spatial Point Processes and the `spatstat` package in Paula Moraga's book _Spatial Statistics for Data Science: Theory and Practice with R_.
+### Bigger Picture
 
-- <i class="fas fa-external-link-square-alt"></i> [Rings, circles, and null-models for point pattern analysis in ecology](https://onlinelibrary.wiley.com/doi/full/10.1111/j.0030-1299.2004.12497.x?casa_token=D8RfesZ_AjUAAAAA%3AkLmb_B8BubHk4swR3flI9QS4sQnO87wZSImZXsQFD41Q9iEExMEO_bDTPvnvOHtERcit-3YmShhyU0g) by [@wiegand] provides an introduction to metrics for spatial clustering with applications in ecology.
+- <i class="fas fa-external-link-square-alt"></i> [Principal Component Analysis on Spatial Data: An Overview](https://www.tandfonline.com/doi/full/10.1080/00045608.2012.689236#d1e979) by [@demvsar2013] provides a semi-technical introduction to why we might use Principle Components Analysis to identify spatial gradients and things we should consider when applying PCA to spatial data.
 
-- <i class="fas fa-external-link-square-alt"></i>  [Improving the usability of spatial point process methodology: an interdisciplinary dialogue between statistics and ecology
-](https://link.springer.com/article/10.1007/s10182-017-0301-8) by Janine Illian (a major contributor to modern point pattern analyses) and David Burslem (a Scottish plant ecologist) [@illian2017] is a fairly modern take on the challenges associated with point process modeling in ecology.
+- <i class="fas fa-external-link-square-alt"></i> [A latitudinal gradient in dimensionality of biodiversity](https://nsojournals.onlinelibrary.wiley.com/doi/epdf/10.1111/ecog.03654) by [@stevens2018] is a nice, contemporary demonstration of PCA for ecological questions and spatial data.
 
-- <i class="fas fa-external-link-square-alt"></i>  [Chapter 11: Point Pattern Analysis](https://mgimond.github.io/Spatial/chp11_0.html) in Manuel Gimond's Introduction to GIS and Spatial Analysis `bookdown` project provides a nice (and free) introduction to some of these introductory point process methods. 
+- <i class="fas fa-external-link-square-alt"></i> [Archetypical patterns and trajectories of land systems in Europe](https://link.springer.com/article/10.1007/s10113-015-0907-x) by [@levers2018] is a great reference for using cluster analysis to identify social-ecological archetypes for sustainability problems.
 
+- <i class="fas fa-external-link-square-alt"></i> [The American West as a social-ecological region: drivers, dynamics and implications for nested social-ecological systems](https://iopscience.iop.org/article/10.1088/1748-9326/ab4562) by [@jones2019american] is an example of a fairly simple cluster analysis that resulted from a workshop hosted here at Boise State!
+
+### Technical Details
+
+- <i class="fas fa-external-link-square-alt"></i> [Cluster Analysis](https://www.erikkusch.com/courses/bftp-biome-detection/cluster-analysis/) provides a nice vignette introducing the workflow for cluster analysis. It's done using the `raster` package (a precursor to `terra`), but the translation into `terra` is straightforward.
+
+- <i class="fas fa-external-link-square-alt"></i> [Principal Components Analysis](https://rspatial.org/rs/3-basicmath.html#principal-component-analysis) from the online `terra` workbook provides an intro to the workflow for a simple PCA using rasters.
 
 ## Objectives
 
 By the end of today you should be able to:
 
-- Complete the creation of a dataset for analysis using vector and raster data
+- **Describe** the motivations for dimension reduction with spatial data
 
-- Define a point process and their utility for ecological applications
+- **Distinguish** the differences between PCA and cluster analysis
 
-- Define first and second-order Complete Spatial Randomness
+- **Understand** common metrics for assessing the quality of dimension reduction results 
 
-- Use several common functions to explore point patterns
+- **Implement** simple PCA and cluster analysis using `R` 
 
 
 ## Slides
@@ -51,4 +57,3 @@ slide_buttons("/slides/18-slides")
 
 </div>
 
-[Link to Panopto Video](https://boisestate.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=82b8f511-330a-474d-9393-b09f014188de)

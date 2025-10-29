@@ -1,5 +1,5 @@
 ---
-title: "Generic"
+title: "Probabilistic Interpolation"
 subtitle: "HES 505 Fall 2025: Session 20"
 author: "Matt Williamson"
 format: 

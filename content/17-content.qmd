@@ -1,20 +1,41 @@
 ---
-title: "Combining Vectors and Categorical Rasters"
-date: "2023-10-16"
+title: "Surface Metrics"
+date: "2024-10-20"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
 source(here::here("R", "slide-things.R"))
 
 ```
-Note that the last 3 sections needed a bit of reorganization. I've moved to session 18 to keep the webpage aligned with the schedule.
+
+Now that you have a sense for describing point patterns using density and distance, we'll move to descriptions of "patches". Patches generally refer to areal data with categorical characteristics. Understanding the relationship between patterns in the arrangement and composition of these patches forms the backbone of landscape ecology and has much to offer other social and ecological questions.
 
 ## Resources
+
+### Setting the Stage
+
+- <i class="fas fa-external-link-square-alt"></i> [Landscape Ecology: the effect of pattern on process](https://www.jstor.org/stable/2097089?seq=1) by [@turner1989] is one of the foundational references for understanding the key questions driving the field of landscape ecology.
+
+- <i class="fas fa-external-link-square-alt"></i> [Landscape sustainability and the landscape ecology of institutions](https://link.springer.com/article/10.1007/s10980-020-00989-8) by [@cumming2020] has some cool extensions of landscape ecology into key areas of environmental governance and managment institutions.
+
+- <i class="fas fa-external-link-square-alt"></i> [Parsimony in landscape metrics: Strength, universality, consistency](https://www.sciencedirect.com/science/article/pii/S1470160X07001306) by [@cushman2008] provides a critical review of the myriad of different patch metrics that have been developed and provides guidance for selecting which metrics to use in analyses.
+
+### Technical Details
+
+- <i class="fas fa-external-link-square-alt"></i> [The General Background](https://r-spatialecology.github.io/landscapemetrics/articles/general_background.html) overview of the `landscapemetrics` package introduces the foundation for analyzing landscape metrics in `R`.
+
+- <i class="fas fa-external-link-square-alt"></i> [Getting Started](https://r-spatialecology.github.io/landscapemetrics/articles/get_started.html) from the webpage for the `landscapemetrics` package provides examples of a typical workflow.
 
 
 ## Objectives
 
 By the end of today you should be able to:
+
+* **Describe** the importance of measuring recurrent landscape patterns
+
+* **Distinguish** between patch, class, and landscape-level metrics
+
+* **Implement** patch metric calculations using the `landscapemetrics` package for `R`
 
 
 ## Slides
@@ -25,4 +46,11 @@ The slides for today's lesson are available online as an HTML file. Use the butt
 slide_buttons("/slides/17-slides")
 ```
 
-Slides Forthcoming
+<div>
+
+```{=html}
+<iframe class="slide-deck" src="/slides/17-slides.html"></iframe>
+```
+
+</div>
+
