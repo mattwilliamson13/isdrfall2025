@@ -223,7 +223,7 @@ ok_krig_formula <- gstat(id = "log.zinc",
                       data = meuse_sf,
                       model = fit_vgm)
 
-krig_pred <- predict(krig_formula, grid_sf)
+krig_pred <- predict(ok_krig_formula, grid_sf)
 
 pred_rast <- c(rasterize(vect(krig_pred), grd, field="log.zinc.pred"), rasterize(vect(krig_pred), grd, field="log.zinc.var"))
 names(pred_rast) <- c("pred", "var")
