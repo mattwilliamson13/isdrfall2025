@@ -1,12 +1,77 @@
 ---
-title: "Generic"
+title: "Spatial Autocorrelation I"
 subtitle: "HES 505 Fall 2025: Session 25"
 author: "Matt Williamson"
 format: 
   revealjs:
     theme: mytheme.scss
-    highlight-style: pygments
+    highlight-style: printing
     slide-number: true
     show-slide-number: print
     embed-resources: true  
 ---
+
+# Objectives {background="#9F281A"}
+
+By the end of today you should be able to:
+
+- Use the `spdep` package to identify the neighbors of a given polygon based on proximity, distance, and minimum number
+
+- Understand the underlying mechanics of Moran's I and calculate it for various neighbors
+
+- Distinguish between global and local measures of spatial autocorrelation
+
+- Visualize neighbors and clusters
+
+# Revisiting Spatial Autocorrelation {background="#9F281A"}
+
+## The Worlds Is Not Random
+
+![From Manuel Gimond](img/slide_17/Random_maps.png)
+
+
+## Kriging Revisited
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(gstat)
+library(sf)
+
+data(meuse.all)
+meuse_sf <- st_as_sf(meuse.all, 
+                     coords = c("x", "y"), 
+                     crs = 28992, 
+                     agr = "constant")
+sample_vgm <- variogram(log(zinc) ~ 1, data = meuse_sf)
+plot(sample_vgm)
+
+```
+
+## Kriging Revisited
+
+- Assumes autocorrelation to facilitate prediction
+
+- Semivariogram decribes how autocorrelation changes with distance
+
+- But what about statistical inference?
+
+
+## Spatial Autocorrelation and Inference
+
+- Attributes (features) are often non-randomly distributed
+
+- Especially true with aggregated data
+
+- Affects estimates of precision (and significance)
+
+
+## Global Moran's I
+
+$$
+I = \frac{n}{W} \cdot \frac{\sum_{i=1}^{n}\sum_{j=1}^{n} w_{ij}(x_i - \bar{x})(x_j - \bar{x})}{\sum_{i=1}^{n}(x_i - \bar{x})^2}
+$$
+
+where $W = \sum_{i=1}^{n}\sum_{j=1}^{n} w_{ij}$

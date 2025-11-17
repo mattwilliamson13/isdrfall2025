@@ -1,32 +1,35 @@
 ---
-title: "Movement and Networks I"
-date: "2023-11-13"
+title: "Spatial Autocorrelation I"
+date: "2025-11-17"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
 source(here::here("R", "slide-things.R"))
 ```
 
-Today we're going to finish up some of the model evaluation and prediction pieces from last week and then take a brief detour into the use of spatial information in networks. To do that, we'll need to introduce some basic concepts of networks before getting too far down the road of the syntax.
+Now that we've learned about the power of spatial autocorrelation for interpolation from point data, it's time to explore methods for spatial autocorrelation with areal data. We'll have to define neighbors because distance is a little more ambiguous here and then look at some global and local measures of autocorrelation.
+
 
 ## Resources
 
-- <i class="fas fa-external-link-square-alt"></i> [Landscape connectivity: A graph-theoretic perspective](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/0012-9658%282001%29082%5B1205%3ALCAGTP%5D2.0.CO%3B2) by [@urban] introduces the notion of using networks and graphs to understand ecological connectivity.
+- <i class="fas fa-external-link-square-alt"></i> [Ch. 7: Spatial Neighborhood Matrices](https://www.paulamoraga.com/book-spatial/spatial-neighborhood-matrices.html) in
+from Paula Moraga's new book Spatial Statistics for Data Science: Theory and Practice with `R` gives a little gentler introduction to spatial neighbors specifically in the context of statistical models.
 
-- <i class="fas fa-external-link-square-alt"></i> [Connectivity for conservation: a framework to classify network measures](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/09-2190.1) by [@rayfield] helps simplify the (often overwhelming nature) of terminology and network metrics.
+- <i class="fas fa-book"></i> [Chapter 14 Proximity and Areal Data](https://r-spatial.org/book/14-Areal.html) in Spatial Data Science by Edzer Pebesma and Roger Bivand provides explanations of how the `spdep` package can be used to construct neighborhood weights.
 
-- <i class="fas fa-external-link-square-alt"></i> [Graphs and network science: and introduction](https://livebook.manning.com/book/graphs-and-network-science-an-introduction/chapter-1/) provides a little simpler, but less spatially informed introduction to the tasks of network analysis.
-
+- {{< fa arrow-up-right-from-square >}} [Spatial Autocorrelation in R](https://mgimond.github.io/Spatial/spatial-autocorrelation-in-r.html) provides some easy code for working through neighbors with areal data and calculating spatial autocorrelation measures.
 
 ## Objectives
 
 By the end of today you should be able to:
 
-- Use cross-validation to evaluate your models
+- Use the `spdep` package to identify the neighbors of a given polygon based on proximity, distance, and minimum number
 
-- Define a network and it's key components
+- Understand the underlying mechanics of Moran's I and calculate it for various neighbors
 
-- Identify major questions that we can address with networks
+- Distinguish between global and local measures of spatial autocorrelation
+
+- Visualize neighbors and clusters
 
 ```{r show-slide-tabs, echo=FALSE, results="asis"}
 slide_buttons("/slides/25-slides")
@@ -41,4 +44,3 @@ slide_buttons("/slides/25-slides")
 </div>
 
 
-[Panopto Video](https://boisestate.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=abc2638d-a228-42a8-b585-b0b9015323a0)
