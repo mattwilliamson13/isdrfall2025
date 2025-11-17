@@ -1,35 +1,37 @@
 ---
-title: "Spatial Autocorrelation"
-date: "2023-10-30"
+title: "Machine Learning Models: Trees"
+date: "2025-10-30"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
 source(here::here("R", "slide-things.R"))
 ```
 
-Now that we've learned about the power of spatial autocorrelation for interpolation from point data, it's time to explore methods for spatial autocorrelation with areal data. We'll have to define neighbors because distance is a little more ambiguous here and then look at some global and local measures of autocorrelation.
+In the previous set of lectures, we thought about explanation of spatial patterns through a fairly simple lens. Namely, that the best explanation for variation in values is a function of distance. As such, the best prediction of new values take into account the measurement and some function of distance. In deterministic methods, we assume that the measurements we have should simpley be smoothed based on distance. In probabilistic methods, we allow for the idea that the underlying mean of the process is unknown (and can vary) and then exploit spatial covariance to more meaningfully account for relationship between distance and the mean of the process (allowing for potential second-order effects). It is often the case, however, that we want to know more about this unknown mean value (which factors are most important, how do they affect the process, etc). This might be because we are interested in inference about those factors more than we care about complete predictions. In this case, me might use statistical-learning models to take advantage of the data we have in a way that is computationally efficient. We'll talk about some of the simpler methods for doing that today: tree based methods.
 
 
 ## Resources
 
-- <i class="fas fa-external-link-square-alt"></i> [Ch. 7: Spatial Neighborhood Matrices](https://www.paulamoraga.com/book-spatial/spatial-neighborhood-matrices.html) in
-from Paula Moraga's new book Spatial Statistics for Data Science: Theory and Practice with `R` gives a little gentler introduction to spatial neighbors specifically in the context of statistical models.
+- <i class="fas fa-external-link-square-alt"></i> [Random forests for Classification in Ecology](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/07-0539.1) by [@cutler2007] provides an introduction to the utility of Random Forests for ecologists.
 
-- <i class="fas fa-book"></i> [Chapter 14 Proximity and Areal Data](https://r-spatial.org/book/14-Areal.html) in Spatial Data Science by Edzer Pebesma and Roger Bivand provides explanations of how the `spdep` package can be used to construct neighborhood weights.
+- <i class="fas fa-external-link-square-alt"></i>[Statistical modeling of spatial data](https://r-spatial.org/book/10-Models.html) in [@sds] gives a nice overview of the different goals for spatial statistical modeling and considerations one should be aware of when trying to draw inference from these types of analyses.
 
-{{< fa arrow-up-right-from-square >}} [Spatial Autocorrelation in R](https://mgimond.github.io/Spatial/spatial-autocorrelation-in-r.html) provides some easy code for working through neighbors with areal data and calculating spatial autocorrelation measures.
+- <i class="fas fa-external-link-square-alt"></i> [An Introduction to Statistical Learning](https://hastie.su.domains/ISLR2/ISLRv2_corrected_June_2023.pdf.download.html) by [@James2021] is a comprehensive introduction to a number of statistical learning techniques with examples in `R`. Although these examples are not necessarily spatial, the chapters provide a lot of the background necessary for understanding what the models are doing.
+
+- <i class="fas fa-external-link-square-alt"></i>[Spatial machine learning with R: caret, tidymodels, and mlr3](https://geocompx.org/post/2025/sml-bp1/) by Jakub Nowosad provides a useful introduction to fitting Random Forests under 3 different modeling paradigms. The `caret` package has been around for a long time and is a "go to" for lots of machine learning methods. The other two are newer and have quite a few more methods, but have been less integrated into the existing spatial modeling paradigms. 
+
 
 ## Objectives
 
 By the end of today you should be able to:
 
-- Use the `spdep` package to identify the neighbors of a given polygon based on proximity, distance, and minimum number
+- **Differentiate** supervised from unsupervised classification
 
-- Understand the underlying mechanics of Moran's I and calculate it for various neighbors
+- **Recognize** the linkage between statistical learning models and interpolation
 
-- Distinguish between global and local measures of spatial autocorrelation
+- **Define** the key elements of tree-based classifiers
 
-- Visualize neighbors and clusters
+- **Articulate** the differences in statistical learning for spatial data
 
 
 ```{r show-slide-tabs, echo=FALSE, results="asis"}
@@ -44,4 +46,3 @@ slide_buttons("/slides/21-slides")
 
 </div>
 
-[Link to Panopto Video](https://boisestate.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4e8ef8ee-2dd0-4681-91b5-b0ab01431905)

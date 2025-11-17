@@ -308,6 +308,9 @@ pre.text, pre.sourceCode, .cell-output pre {
 pre code {
   background-color: $body-bg;
   color: $body-color;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: none !important;
 }
 
 pre.sourceCode code {

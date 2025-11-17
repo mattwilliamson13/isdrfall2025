@@ -1,32 +1,42 @@
 ---
-title: "Statistical Modelling II"
-date: "2023-11-6"
+title: "Statistical Modelling I"
+date: "2025-11-10"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
 source(here::here("R", "slide-things.R"))
 ```
 
-Last class we spent some time extending the idea of Favorability to build a foundation for treating overlay analysis as a logistic regression. Although logistic regression has a number of properties that make it desirable for inference, a number of recently developed statistical learning approaches have greatly improved our ability to take advantage a wide variety of available data and generate spatially explicit predictions. These methods may make interpretation and inference more challenging, but can improve the predictive ability of your models. We'll explore some of those today.
+Last class we looked at tree-based machine-learning models for classifying data (i.e., presence/abscence, categorization) or estimating the pseudo-regression relationships between variables and measured outcomes. Those approaches rely on learning the distributions necessary for the likelihood from the data themselves (rather than from a theoretical probability distribution). Today we'll look at alternative approaches using tradititional statistical models.
 
 ## Resources
 
-- <i class="fas fa-external-link-square-alt"></i> [An Introduction to Statistical Learning](file:///Users/mattwilliamson/Downloads/ISLRv2_corrected_June_2023.pdf) by [@James2021] is a comprehensive introduction to a number of statistical learning techniques with examples in `R`. Although these examples are not necessarily spatial, the chapters provide a lot of the background necessary for understanding what the models are doing.
+### Bigger Picture
 
-- <i class="fas fa-external-link-square-alt"></i> [A statistical explanation of MaxEnt for ecologists](https://hastie.su.domains/Papers/maxent_explained.pdf) by [@elith2011statistical] provides a relatively accessible description of the details of MaxEnt species distribution modeling.
+- <i class="fas fa-external-link-square-alt"></i> [Logistic regression: a brief primer](https://onlinelibrary.wiley.com/doi/10.1111/j.1553-2712.2011.01185.x) by [@Stoltzfus2011] is a nice introduction to logistic regression.
 
-- <i class="fas fa-external-link-square-alt"></i> [Random forests for Classification in Ecology](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/07-0539.1) by [@cutler2007] provides an introduction to the utility of Random Forests for ecologists.
+- <i class="fas fa-external-link-square-alt"></i> [Is my species distribution model fit for purpose? Matching data and models to applications](https://onlinelibrary.wiley.com/doi/full/10.1111/geb.12268) by [@Guillera-Arroita2015] is an excellent, concise description of the relations between data collection, statistical models, and inference.
+
+- <i class="fas fa-external-link-square-alt"></i> [Predicting species distributions for conservation decisions](https://onlinelibrary.wiley.com/doi/full/10.1111/ele.12189) by [@Guisan2013] is a foundational paper describing some of the challenges with making conservation decisions based on the outcomes of species distribution models.
+
+### Techincal details
+
+- <i class="fas fa-external-link-square-alt"></i> [Statistical Models](https://rspatial.org/intr/13-statmodels.html) from the `terra` package documentation has some step-by-step examples of using `terra` with base `R` to fit statistical modles.
+
+- <i class="fas fa-external-link-square-alt"></i> [Statistical Learning](https://r.geocompx.org/spatial-cv) from [@lovelace_geocomputation_2019] has an extended example of fitting a variety of modeling approaches to data and evaluating their performance.
 
 
 ## Objectives
 
 By the end of today you should be able to:
 
-- Articulate the differences between statistical learning classifiers and logistic regression
+- **Define** the likelihood function and its relationship to statistical infrerence.
 
-- Describe several classification trees and their relationship to Random Forests
+- **Recognize** key assumptions of statistical models and how spatial data may challenge those assumptions.
 
-- Describe MaxEnt models for presence-only data
+- **Simulate** fake data with known relationships
+
+- **Fit** simple linear and generalized linear models to spatial data
 
 ```{r show-slide-tabs, echo=FALSE, results="asis"}
 slide_buttons("/slides/23-slides")
@@ -40,4 +50,3 @@ slide_buttons("/slides/23-slides")
 
 </div>
 
-[Panopto Video](https://boisestate.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4490849b-8188-40a6-b657-b0b201521f29&start=0)
